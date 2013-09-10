@@ -26,9 +26,45 @@
 package de.sciss
 package numbers
 
-import scala.collection.immutable.NumericRange
-
 object RichMixins {
+  trait UnaryFloatOps extends Any { me =>
+    import numbers.{FloatFunctions => rf}
+
+    protected def toFloat: Float
+
+    import me.{toFloat => f}
+
+    // unary ops
+    def sqrt      : Float = rf.sqrt       (f)
+    def exp       : Float = rf.exp        (f)
+    // def reciprocal: Float = rf.reciprocal (f)
+    def midicps   : Float = rf.midicps    (f)
+    def cpsmidi   : Float = rf.cpsmidi    (f)
+    def midiratio : Float = rf.midiratio  (f)
+    def ratiomidi : Float = rf.ratiomidi  (f)
+    def dbamp     : Float = rf.dbamp      (f)
+    def ampdb     : Float = rf.ampdb      (f)
+    def octcps    : Float = rf.octcps     (f)
+    def cpsoct    : Float = rf.cpsoct     (f)
+    def log       : Float = rf.log        (f)
+    def log2      : Float = rf.log2       (f)
+    def log10     : Float = rf.log10      (f)
+    def sin       : Float = rf.sin        (f)
+    def cos       : Float = rf.cos        (f)
+    def tan       : Float = rf.tan        (f)
+    def asin      : Float = rf.asin       (f)
+    def acos      : Float = rf.acos       (f)
+    def atan      : Float = rf.atan       (f)
+    def sinh      : Float = rf.sinh       (f)
+    def cosh      : Float = rf.cosh       (f)
+    def tanh      : Float = rf.tanh       (f)
+
+    // def distort : Float     = f / (1 + math.abs( f ))
+    // def softclip : Float    = { val absx = math.abs( f ); if( absx <= 0.5f ) f else (absx - 0.25f) / f}
+    // def ramp : Float        = if( f <= 0 ) 0 else if( f >= 1 ) 1 else f
+    // def scurve : Float      = if( f <= 0 ) 0 else if( f > 1 ) 1 else f * f * (3 - 2 * f)
+  }
+
   trait NAryFloatOps extends Any { me =>
     import numbers.{FloatFunctions => rf}
 
@@ -103,44 +139,6 @@ object RichMixins {
       rf.explin(f, inLow, inHigh, outLow, outHigh)
   }
 
-  trait UnaryFloatOps extends Any { me =>
-    import numbers.{FloatFunctions => rf}
-
-    protected def toFloat: Float
-
-    import me.{toFloat => f}
-
-    // unary ops
-    def sqrt      : Float = rf.sqrt       (f)
-    def exp       : Float = rf.exp        (f)
-    // def reciprocal: Float = rf.reciprocal (f)
-    def midicps   : Float = rf.midicps    (f)
-    def cpsmidi   : Float = rf.cpsmidi    (f)
-    def midiratio : Float = rf.midiratio  (f)
-    def ratiomidi : Float = rf.ratiomidi  (f)
-    def dbamp     : Float = rf.dbamp      (f)
-    def ampdb     : Float = rf.ampdb      (f)
-    def octcps    : Float = rf.octcps     (f)
-    def cpsoct    : Float = rf.cpsoct     (f)
-    def log       : Float = rf.log        (f)
-    def log2      : Float = rf.log2       (f)
-    def log10     : Float = rf.log10      (f)
-    def sin       : Float = rf.sin        (f)
-    def cos       : Float = rf.cos        (f)
-    def tan       : Float = rf.tan        (f)
-    def asin      : Float = rf.asin       (f)
-    def acos      : Float = rf.acos       (f)
-    def atan      : Float = rf.atan       (f)
-    def sinh      : Float = rf.sinh       (f)
-    def cosh      : Float = rf.cosh       (f)
-    def tanh      : Float = rf.tanh       (f)
-
-    // def distort : Float     = f / (1 + math.abs( f ))
-    // def softclip : Float    = { val absx = math.abs( f ); if( absx <= 0.5f ) f else (absx - 0.25f) / f}
-    // def ramp : Float        = if( f <= 0 ) 0 else if( f >= 1 ) 1 else f
-    // def scurve : Float      = if( f <= 0 ) 0 else if( f > 1 ) 1 else f * f * (3 - 2 * f)
-  }
-
   trait NAryDoubleOps extends Any { me =>
     import numbers.{DoubleFunctions => rd}
 
@@ -149,15 +147,15 @@ object RichMixins {
     import me.{toDouble => d}
 
     // recover these from scala.runtime.RichDouble
-    def until(end: Double): Range.Partial[Double, NumericRange[Double]] =
-      new Range.Partial[Double, NumericRange[Double]](until(end, _))
-
-    def until(end: Double, step: Double): NumericRange [Double] = Range.Double(d, end, step)
-
-    def to(end: Double): Range.Partial[Double, NumericRange[Double]] =
-      new Range.Partial[Double, NumericRange[Double]](to(end, _))
-
-    def to(end: Double, step: Double): NumericRange [Double] = Range.Double.inclusive(d, end, step)
+    //    def until(end: Double): Range.Partial[Double, NumericRange[Double]] =
+    //      new Range.Partial[Double, NumericRange[Double]](until(end, _))
+    //
+    //    def until(end: Double, step: Double): NumericRange [Double] = Range.Double(d, end, step)
+    //
+    //    def to(end: Double): Range.Partial[Double, NumericRange[Double]] =
+    //      new Range.Partial[Double, NumericRange[Double]](to(end, _))
+    //
+    //    def to(end: Double, step: Double): NumericRange [Double] = Range.Double.inclusive(d, end, step)
 
     // binary ops
     // def min     (b: Double): Double = rd.min      (d, b)

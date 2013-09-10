@@ -52,7 +52,20 @@ object IntFunctions {
 
   @inline def clip(in: Int, low: Int, high: Int): Int = math.max(low, math.min(high, in))
 
-  @inline def fold(in: Int, low: Int, high: Int): Int = ???
+  @inline def fold(in: Int, low: Int, high: Int): Int = {
+    val b   = high - low
+   	val b2  = b + b
+   	val c0  = mod(in - low, b2)
+   	val c   = if (c0 > b) b2 - c0 else c0
+   	c + low
+  }
 
-  @inline def wrap(in: Int, low: Int, high: Int): Int = ???
+  // handles negative numbers differently than a % b
+  @inline def mod(a: Int, b: Int): Int =
+    if (a >= 0) a % b else {
+      val c = -a % b
+      if (c == 0) 0 else b - c
+    }
+
+  @inline def wrap(in: Int, low: Int, high: Int): Int = mod(in - low, high - low + 1) + low
 }

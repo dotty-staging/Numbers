@@ -115,14 +115,14 @@ object DoubleFunctions {
   }
 
   @inline def absdif    (a: Double, b: Double): Double = math.abs(a - b)
-  @inline def clip2     (a: Double, b: Double): Double = math.max(math.min(a, b), -b)
+  @inline def clip2     (a: Double, b: Double): Double = clip(a, -b, b)
   @inline def excess    (a: Double, b: Double): Double = a - math.max(math.min(a, b), -b)
   @inline def fold2     (a: Double, b: Double): Double = fold(a, -b, b)
   @inline def wrap2     (a: Double, b: Double): Double = wrap(a, -b, b)
 
   // ---- n-ary ops ----
 
-  @inline def clip(in: Double, low: Double, high: Double): Double = ???
+  @inline def clip(in: Double, low: Double, high: Double): Double = math.max(math.min(in, high), low)
 
   @inline def fold(in: Double, low: Double, high: Double): Double = {
     val x = in - low
@@ -171,5 +171,6 @@ object DoubleFunctions {
   @inline def explin(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
  		math.log(in / inLow) / math.log(inHigh / inLow) * (outHigh - outLow) + outLow
 
-  @inline def expexp(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double = ???
+  @inline def expexp(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
+    math.pow(outHigh / outLow, math.log(in / inLow) / math.log(inHigh / inLow)) * outLow
 }

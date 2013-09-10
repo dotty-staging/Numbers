@@ -116,14 +116,14 @@ object FloatFunctions {
   }
 
   @inline def absdif  (a: Float, b: Float): Float = math.abs(a - b)
-  @inline def clip2   (a: Float, b: Float): Float = math.max(math.min(a, b), -b)
+  @inline def clip2   (a: Float, b: Float): Float = clip(a, -b, b)
   @inline def excess  (a: Float, b: Float): Float = a - math.max(math.min(a, b), -b)
   @inline def fold2   (a: Float, b: Float): Float = fold(a, -b, b)
   @inline def wrap2   (a: Float, b: Float): Float = wrap(a, -b, b)
 
   // -------- n-ary ops --------
 
-  @inline def clip(in: Float, low: Float, high: Float): Float = ???
+  @inline def clip(in: Float, low: Float, high: Float): Float = math.max(math.min(in, high), low)
 
   @inline def fold(in: Float, low: Float, high: Float): Float = {
     val x = in - low
@@ -138,9 +138,9 @@ object FloatFunctions {
 
     if (high == low) return low
     // ok do the divide
-    val range = high - low
-    val range2 = range + range
-    val c = x - range2 * math.floor(x / range2).toFloat
+    val range   = high - low
+    val range2  = range + range
+    val c       = x - range2 * math.floor(x / range2).toFloat
     low + (if (c >= range) range2 - c else c)
   }
 
@@ -172,5 +172,6 @@ object FloatFunctions {
   @inline def explin(in: Float, inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
     (math.log(in / inLow) / math.log(inHigh / inLow) * (outHigh - outLow) + outLow).toFloat
 
-  @inline def expexp(in: Float, inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float = ???
+  @inline def expexp(in: Float, inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
+    (math.pow(outHigh / outLow, math.log(in / inLow) / math.log(inHigh / inLow)) * outLow).toFloat
 }
