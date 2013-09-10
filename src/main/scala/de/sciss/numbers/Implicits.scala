@@ -28,14 +28,6 @@ package de.sciss.numbers
 import language.implicitConversions
 
 object Implicits {
-  /** This conversion is particularly important to balance priorities,
-    * as the plain pair of `intToGE` and `enrichFloat` have equal
-    * priorities for an Int despite being in sub/superclass relationship,
-    * probably due to the numeric widening which would be needed.
-    *
-    * Note that we use the same name as scala.Predef.intWrapper. That
-    * way the original conversion is hidden!
-    */
   implicit def intNumberWrapper   (i: Int   ): RichInt    = new RichInt   (i)
   implicit def floatNumberWrapper (f: Float ): RichFloat  = new RichFloat (f)
   implicit def doubleNumberWrapper(d: Double): RichDouble = new RichDouble(d)
