@@ -53,12 +53,14 @@ class NumbersSuite extends FunSpec {
     }
   }
 
-  private final val epsf = 2.0e-6f
+  // yes this is pretty crappy; reason being that we pasted some SuperCollider results which
+  // seem to exhibit quite some floating point error against java math (octcps notably)
+  private final val epsf = 7.0e-5f
 
   private def assertFloat(a: Vec[Float], b: Vec[Float]) =
     assert((a zip b).forall { case (x, y) =>
       x.isNaN && y.isNaN || x == y ||
-      (x absdif y) < epsf
+        { val z = (x absdif y) < epsf; if (!z) println(s"$x absdif $y = ${x absdif y}"); z }
     }, s"$a did not equal $b")
 
   describe("Rich float operators") {
