@@ -2,7 +2,7 @@
 
 ## statement
 
-Numbers is a library for the Scala programming language which provides various useful numeric functions and type enrichment operators. Many of the unary and binary operators are adapted from the SuperCollider language, and Numbers is included in the [ScalaCollider](http://github.com/Sciss/ScalaCollider/) project. This library is (C)opyright 2013 by Hanns Holger Rutz. All rights reserved. It is released under the [GNU Lesser General Public License](http://github.com/Sciss/Numbers/blob/master/LICENSE) and comes with absolutely no warranties. To contact the author, send an email to `contact at sciss.de`
+Numbers is a library for the Scala programming language which provides various useful numeric functions and type enrichment operators. Many of the unary and binary operators are adapted from the SuperCollider language, and Numbers is included in the [ScalaCollider](http://github.com/Sciss/ScalaCollider/) project. This library is (C)opyright 2013&ndash;2014 by Hanns Holger Rutz. All rights reserved. It is released under the [GNU Lesser General Public License](http://github.com/Sciss/Numbers/blob/master/LICENSE) and comes with absolutely no warranties. To contact the author, send an email to `contact at sciss.de`
 
 ## linking
 

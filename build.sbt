@@ -1,26 +1,26 @@
-name         := "Numbers"
+name               := "Numbers"
 
-version      := "0.1.1-SNAPSHOT"
+version            := "0.1.1"
 
-organization := "de.sciss"
+organization       := "de.sciss"
 
-scalaVersion := "2.11.0-RC3"
+scalaVersion       := "2.11.0-RC4"
 
-crossScalaVersions := Seq("2.11.0-RC3", "2.10.3")
+crossScalaVersions := Seq("2.11.0-RC4", "2.10.4")
 
-description  := "A collection of numeric functions and type enrichments"
+description        := "A collection of numeric functions and type enrichments"
 
-homepage     := Some(url("https://github.com/Sciss/" + name.value))
+homepage           := Some(url("https://github.com/Sciss/" + name.value))
 
-licenses     := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt"))
+licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt"))
 
 initialCommands in console := """import de.sciss.numbers.Implicits._"""
 
-// retrieveManaged := true
+// retrieveManaged    := true
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.1.2" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "2.1.3" % "test"
 
-scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
+scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-Xfuture")
 
 // ---- publishing ----
 
@@ -43,11 +43,11 @@ pomExtra := { val n = name.value
   <connection>scm:git:git@github.com:Sciss/{n}.git</connection>
 </scm>
 <developers>
-   <developer>
-      <id>sciss</id>
-      <name>Hanns Holger Rutz</name>
-      <url>http://www.sciss.de</url>
-   </developer>
+  <developer>
+    <id>sciss</id>
+    <name>Hanns Holger Rutz</name>
+    <url>http://www.sciss.de</url>
+  </developer>
 </developers>
 }
 
