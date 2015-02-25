@@ -1,12 +1,12 @@
 name               := "Numbers"
 
-version            := "0.1.1"
+version            := "0.1.2-SNAPSHOT"
 
 organization       := "de.sciss"
 
-scalaVersion       := "2.11.0"
+scalaVersion       := "2.11.5"
 
-crossScalaVersions := Seq("2.11.0", "2.10.4")
+crossScalaVersions := Seq("2.11.5", "2.10.4")
 
 description        := "A collection of numeric functions and type enrichments"
 
@@ -16,9 +16,7 @@ licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-
 
 initialCommands in console := """import de.sciss.numbers.Implicits._"""
 
-// retrieveManaged    := true
-
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.1.3" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.3" % "test"
 
 scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-Xfuture")
 
