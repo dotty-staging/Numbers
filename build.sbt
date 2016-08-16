@@ -1,22 +1,15 @@
 name               := "Numbers"
-
 version            := "0.1.2-SNAPSHOT"
-
 organization       := "de.sciss"
-
-scalaVersion       := "2.11.5"
-
-crossScalaVersions := Seq("2.11.5", "2.10.4")
-
+scalaVersion       := "2.11.8"
+crossScalaVersions := Seq("2.11.8", "2.10.6")
 description        := "A collection of numeric functions and type enrichments"
-
-homepage           := Some(url("https://github.com/Sciss/" + name.value))
-
+homepage           := Some(url(s"https://github.com/Sciss/${name.value}"))
 licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt"))
 
 initialCommands in console := """import de.sciss.numbers.Implicits._"""
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.3" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.0" % "test"
 
 scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-Xfuture")
 
@@ -25,7 +18,7 @@ scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-Xfuture")
 publishMavenStyle := true
 
 publishTo :=
-  Some(if (version.value endsWith "-SNAPSHOT")
+  Some(if (isSnapshot.value)
     "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
   else
     "Sonatype Releases"  at "https://oss.sonatype.org/service/local/staging/deploy/maven2"
@@ -48,4 +41,3 @@ pomExtra := { val n = name.value
   </developer>
 </developers>
 }
-
