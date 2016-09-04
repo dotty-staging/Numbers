@@ -2,7 +2,7 @@
  * RichMixins.scala
  * (Numbers)
  *
- * Copyright (c) 2013 Hanns Holger Rutz. All rights reserved.
+ * Copyright (c) 2013-2016 Hanns Holger Rutz. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -28,7 +28,7 @@ package numbers
 
 object RichMixins {
   trait UnaryFloatOps extends Any { me =>
-    import numbers.{FloatFunctions => rf}
+    import numbers.{FloatFunctions => rf, FloatFunctions2 => rf2}
 
     protected def toFloat: Float
 
@@ -37,7 +37,7 @@ object RichMixins {
     // unary ops
     def sqrt      : Float = rf.sqrt       (f)
     def exp       : Float = rf.exp        (f)
-    // def reciprocal: Float = rf.reciprocal (f)
+    def reciprocal: Float = rf2.reciprocal(f)
     def midicps   : Float = rf.midicps    (f)
     def cpsmidi   : Float = rf.cpsmidi    (f)
     def midiratio : Float = rf.midiratio  (f)

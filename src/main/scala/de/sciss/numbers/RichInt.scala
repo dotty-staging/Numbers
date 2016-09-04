@@ -2,7 +2,7 @@
  * RichInt.scala
  * (Numbers)
  *
- * Copyright (c) 2013 Hanns Holger Rutz. All rights reserved.
+ * Copyright (c) 2013-2016 Hanns Holger Rutz. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -60,12 +60,17 @@ final class RichInt(val toInt: Int)
 
   def isPowerOfTwo  : Boolean = ri.isPowerOfTwo   (i)
   def nextPowerOfTwo: Int     = ri.nextPowerOfTwo (i)
+  def isEven        : Boolean = ri.isEven         (i)
+  def isOdd         : Boolean = ri.isOdd          (i)
 
   // more binary ops
 
   // already covered by standard Scala wrapper
   // def min(b: Int): Int = ri.min(i, b)
   // def max(b: Int): Int = ri.max(i, b)
+
+  def gcd (b: Int): Int = ri.gcd(i, b)
+  def lcm (b: Int): Int = ri.lcm(i, b)
 
   // def until(end: Int           ): Range = Range(i, end      )
   // def until(end: Int, step: Int): Range = Range(i, end, step)

@@ -1,5 +1,5 @@
 name               := "Numbers"
-version            := "0.1.2-SNAPSHOT"
+version            := "0.1.2"
 organization       := "de.sciss"
 scalaVersion       := "2.11.8"
 crossScalaVersions := Seq("2.11.8", "2.10.6")

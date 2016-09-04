@@ -50,6 +50,23 @@ class NumbersSuite extends FunSpec {
 
       assert(iwrap ===
         Vec(-1, 0, 1, 2, 3, 4, 5, 6, 7, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7))
+
+      assert(31.gcd(37) ===    1)
+      assert( 0.gcd(37) ===   37)
+      assert(31.gcd( 0) ===   31)
+      assert(32.gcd(48) ===   16)
+      assert(48.gcd(32) ===   16)
+
+      assert(31.lcm(37) === 1147)
+      assert( 0.lcm(37) ===    0)
+      assert(31.lcm( 0) ===    0)
+      assert(32.lcm(48) ===   96)
+      assert(48.lcm(32) ===   96)
+
+      assert(0.isEven && !0.isOdd )
+      assert(1.isOdd  && !1.isEven)
+      assert(2.isEven && !2.isOdd )
+      assert(3.isOdd  && !3.isEven)
     }
   }
 

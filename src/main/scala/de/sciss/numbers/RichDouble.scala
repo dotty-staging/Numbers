@@ -2,7 +2,7 @@
  * RichDouble.scala
  * (Numbers)
  *
- * Copyright (c) 2013 Hanns Holger Rutz. All rights reserved.
+ * Copyright (c) 2013-2016 Hanns Holger Rutz. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -29,7 +29,7 @@ package numbers
 final class RichDouble(val toDouble: Double)
   extends AnyVal with RichMixins.NAryDoubleOps /* with RichMixins.NAryGEOps */ { me =>
 
-  import numbers.{DoubleFunctions => rd}
+  import numbers.{DoubleFunctions => rd, DoubleFunctions2 => rd2}
   import me.{toDouble => d}
 
   // protected def cn = Constant(d.toFloat)
@@ -51,7 +51,7 @@ final class RichDouble(val toDouble: Double)
   // def cubed     : Double = rd.cubed     (d)
   def sqrt      : Double = rd.sqrt      (d)
   def exp       : Double = rd.exp       (d)
-  // def reciprocal: Double = rd.reciprocal(d)
+  def reciprocal: Double = rd2.reciprocal(d)
   def midicps   : Double = rd.midicps   (d)
   def cpsmidi   : Double = rd.cpsmidi   (d)
   def midiratio : Double = rd.midiratio (d)

@@ -2,7 +2,7 @@
  * IntFunctions.scala
  * (Numbers)
  *
- * Copyright (c) 2013 Hanns Holger Rutz. All rights reserved.
+ * Copyright (c) 2013-2016 Hanns Holger Rutz. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -27,6 +27,8 @@ package de.sciss.numbers
 
 /** Common functions for `Int` values. */
 object IntFunctions {
+  // ---- unary ops ----
+
   @inline def abs     (a: Int): Int   = math.abs(a)
   @inline def signum  (a: Int): Int   = math.signum(a)
   @inline def squared (a: Int): Long  = { val n = a.toLong; n * n }
@@ -40,9 +42,41 @@ object IntFunctions {
  		j
  	}
 
+  @inline def isEven(i: Int): Boolean = i % 2 == 0
+  @inline def isOdd (i: Int): Boolean = i % 2 == 1
+
   // ---- binary ops ----
   @inline def min   (a: Int, b: Int): Int = math.min(a, b)
   @inline def max   (a: Int, b: Int): Int = math.max(a, b)
+
+  @inline def gcd   (a: Int, b: Int): Int = {
+    if (a == 0) return b
+    if (b == 0) return a
+
+    var av = math.abs(a)
+    var bv = math.abs(b)
+    val isNeg = a <= 0 && b <= 0
+
+    if (av == 1 || bv == 1)
+      return if (isNeg) -1 else 1
+
+    if (av < bv) {
+      val tmp = av
+      av = bv
+      bv = tmp
+    }
+    while (bv > 0) {
+      val tmp = av % bv
+      av = bv
+      bv = tmp
+    }
+
+    if (isNeg) 0 - av else av
+  }
+
+  @inline def lcm (a: Int, b: Int): Int =
+    if (a == 0 || b == 0) 0
+    else (a * b) / gcd(a, b)
 
   @inline def clip2 (a: Int, b: Int): Int = clip(a, -b, b)
   @inline def fold2 (a: Int, b: Int): Int = fold(a, -b, b)
