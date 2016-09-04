@@ -12,7 +12,7 @@ Numbers is a library for the Scala programming language which provides various u
 
     "de.sciss" %% "numbers"  % v
 
-The current version `v` is `"0.1.2"`.
+The current version `v` is `"0.1.3"`.
 
 ## building
 

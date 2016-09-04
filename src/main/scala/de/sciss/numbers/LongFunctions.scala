@@ -1,6 +1,6 @@
 package de.sciss.numbers
 
-class LongFunctions {
+object LongFunctions {
   // ---- binary ops ----
   @inline def gcd (a: Long, b: Long): Long = {
     if (a == 0) return b
