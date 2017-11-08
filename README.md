@@ -15,7 +15,7 @@ The current version `v` is `"0.1.3"`.
 
 ## building
 
-The project builds with [sbt](http://www.scala-sbt.org/) against Scala 2.11 and 2.10.
+The project builds with [sbt](http://www.scala-sbt.org/) against Scala 2.12, 2.11.
 
 To compile `sbt compile`. To test, `sbt test`. For the API docs, `sbt doc`.
 

@@ -1,17 +1,17 @@
 name               := "Numbers"
-version            := "0.1.3"
+version            := "0.1.4-SNAPSHOT"
 organization       := "de.sciss"
-scalaVersion       := "2.11.8"
-crossScalaVersions := Seq("2.11.8", "2.10.6")
+scalaVersion       := "2.12.4"
+crossScalaVersions := Seq("2.12.4", "2.11.11")
 description        := "A collection of numeric functions and type enrichments"
 homepage           := Some(url(s"https://github.com/Sciss/${name.value}"))
 licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt"))
 
 initialCommands in console := """import de.sciss.numbers.Implicits._"""
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.0" % "test"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.4" % "test"
 
-scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-Xfuture")
+scalacOptions ++= Seq("-Xlint", "-deprecation", "-unchecked", "-feature", "-encoding", "utf8", "-Xfuture")
 
 // ---- publishing ----
 
