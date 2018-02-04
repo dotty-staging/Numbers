@@ -1,26 +1,14 @@
 /*
- * DoubleFunctions.scala
- * (Numbers)
+ *  DoubleFunctions.scala
+ *  (Numbers)
  *
- * Copyright (c) 2013-2016 Hanns Holger Rutz. All rights reserved.
+ *  Copyright (c) 2013-2018 Hanns Holger Rutz. All rights reserved.
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ *	This software is published under the GNU Lesser General Public License v2.1+
  *
  *
- * For further information, please contact Hanns Holger Rutz at
- * contact@sciss.de
+ *  For further information, please contact Hanns Holger Rutz at
+ *  contact@sciss.de
  */
 
 package de.sciss.numbers
@@ -119,6 +107,13 @@ object DoubleFunctions {
   @inline def excess    (a: Double, b: Double): Double = a - math.max(math.min(a, b), -b)
   @inline def fold2     (a: Double, b: Double): Double = fold(a, -b, b)
   @inline def wrap2     (a: Double, b: Double): Double = wrap(a, -b, b)
+
+  // handles negative numbers differently than a % b
+  @inline def mod(a: Double, b: Double): Double =
+    if (a >= 0d) a % b else {
+      val c = -a % b
+      if (c == 0d) 0d else b - c
+    }
 
   // ---- n-ary ops ----
 

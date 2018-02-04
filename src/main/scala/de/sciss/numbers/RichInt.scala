@@ -1,26 +1,14 @@
 /*
- * RichInt.scala
- * (Numbers)
+ *  RichInt.scala
+ *  (Numbers)
  *
- * Copyright (c) 2013-2016 Hanns Holger Rutz. All rights reserved.
+ *  Copyright (c) 2013-2018 Hanns Holger Rutz. All rights reserved.
  *
- * This library is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * This library is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ *	This software is published under the GNU Lesser General Public License v2.1+
  *
  *
- * For further information, please contact Hanns Holger Rutz at
- * contact@sciss.de
+ *  For further information, please contact Hanns Holger Rutz at
+ *  contact@sciss.de
  */
 
 package de.sciss
@@ -33,8 +21,8 @@ final class RichInt(val toInt: Int)
   import numbers.{IntFunctions => ri}
   import me.{toInt => i}
 
-  protected def toFloat   = i.toFloat
-  protected def toDouble  = i.toDouble
+  protected def toFloat : Float   = i.toFloat
+  protected def toDouble: Double  = i.toDouble
   // protected def cn  = Constant(i.toFloat)
 
   // recover these from scala.runtime.RichFloat
@@ -88,6 +76,8 @@ final class RichInt(val toInt: Int)
   // def excess  (b: Int): Int     = ri.excess   (i, b)
   def fold2   (b: Int): Int   = ri.fold2    (i, b)
   def wrap2   (b: Int): Int   = ri.wrap2    (i, b)
+
+  def mod     (b: Int): Int   = ri.mod      (i, b)
 
   def clip    (low: Int, high: Int): Int = ri.clip(i, low, high)
   def fold    (low: Int, high: Int): Int = ri.fold(i, low, high)

@@ -12,9 +12,9 @@ class NumbersSuite extends FunSpec {
 
   describe("Rich int operators") {
     it("should do what the pope said") {
-      val isquared = -4.squared
-      assert(isquared === 16L)
-      assert(isquared.isInstanceOf[Long], s"found ${isquared.getClass}")
+      val iSquared = -4.squared
+      assert(iSquared === 16L)
+      assert(iSquared.isInstanceOf[Long], s"found ${iSquared.getClass}")
 
       assert(! (-2).isPowerOfTwo)
       assert(! (-1).isPowerOfTwo)
@@ -33,22 +33,22 @@ class NumbersSuite extends FunSpec {
 
       intercept[IllegalArgumentException](0x40000001.nextPowerOfTwo)
 
-      val iroundTo = 6.roundTo(4)
-      assert(iroundTo === 8f)
-      assert(iroundTo.isInstanceOf[Float], s"found ${iroundTo.getClass}")
+      val iRoundTo = 6.roundTo(4)
+      assert(iRoundTo === 8f)
+      assert(iRoundTo.isInstanceOf[Float], s"found ${iRoundTo.getClass}")
 
-      val irange  = -12 to 18
-      val iclip   = irange map (_ clip (-3, 7))
-      val ifold   = irange map (_ fold (-3, 7))
-      val iwrap   = irange map (_ wrap (-3, 7))
+      val iRange  = -12 to 18
+      val iClip   = iRange map (_ clip (-3, 7))
+      val iFold   = iRange map (_ fold (-3, 7))
+      val iWrap   = iRange map (_ wrap (-3, 7))
 
-      assert(iclip ===
+      assert(iClip ===
         Vec(-3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7))
 
-      assert(ifold ===
+      assert(iFold ===
         Vec(6, 5, 4, 3, 2, 1, 0, -1, -2, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1, 0, -1, -2, -3, -2))
 
-      assert(iwrap ===
+      assert(iWrap ===
         Vec(-1, 0, 1, 2, 3, 4, 5, 6, 7, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7))
 
       assert(31.gcd(37) ===    1)
@@ -67,26 +67,29 @@ class NumbersSuite extends FunSpec {
       assert(1.isOdd  && !1.isEven)
       assert(2.isEven && !2.isOdd )
       assert(3.isOdd  && !3.isEven)
+
+      assert(-3 % 2    === -1)
+      assert(-3.mod(2) === +1)
     }
   }
 
   // yes this is pretty crappy; reason being that we pasted some SuperCollider results which
   // seem to exhibit quite some floating point error against java math (octcps notably)
-  private final val epsf = 7.0e-5f
+  private final val epsF = 7.0e-5f
 
   private def assertFloat(a: Vec[Float], b: Vec[Float]) =
     assert((a zip b).forall { case (x, y) =>
       x.isNaN && y.isNaN || x == y ||
-        { val z = (x absdif y) < epsf; if (!z) println(s"$x absdif $y = ${x absdif y}"); z }
+        { val z = (x absdif y) < epsF; if (!z) println(s"$x absdif $y = ${x absdif y}"); z }
     }, s"$a did not equal $b")
 
   describe("Rich float operators") {
     it("should do what the pope said") {
-      val fseq1   = Vec(-4.0f, -4.3f, -0.0f, 4.0f, 4.3f)
+      val fSeq1   = Vec(-4.0f, -4.3f, -0.0f, 4.0f, 4.3f)
       import Float.{NaN => nan, PositiveInfinity => inf}
 
       def assertMap(fun: Float => Float, b: Vec[Float]) =
-        assertFloat(fseq1.map(fun), b)
+        assertFloat(fSeq1.map(fun), b)
 
       assertMap(_.frac      , Vec(0f, 0.7f, 0f, 0f, 0.3f))
       assertMap(_.squared   , Vec(16f, 18.49f, 0f, 16f, 18.49f))
@@ -105,36 +108,36 @@ class NumbersSuite extends FunSpec {
       // XXX TODO: binary ops
       // XXX TODO: n-ary ops (linlin, linexp, ...)
 
-      val frange  = -12f to 18f by 1.5f
-      val fclip   = frange map (_ clip (-3, 7))
-      val ffold   = frange map (_ fold (-3, 7))
-      val fwrap   = frange map (_ wrap (-3, 7))
+      val fRange  = -12f to 18f by 1.5f
+      val fClip   = fRange map (_ clip (-3, 7))
+      val fFold   = fRange map (_ fold (-3, 7))
+      val fWrap   = fRange map (_ wrap (-3, 7))
 
-      assert(fclip ===
+      assert(fClip ===
         Vec(-3f, -3f, -3f, -3f, -3f, -3f, -3f, -1.5f, 0f, 1.5f, 3f, 4.5f, 6f, 7f, 7f, 7f, 7f, 7f, 7f, 7f, 7f))
 
-      assert(ffold ===
+      assert(fFold ===
         Vec(6f, 4.5f, 3f, 1.5f, 0f, -1.5f, -3f, -1.5f, 0f, 1.5f, 3f, 4.5f, 6f, 6.5f, 5f, 3.5f, 2f, 0.5f, -1f, -2.5f, -2f))
 
-      assert(fwrap ===
+      assert(fWrap ===
         Vec(-2f, -0.5f, 1f, 2.5f, 4f, 5.5f, -3f, -1.5f, 0f, 1.5f, 3f, 4.5f, 6f, -2.5f, -1f, 0.5f, 2f, 3.5f, 5f, 6.5f, -2f))
     }
   }
 
   describe("Rich double operators") {
     it("should do what the pope said") {
-      val drange  = -12.0 to 18.0 by 1.5
-      val dclip   = drange map (_ clip (-3, 7))
-      val dfold   = drange map (_ fold (-3, 7))
-      val dwrap   = drange map (_ wrap (-3, 7))
+      val dRange  = -12.0 to 18.0 by 1.5
+      val dClip   = dRange map (_ clip (-3, 7))
+      val dFold   = dRange map (_ fold (-3, 7))
+      val dWrap   = dRange map (_ wrap (-3, 7))
 
-      assert(dclip ===
+      assert(dClip ===
         Vec(-3.0, -3.0, -3.0, -3.0, -3.0, -3.0, -3.0, -1.5, 0.0, 1.5, 3.0, 4.5, 6.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0))
 
-      assert(dfold ===
+      assert(dFold ===
         Vec(6.0, 4.5, 3.0, 1.5, 0.0, -1.5, -3.0, -1.5, 0.0, 1.5, 3.0, 4.5, 6.0, 6.5, 5.0, 3.5, 2.0, 0.5, -1.0, -2.5, -2.0))
 
-      assert(dwrap ===
+      assert(dWrap ===
         Vec(-2.0, -0.5, 1.0, 2.5, 4.0, 5.5, -3.0, -1.5, 0.0, 1.5, 3.0, 4.5, 6.0, -2.5, -1.0, 0.5, 2.0, 3.5, 5.0, 6.5, -2.0))
     }
   }
