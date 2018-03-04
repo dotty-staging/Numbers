@@ -28,13 +28,13 @@ object DoubleFunctions {
   @inline def sqrt        (d: Double): Double = math.sqrt(d)
   @inline def exp         (d: Double): Double = math.exp(d)
   @inline def midicps     (d: Double): Double = 440 * math.pow(2, (d - 69) / 12)
-  @inline def cpsmidi     (d: Double): Double = math.log(d / 440) / Log2 * 12 + 69
+  @inline def cpsmidi     (d: Double): Double = math.log(math.abs(d) / 440) / Log2 * 12 + 69
   @inline def midiratio   (d: Double): Double = math.pow(2, d / 12)
-  @inline def ratiomidi   (d: Double): Double = 12 * math.log(d) / Log2
+  @inline def ratiomidi   (d: Double): Double = 12 * math.log(math.abs(d)) / Log2
   @inline def dbamp       (d: Double): Double = math.pow(10, d * 0.05)
   @inline def ampdb       (d: Double): Double = math.log10(d) * 20
   @inline def octcps      (d: Double): Double = 440 * math.pow(2, d - 4.75)
-  @inline def cpsoct      (d: Double): Double = math.log(d / 440) / Log2 + 4.75
+  @inline def cpsoct      (d: Double): Double = math.log(math.abs(d) / 440) / Log2 + 4.75
   @inline def log         (d: Double): Double = math.log(d)
   @inline def log2        (d: Double): Double = math.log(d) / Log2
   @inline def log10       (d: Double): Double = math.log10(d)
@@ -58,7 +58,7 @@ object DoubleFunctions {
   @inline def +         (a: Double, b: Double): Double = a + b
   @inline def -         (a: Double, b: Double): Double = a - b
   @inline def *         (a: Double, b: Double): Double = a * b
-  @inline def div       (a: Double, b: Double): Int    = (a / b).toInt
+  @inline def div       (a: Double, b: Double): Int    = if (b == 0d) 0 else math.floor(a / b).toInt
   @inline def /         (a: Double, b: Double): Double = a / b
   @inline def %         (a: Double, b: Double): Double = a % b
 
@@ -71,15 +71,17 @@ object DoubleFunctions {
   @inline def min       (a: Double, b: Double): Double = math.min(a, b)
   @inline def max       (a: Double, b: Double): Double = math.max(a, b)
 
-  @inline def roundTo   (a: Double, b: Double): Double = if (b == 0) a else math.floor(a / b + 0.5) * b
-  @inline def roundUpTo (a: Double, b: Double): Double = if (b == 0) a else math.ceil (a / b) * b
-  @inline def trunc     (a: Double, b: Double): Double = if (b == 0) a else math.floor(a / b) * b
+  @inline def roundTo   (a: Double, b: Double): Double = if (b == 0d) a else math.floor(a / b + 0.5) * b
+  @inline def roundUpTo (a: Double, b: Double): Double = if (b == 0d) a else math.ceil (a / b) * b
+  @inline def trunc     (a: Double, b: Double): Double = if (b == 0d) a else math.floor(a / b) * b
   @inline def atan2     (a: Double, b: Double): Double = math.atan2(a, b)
   @inline def hypot     (a: Double, b: Double): Double = math.hypot(a, b)
 
   @inline def hypotx    (a: Double, b: Double): Double = {
-    val minab = math.min(math.abs(a), math.abs(b))
-    a + b - (Sqrt2 - 1) * minab
+    val aa  = math.abs(a)
+    val ba  = math.abs(b)
+    val min = math.min(aa, ba)
+    aa + ba - (Sqrt2 - 1) * min
   }
 
   @inline def pow       (a: Double, b: Double): Double = math.pow(a, b)
@@ -110,7 +112,10 @@ object DoubleFunctions {
 
   // handles negative numbers differently than a % b
   @inline def mod(a: Double, b: Double): Double =
-    if (a >= 0d) a % b else {
+    if (b == 0d) 0d
+    else if (math.signum(a) == math.signum(b)) {
+      a % b
+    } else {
       val c = -a % b
       if (c == 0d) 0d else b - c
     }

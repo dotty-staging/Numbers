@@ -28,13 +28,13 @@ object FloatFunctions {
   @inline def sqrt      (f: Float): Float = math.sqrt(f).toFloat
   @inline def exp       (f: Float): Float = math.exp(f).toFloat
   @inline def midicps   (f: Float): Float = (440 * math.pow(2, (f - 69) / 12)).toFloat
-  @inline def cpsmidi   (f: Float): Float = (math.log(f / 440) / Log2 * 12 + 69).toFloat
+  @inline def cpsmidi   (f: Float): Float = (math.log(math.abs(f) / 440) / Log2 * 12 + 69).toFloat
   @inline def midiratio (f: Float): Float = math.pow(2, f / 12).toFloat
-  @inline def ratiomidi (f: Float): Float = (12 * math.log(f) / Log2).toFloat
+  @inline def ratiomidi (f: Float): Float = (12 * math.log(math.abs(f)) / Log2).toFloat
   @inline def dbamp     (f: Float): Float = math.pow(10, f * 0.05).toFloat
   @inline def ampdb     (f: Float): Float = (math.log10(f) * 20).toFloat
   @inline def octcps    (f: Float): Float = (440 * math.pow(2, f - 4.75)).toFloat
-  @inline def cpsoct    (f: Float): Float = (math.log(f / 440) / Log2 + 4.75).toFloat
+  @inline def cpsoct    (f: Float): Float = (math.log(math.abs(f) / 440) / Log2 + 4.75).toFloat
   @inline def log       (f: Float): Float = math.log(f).toFloat
   @inline def log2      (f: Float): Float = (math.log(f) / Log2).toFloat
   @inline def log10     (f: Float): Float = math.log10(f).toFloat
@@ -53,7 +53,7 @@ object FloatFunctions {
   @inline def +       (a: Float, b: Float): Float   = a + b
   @inline def -       (a: Float, b: Float): Float   = a - b
   @inline def *       (a: Float, b: Float): Float   = a * b
-  @inline def div     (a: Float, b: Float): Int     = (a / b).toInt
+  @inline def div     (a: Float, b: Float): Int     = if (b == 0f) 0 else math.floor(a / b).toInt
   @inline def /       (a: Float, b: Float): Float   = a / b
   @inline def %       (a: Float, b: Float): Float   = a % b
 
@@ -72,15 +72,17 @@ object FloatFunctions {
   // lcm
   // gcd
 
-  @inline def roundTo  (a: Float, b: Float): Float   = if (b == 0) a else (math.floor(a / b + 0.5f) * b).toFloat
-  @inline def roundUpTo(a: Float, b: Float): Float   = if (b == 0) a else (math.ceil (a / b) * b).toFloat
-  @inline def trunc   (a: Float, b: Float): Float   = if (b == 0) a else (math.floor(a / b) * b).toFloat
-  @inline def atan2   (a: Float, b: Float): Float   = math.atan2(a, b).toFloat
-  @inline def hypot   (a: Float, b: Float): Float   = math.hypot(a, b).toFloat
+  @inline def roundTo   (a: Float, b: Float): Float   = if (b == 0) a else (math.floor(a / b + 0.5f) * b).toFloat
+  @inline def roundUpTo (a: Float, b: Float): Float   = if (b == 0) a else (math.ceil (a / b) * b).toFloat
+  @inline def trunc     (a: Float, b: Float): Float   = if (b == 0) a else (math.floor(a / b) * b).toFloat
+  @inline def atan2     (a: Float, b: Float): Float   = math.atan2(a, b).toFloat
+  @inline def hypot     (a: Float, b: Float): Float   = math.hypot(a, b).toFloat
 
   @inline def hypotx  (a: Float, b: Float): Float = {
-    val minab = math.min(math.abs(a), math.abs(b))
-    (a + b - (Sqrt2 - 1) * minab).toFloat
+    val aa  = math.abs(a)
+    val ba  = math.abs(b)
+    val min = math.min(aa, ba)
+    aa + ba - (Sqrt2.toFloat - 1) * min
   }
 
   @inline def pow     (a: Float, b: Float): Float = math.pow(a, b).toFloat
@@ -111,7 +113,10 @@ object FloatFunctions {
 
   // handles negative numbers differently than a % b
   @inline def mod(a: Float, b: Float): Float =
-    if (a >= 0f) a % b else {
+    if (b == 0f) 0f
+    else if (math.signum(a) == math.signum(b)) {
+      a % b
+    } else {
       val c = -a % b
       if (c == 0f) 0f else b - c
     }

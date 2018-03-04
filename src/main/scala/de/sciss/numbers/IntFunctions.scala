@@ -24,7 +24,7 @@ object IntFunctions {
   @inline def isPowerOfTwo(a: Int): Boolean = (a & (a-1)) == 0
 
   @inline def nextPowerOfTwo(a: Int): Int = {
-    if (a > 0x40000000) throw new IllegalArgumentException(s"Integer overflow: nextPowerOfTwo($a)")
+    if (a > 0x40000000) throw new ArithmeticException(s"Integer overflow: nextPowerOfTwo($a)")
  		var j = 1
     while (j < a) j <<= 1   // in theory would be faster to do zig-zag search
  		j
@@ -36,6 +36,8 @@ object IntFunctions {
   // ---- binary ops ----
   @inline def min   (a: Int, b: Int): Int = math.min(a, b)
   @inline def max   (a: Int, b: Int): Int = math.max(a, b)
+
+  @inline def div   (a: Int, b: Int): Int = if (b == 0) 0 else math.floor(a.toDouble / b).toInt
 
   @inline def gcd   (a: Int, b: Int): Int = {
     if (a == 0) return b
@@ -67,6 +69,7 @@ object IntFunctions {
     else (a * b) / gcd(a, b)
 
   @inline def clip2 (a: Int, b: Int): Int = clip(a, -b, b)
+  @inline def excess(a: Int, b: Int): Int = a - math.max(math.min(a, b), -b)
   @inline def fold2 (a: Int, b: Int): Int = fold(a, -b, b)
   @inline def wrap2 (a: Int, b: Int): Int = wrap(a, -b, b)
 

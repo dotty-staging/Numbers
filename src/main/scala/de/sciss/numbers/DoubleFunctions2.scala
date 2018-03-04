@@ -20,7 +20,7 @@ object DoubleFunctions2 {
   @inline def neg         (d: Double): Double = -d
 
   @inline def cubed       (d: Double): Double = d * d * d
-  @inline def reciprocal  (d: Double): Double = 1.0 / d
+  @inline def reciprocal  (d: Double): Double = 1d / d
 
   // -------- binary ops --------
 
@@ -33,7 +33,7 @@ object DoubleFunctions2 {
     a * ab - b * ab
   }
 
-  @inline def thresh    (a: Double, b: Double): Double = if (a < b) 0.0 else a
-  @inline def amclip    (a: Double, b: Double): Double = a * 0.5 * (b + math.abs(a))
+  @inline def thresh    (a: Double, b: Double): Double = if (a < b) 0d else a
+  @inline def amclip    (a: Double, b: Double): Double = if (b <= 0d) 0d else a * b
   @inline def scaleneg  (a: Double, b: Double): Double = (math.abs(a) - a) * (0.5 * b + 0.5) + a
 }

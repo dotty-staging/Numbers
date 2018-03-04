@@ -1,7 +1,7 @@
 lazy val mimaVersion = "0.1.3"
 
 name               := "Numbers"
-version            := "0.1.4"
+version            := "0.1.5-SNAPSHOT"
 organization       := "de.sciss"
 scalaVersion       := "2.12.4"
 crossScalaVersions := Seq("2.12.4", "2.11.12")

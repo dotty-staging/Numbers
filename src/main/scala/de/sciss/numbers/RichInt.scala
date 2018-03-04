@@ -18,7 +18,7 @@ final class RichInt(val toInt: Int)
   extends AnyVal with RichMixins.UnaryFloatOps with RichMixins.NAryFloatOps
   with RichMixins.NAryDoubleOps /* with Ops.NAryGEOps */ { me =>
 
-  import numbers.{IntFunctions => ri}
+  import numbers.{IntFunctions => ri, IntFunctions2 => ri2}
   import me.{toInt => i}
 
   protected def toFloat : Float   = i.toFloat
@@ -43,8 +43,8 @@ final class RichInt(val toInt: Int)
   // already covered by standard Scala wrapper
   // def signum  : Int   = ri.signum (i)
 
-  def squared : Long  = ri.squared(i)
-  // def cubed   : Long  = ri.cubed  (i)
+  def squared : Long  = ri .squared(i)
+  def cubed   : Long  = ri2.cubed  (i)
 
   def isPowerOfTwo  : Boolean = ri.isPowerOfTwo   (i)
   def nextPowerOfTwo: Int     = ri.nextPowerOfTwo (i)
@@ -72,12 +72,22 @@ final class RichInt(val toInt: Int)
 
   ////////
 
-  def clip2   (b: Int): Int   = ri.clip2    (i, b)
-  // def excess  (b: Int): Int     = ri.excess   (i, b)
-  def fold2   (b: Int): Int   = ri.fold2    (i, b)
-  def wrap2   (b: Int): Int   = ri.wrap2    (i, b)
+  def difsqr    (b: Int): Long  = ri2.difsqr    (i, b)
+  def sumsqr    (b: Int): Long  = ri2.sumsqr    (i, b)
+  def sqrsum    (b: Int): Long  = ri2.sqrsum    (i, b)
+  def sqrdif    (b: Int): Long  = ri2.sqrdif    (i, b)
+  def absdif    (b: Int): Int   = ri2.absdif    (i, b)
 
-  def mod     (b: Int): Int   = ri.mod      (i, b)
+  def roundTo   (b: Int): Int   = ri2.roundTo   (i, b)
+  def roundUpTo (b: Int): Int   = ri2.roundUpTo (i, b)
+  def trunc     (b: Int): Int   = ri2.trunc     (i, b)
+
+  def clip2     (b: Int): Int   = ri.clip2      (i, b)
+  def excess    (b: Int): Int   = ri.excess     (i, b)
+  def fold2     (b: Int): Int   = ri.fold2      (i, b)
+  def wrap2     (b: Int): Int   = ri.wrap2      (i, b)
+
+  def mod       (b: Int): Int   = ri.mod        (i, b)
 
   def clip    (low: Int, high: Int): Int = ri.clip(i, low, high)
   def fold    (low: Int, high: Int): Int = ri.fold(i, low, high)

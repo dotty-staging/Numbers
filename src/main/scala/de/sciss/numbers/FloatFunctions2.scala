@@ -21,7 +21,7 @@ object FloatFunctions2 {
   @inline def neg       (f: Float): Float = -f
 
   @inline def cubed     (f: Float): Float = f * f * f
-  @inline def reciprocal(f: Float): Float = 1.0f / f
+  @inline def reciprocal(f: Float): Float = 1f / f
 
   @inline def distort   (f: Float): Float = f / (1 + math.abs(f))
 
@@ -45,6 +45,6 @@ object FloatFunctions2 {
   }
 
   @inline def thresh  (a: Float, b: Float): Float = if (a < b) 0f else a
-  @inline def amclip  (a: Float, b: Float): Float = a * 0.5f * (b + math.abs(a))
+  @inline def amclip  (a: Float, b: Float): Float = if (b <= 0f) 0f else a * b
   @inline def scaleneg(a: Float, b: Float): Float = (math.abs(a) - a) * (0.5f * b + 0.5f) + a
 }
