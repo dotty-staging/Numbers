@@ -16,7 +16,7 @@ absolutely no warranties. To contact the author, send an email to `contact at sc
 
     "de.sciss" %% "numbers"  % v
 
-The current version `v` is `"0.1.4"`.
+The current version `v` is `"0.1.5"`.
 
 ## building
 

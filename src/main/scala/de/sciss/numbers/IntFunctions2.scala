@@ -13,7 +13,7 @@
 
 package de.sciss.numbers
 
-import de.sciss.numbers.{IntFunctions => ri, DoubleFunctions => rd}
+import de.sciss.numbers.{IntFunctions => ri}
 
 /** Less common functions for `Int` values. */
 object IntFunctions2 {
@@ -43,7 +43,7 @@ object IntFunctions2 {
 
   @inline def absdif  (a: Int, b: Int): Int = math.abs(a - b) // XXX TODO -- may overflow
 
-  @inline def roundTo   (a: Int, b: Int): Int = rd.roundTo(a, b).toInt
-  @inline def roundUpTo (a: Int, b: Int): Int = ri.div(a + b - 1, b) * b
-  @inline def trunc     (a: Int, b: Int): Int = ri.div(a, b) * b
+  @inline def roundTo   (a: Int, b: Int): Int = if (b == 0) a else ri.div(a + b/2, b) * b
+  @inline def roundUpTo (a: Int, b: Int): Int = if (b == 0) a else ri.div(a + b-1, b) * b
+  @inline def trunc     (a: Int, b: Int): Int = if (b == 0) a else ri.div(a      , b) * b
 }

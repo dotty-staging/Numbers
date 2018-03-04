@@ -37,7 +37,11 @@ object IntFunctions {
   @inline def min   (a: Int, b: Int): Int = math.min(a, b)
   @inline def max   (a: Int, b: Int): Int = math.max(a, b)
 
-  @inline def div   (a: Int, b: Int): Int = if (b == 0) 0 else math.floor(a.toDouble / b).toInt
+  @inline def div   (a: Int, b: Int): Int = if (b == 0) a else {
+    // No. Fucking. Way.
+    if (a < 0) (a + 1) / b - 1
+    else a / b
+  }
 
   @inline def gcd   (a: Int, b: Int): Int = {
     if (a == 0) return b
@@ -86,11 +90,20 @@ object IntFunctions {
   }
 
   // handles negative numbers differently than a % b
-  @inline def mod(a: Int, b: Int): Int =
-    if (a >= 0) a % b else {
-      val c = -a % b
-      if (c == 0) 0 else b - c
-    }
+  @inline def mod(a: Int, b: Int): Int = if (b == 0) 0 else {
+    // No. Fucking. Way.
+    var in = a
+    if (a >= b) {
+      in -= b
+      if (in < b) return in
+    } else if (a < 0) {
+      in += b
+      if (in >= 0) return in
+    } else return in
+
+    val c = in % b
+    if (c < 0) c + b else c
+  }
 
   @inline def wrap(in: Int, low: Int, high: Int): Int = mod(in - low, high - low + 1) + low
 }
