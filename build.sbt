@@ -1,10 +1,10 @@
-lazy val mimaVersion = "0.1.3"
+lazy val mimaVersion = "0.2.0"
 
 name               := "Numbers"
-version            := "0.1.5"
+version            := "0.2.0"
 organization       := "de.sciss"
-scalaVersion       := "2.12.4"
-crossScalaVersions := Seq("2.12.4", "2.11.12")
+scalaVersion       := "2.12.6"
+crossScalaVersions := Seq("2.12.6", "2.11.12")
 description        := "A collection of numeric functions and type enrichments"
 homepage           := Some(url(s"https://github.com/Sciss/${name.value}"))
 licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt"))

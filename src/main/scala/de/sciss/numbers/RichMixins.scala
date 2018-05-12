@@ -26,14 +26,14 @@ object RichMixins {
     def sqrt      : Float = rf.sqrt       (f)
     def exp       : Float = rf.exp        (f)
     def reciprocal: Float = rf2.reciprocal(f)
-    def midicps   : Float = rf.midicps    (f)
-    def cpsmidi   : Float = rf.cpsmidi    (f)
-    def midiratio : Float = rf.midiratio  (f)
-    def ratiomidi : Float = rf.ratiomidi  (f)
-    def dbamp     : Float = rf.dbamp      (f)
-    def ampdb     : Float = rf.ampdb      (f)
-    def octcps    : Float = rf.octcps     (f)
-    def cpsoct    : Float = rf.cpsoct     (f)
+    def midiCps   : Float = rf.midiCps    (f)
+    def cpsMidi   : Float = rf.cpsMidi    (f)
+    def midiRatio : Float = rf.midiRatio  (f)
+    def ratioMidi : Float = rf.ratioMidi  (f)
+    def dbAmp     : Float = rf.dbAmp      (f)
+    def ampDb     : Float = rf.ampDb      (f)
+    def octCps    : Float = rf.octCps     (f)
+    def cpsOct    : Float = rf.cpsOct     (f)
     def log       : Float = rf.log        (f)
     def log2      : Float = rf.log2       (f)
     def log10     : Float = rf.log10      (f)
@@ -51,6 +51,11 @@ object RichMixins {
     // def softclip : Float    = { val absx = math.abs( f ); if( absx <= 0.5f ) f else (absx - 0.25f) / f}
     // def ramp : Float        = if( f <= 0 ) 0 else if( f >= 1 ) 1 else f
     // def scurve : Float      = if( f <= 0 ) 0 else if( f > 1 ) 1 else f * f * (3 - 2 * f)
+
+    def rectWindow : Float  = rf2.rectWindow  (f)
+    def hannWindow : Float  = rf2.hannWindow  (f)
+    def welchWindow: Float  = rf2.welchWindow (f)
+    def triWindow  : Float  = rf2.triWindow   (f)
   }
 
   trait NAryFloatOps extends Any { me =>
@@ -89,17 +94,17 @@ object RichMixins {
     def trunc   (b: Float): Float = rf.trunc    (f, b)
     def atan2   (b: Float): Float = rf.atan2    (f, b)
     def hypot   (b: Float): Float = rf.hypot    (f, b)
-    def hypotx  (b: Float): Float = rf.hypotx   (f, b)
+    def hypotApx(b: Float): Float = rf.hypotApx (f, b)
     def pow     (b: Float): Float = rf.pow      (f, b)
     // def ring1   (b: Float): Float = rf.ring1    (f, b)
     // def ring2   (b: Float): Float = rf.ring2    (f, b)
     // def ring3   (b: Float): Float = rf.ring3    (f, b)
     // def ring4   (b: Float): Float = rf.ring4    (f, b)
-    def difsqr  (b: Float): Float = rf.difsqr   (f, b)
-    def sumsqr  (b: Float): Float = rf.sumsqr   (f, b)
-    def sqrsum  (b: Float): Float = rf.sqrsum   (f, b)
-    def sqrdif  (b: Float): Float = rf.sqrdif   (f, b)
-    def absdif  (b: Float): Float = rf.absdif   (f, b)
+    def difSqr  (b: Float): Float = rf.difSqr   (f, b)
+    def sumSqr  (b: Float): Float = rf.sumSqr   (f, b)
+    def sqrSum  (b: Float): Float = rf.sqrSum   (f, b)
+    def sqrDif  (b: Float): Float = rf.sqrDif   (f, b)
+    def absDif  (b: Float): Float = rf.absDif   (f, b)
     // def thresh  (b: Float): Float = rf.thresh   (f, b)
     // def amclip  (b: Float): Float = rf.amclip   (f, b)
     // def scaleneg(b: Float): Float = rf.scaleneg (f, b)
@@ -116,17 +121,17 @@ object RichMixins {
     def fold    (low: Float, high: Float): Float = rf.fold(f, low, high)
     def wrap    (low: Float, high: Float): Float = rf.wrap(f, low, high)
 
-    def linlin(inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
-      rf.linlin(f, inLow, inHigh, outLow, outHigh)
+    def linLin(inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
+      rf.linLin(f, inLow, inHigh, outLow, outHigh)
 
-    def linexp(inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
-      rf.linexp(f, inLow, inHigh, outLow, outHigh)
+    def linExp(inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
+      rf.linExp(f, inLow, inHigh, outLow, outHigh)
 
-    def explin(inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
-      rf.explin(f, inLow, inHigh, outLow, outHigh)
+    def expLin(inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
+      rf.expLin(f, inLow, inHigh, outLow, outHigh)
 
-    def expexp(inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
-      rf.explin(f, inLow, inHigh, outLow, outHigh)
+    def expExp(inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
+      rf.expLin(f, inLow, inHigh, outLow, outHigh)
   }
 
   trait NAryDoubleOps extends Any { me =>
@@ -155,17 +160,17 @@ object RichMixins {
     def trunc   (b: Double): Double = rd.trunc    (d, b)
     def atan2   (b: Double): Double = rd.atan2    (d, b)
     def hypot   (b: Double): Double = rd.hypot    (d, b)
-    def hypotx  (b: Double): Double = rd.hypotx   (d, b)
+    def hypotApx(b: Double): Double = rd.hypotApx (d, b)
     def pow     (b: Double): Double = rd.pow      (d, b)
     // def ring1   (b: Double): Double = rd.ring1    (d, b)
     // def ring2   (b: Double): Double = rd.ring2    (d, b)
     // def ring3   (b: Double): Double = rd.ring3    (d, b)
     // def ring4   (b: Double): Double = rd.ring4    (d, b)
-    def difsqr  (b: Double): Double = rd.difsqr   (d, b)
-    def sumsqr  (b: Double): Double = rd.sumsqr   (d, b)
-    def sqrsum  (b: Double): Double = rd.sqrsum   (d, b)
-    def sqrdif  (b: Double): Double = rd.sqrdif   (d, b)
-    def absdif  (b: Double): Double = rd.absdif   (d, b)
+    def difSqr  (b: Double): Double = rd.difSqr   (d, b)
+    def sumSqr  (b: Double): Double = rd.sumSqr   (d, b)
+    def sqrSum  (b: Double): Double = rd.sqrSum   (d, b)
+    def sqrDif  (b: Double): Double = rd.sqrDif   (d, b)
+    def absDif  (b: Double): Double = rd.absDif   (d, b)
     // def thresh  (b: Double): Double = rd.thresh   (d, b)
     // def amclip  (b: Double): Double = rd.amclip   (d, b)
     // def scaleneg(b: Double): Double = rd.scaleneg (d, b)
@@ -182,17 +187,17 @@ object RichMixins {
 
     // def firstarg( b: Double ) : Double  = d
 
-    def linlin(inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
-      rd.linlin(d, inLow, inHigh, outLow, outHigh)
+    def linLin(inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
+      rd.linLin(d, inLow, inHigh, outLow, outHigh)
 
-    def linexp(inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
-      rd.linexp(d, inLow, inHigh, outLow, outHigh)
+    def linExp(inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
+      rd.linExp(d, inLow, inHigh, outLow, outHigh)
 
-    def explin(inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
-      rd.explin(d, inLow, inHigh, outLow, outHigh)
+    def expLin(inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
+      rd.expLin(d, inLow, inHigh, outLow, outHigh)
 
-    def expexp(inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
-      rd.expexp(d, inLow, inHigh, outLow, outHigh)
+    def expExp(inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
+      rd.expExp(d, inLow, inHigh, outLow, outHigh)
   }
 
   //   sealed trait NAryDoubleOps2 extends NAryDoubleOps {

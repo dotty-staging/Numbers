@@ -80,7 +80,7 @@ class NumbersSuite extends FunSpec {
   private def assertFloat(a: Vec[Float], b: Vec[Float]) =
     assert((a zip b).forall { case (x, y) =>
       x.isNaN && y.isNaN || x == y ||
-        { val z = (x absdif y) < epsF; if (!z) println(s"$x absdif $y = ${x absdif y}"); z }
+        { val z = (x absDif y) < epsF; if (!z) println(s"$x absdif $y = ${x absDif y}"); z }
     }, s"$a did not equal $b")
 
   describe("Rich float operators") {
@@ -95,14 +95,14 @@ class NumbersSuite extends FunSpec {
       assertMap(_.squared   , Vec(16f, 18.49f, 0f, 16f, 18.49f))
       assertMap(_.sqrt      , Vec(nan, nan, 0f, 2f, 2.073644135332772f))
       assertMap(_.exp       , Vec(0.01831563888873418f, 0.013568556424203931f, 1f, 54.598150033144236f, 73.6998077567172f))
-      assertMap(_.midicps   , Vec(6.4891358996866f, 6.3776564289715f, 8.1757989156437f, 10.300861153527f, 10.480917034883f))
-      assertMap(_.cpsmidi   , Vec(-12.376316562296f, -11.124276644519f, -inf, -12.376316562296f, -11.124276644519f))
-      assertMap(_.midiratio , Vec(0.79370052598483f, 0.78006522601415f, 1f, 1.2599210498937f, 1.2819440819195f))
-      assertMap(_.ratiomidi , Vec(24f, 25.252039917777f, -inf, 24f, 25.252039917777f))
-      assertMap(_.dbamp     , Vec(0.63095734448019f, 0.60953689724017f, 1f, 1.5848931924611f, 1.6405897731995f))
-      assertMap(_.ampdb     , Vec(nan, nan, -inf, 12.041199826559f, 12.669369111592f))
-      assertMap(_.octcps    , Vec(1.0219748644555f, 0.83010153266979f, 16.351597831287f, 261.6255653006f, 322.09885310804f))
-      assertMap(_.cpsoct    , Vec(-2.031359713542f, -1.9270230537272f, -inf, -2.031359713542f, -1.9270230537272f))
+      assertMap(_.midiCps   , Vec(6.4891358996866f, 6.3776564289715f, 8.1757989156437f, 10.300861153527f, 10.480917034883f))
+      assertMap(_.cpsMidi   , Vec(-12.376316562296f, -11.124276644519f, -inf, -12.376316562296f, -11.124276644519f))
+      assertMap(_.midiRatio , Vec(0.79370052598483f, 0.78006522601415f, 1f, 1.2599210498937f, 1.2819440819195f))
+      assertMap(_.ratioMidi , Vec(24f, 25.252039917777f, -inf, 24f, 25.252039917777f))
+      assertMap(_.dbAmp     , Vec(0.63095734448019f, 0.60953689724017f, 1f, 1.5848931924611f, 1.6405897731995f))
+      assertMap(_.ampDb     , Vec(nan, nan, -inf, 12.041199826559f, 12.669369111592f))
+      assertMap(_.octCps    , Vec(1.0219748644555f, 0.83010153266979f, 16.351597831287f, 261.6255653006f, 322.09885310804f))
+      assertMap(_.cpsOct    , Vec(-2.031359713542f, -1.9270230537272f, -inf, -2.031359713542f, -1.9270230537272f))
 
       // XXX TODO: n-ary ops (linlin, linexp, ...)
 

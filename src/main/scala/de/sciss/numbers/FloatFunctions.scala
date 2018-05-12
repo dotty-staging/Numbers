@@ -27,14 +27,14 @@ object FloatFunctions {
   @inline def squared   (f: Float): Float = f * f
   @inline def sqrt      (f: Float): Float = math.sqrt(f).toFloat
   @inline def exp       (f: Float): Float = math.exp(f).toFloat
-  @inline def midicps   (f: Float): Float = (440 * math.pow(2, (f - 69) / 12)).toFloat
-  @inline def cpsmidi   (f: Float): Float = (math.log(math.abs(f) / 440) / Log2 * 12 + 69).toFloat
-  @inline def midiratio (f: Float): Float = math.pow(2, f / 12).toFloat
-  @inline def ratiomidi (f: Float): Float = (12 * math.log(math.abs(f)) / Log2).toFloat
-  @inline def dbamp     (f: Float): Float = math.pow(10, f * 0.05).toFloat
-  @inline def ampdb     (f: Float): Float = (math.log10(f) * 20).toFloat
-  @inline def octcps    (f: Float): Float = (440 * math.pow(2, f - 4.75)).toFloat
-  @inline def cpsoct    (f: Float): Float = (math.log(math.abs(f) / 440) / Log2 + 4.75).toFloat
+  @inline def midiCps   (f: Float): Float = (440 * math.pow(2, (f - 69) / 12)).toFloat
+  @inline def cpsMidi   (f: Float): Float = (math.log(math.abs(f) / 440) / Log2 * 12 + 69).toFloat
+  @inline def midiRatio (f: Float): Float = math.pow(2, f / 12).toFloat
+  @inline def ratioMidi (f: Float): Float = (12 * math.log(math.abs(f)) / Log2).toFloat
+  @inline def dbAmp     (f: Float): Float = math.pow(10, f * 0.05).toFloat
+  @inline def ampDb     (f: Float): Float = (math.log10(f) * 20).toFloat
+  @inline def octCps    (f: Float): Float = (440 * math.pow(2, f - 4.75)).toFloat
+  @inline def cpsOct    (f: Float): Float = (math.log(math.abs(f) / 440) / Log2 + 4.75).toFloat
   @inline def log       (f: Float): Float = math.log(f).toFloat
   @inline def log2      (f: Float): Float = (math.log(f) / Log2).toFloat
   @inline def log10     (f: Float): Float = math.log10(f).toFloat
@@ -78,7 +78,7 @@ object FloatFunctions {
   @inline def atan2     (a: Float, b: Float): Float   = math.atan2(a, b).toFloat
   @inline def hypot     (a: Float, b: Float): Float   = math.hypot(a, b).toFloat
 
-  @inline def hypotx  (a: Float, b: Float): Float = {
+  @inline def hypotApx  (a: Float, b: Float): Float = {
     val aa  = math.abs(a)
     val ba  = math.abs(b)
     val min = math.min(aa, ba)
@@ -92,20 +92,20 @@ object FloatFunctions {
   // UnsgnRghtShft
   // fill
 
-  @inline def difsqr  (a: Float, b: Float): Float = a * a - b * b
-  @inline def sumsqr  (a: Float, b: Float): Float = a * a + b * b
+  @inline def difSqr  (a: Float, b: Float): Float = a * a - b * b
+  @inline def sumSqr  (a: Float, b: Float): Float = a * a + b * b
 
-  @inline def sqrsum  (a: Float, b: Float): Float = {
+  @inline def sqrSum  (a: Float, b: Float): Float = {
     val z = a + b
     z * z
   }
 
-  @inline def sqrdif  (a: Float, b: Float): Float = {
+  @inline def sqrDif  (a: Float, b: Float): Float = {
     val z = a - b
     z * z
   }
 
-  @inline def absdif  (a: Float, b: Float): Float = math.abs(a - b)
+  @inline def absDif  (a: Float, b: Float): Float = math.abs(a - b)
   @inline def clip2   (a: Float, b: Float): Float = clip(a, -b, b)
   @inline def excess  (a: Float, b: Float): Float = a - math.max(math.min(a, b), -b)
   @inline def fold2   (a: Float, b: Float): Float = fold(a, -b, b)
@@ -163,15 +163,15 @@ object FloatFunctions {
       }
     } else in
 
-  @inline def linlin(in: Float, inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
+  @inline def linLin(in: Float, inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
     (in - inLow) / (inHigh - inLow) * (outHigh - outLow) + outLow
 
-  @inline def linexp(in: Float, inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
+  @inline def linExp(in: Float, inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
     (math.pow(outHigh / outLow, (in - inLow) / (inHigh - inLow)) * outLow).toFloat
 
-  @inline def explin(in: Float, inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
+  @inline def expLin(in: Float, inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
     (math.log(in / inLow) / math.log(inHigh / inLow) * (outHigh - outLow) + outLow).toFloat
 
-  @inline def expexp(in: Float, inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
+  @inline def expExp(in: Float, inLow: Float, inHigh: Float, outLow: Float, outHigh: Float): Float =
     (math.pow(outHigh / outLow, math.log(in / inLow) / math.log(inHigh / inLow)) * outLow).toFloat
 }

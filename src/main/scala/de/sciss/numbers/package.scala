@@ -16,4 +16,5 @@ package de.sciss
 package object numbers {
   final val Log2  = math.log(2)
   final val Sqrt2 = math.sqrt(2)
+  final val TwoPi = math.Pi * 2
 }

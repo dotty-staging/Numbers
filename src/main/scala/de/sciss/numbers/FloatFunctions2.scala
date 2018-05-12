@@ -25,13 +25,31 @@ object FloatFunctions2 {
 
   @inline def distort   (f: Float): Float = f / (1 + math.abs(f))
 
-  @inline def softclip  (f: Float): Float = {
-    val absx = math.abs(f)
-    if (absx <= 0.5f) f else (absx - 0.25f) / f
+  @inline def softClip(f: Float): Float = {
+    val abs = math.abs(f)
+    if (abs <= 0.5f) f else (abs - 0.25f) / f
   }
 
+  @inline def rectWindow(f: Float): Float = if (f >= 0f && f <= 1f) 1f else 0f
+
+  @inline def hannWindow(f: Float): Float =
+    if (f >= 0f && f <= 1f) {
+      0.5f - 0.5f * math.cos(f * TwoPi).toFloat
+    } else 0f
+
+  @inline def welchWindow(f: Float): Float =
+    if (f >= 0f && f <= 1f) {
+      math.sin(f * math.Pi).toFloat
+    } else 0f
+
+  @inline def triWindow(f: Float): Float =
+    if (f >= 0f && f <= 1f) {
+      if (f < 0.5f) 2f * f
+      else -2f * f + 2f
+    } else 0f
+
   @inline def ramp      (f: Float): Float = if (f <= 0) 0 else if (f >= 1) 1 else f
-  @inline def scurve    (f: Float): Float = if (f <= 0) 0 else if (f >  1) 1 else f * f * (3 - 2 * f)
+  @inline def sCurve    (f: Float): Float = if (f <= 0) 0 else if (f >  1) 1 else f * f * (3 - 2 * f)
 
   // -------- binary ops --------
 
@@ -45,6 +63,6 @@ object FloatFunctions2 {
   }
 
   @inline def thresh  (a: Float, b: Float): Float = if (a < b) 0f else a
-  @inline def amclip  (a: Float, b: Float): Float = if (b <= 0f) 0f else a * b
-  @inline def scaleneg(a: Float, b: Float): Float = (math.abs(a) - a) * (0.5f * b + 0.5f) + a
+  @inline def amClip  (a: Float, b: Float): Float = if (b <= 0f) 0f else a * b
+  @inline def scaleNeg(a: Float, b: Float): Float = (math.abs(a) - a) * (0.5f * b + 0.5f) + a
 }

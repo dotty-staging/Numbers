@@ -27,14 +27,14 @@ object DoubleFunctions {
   @inline def squared     (d: Double): Double = d * d
   @inline def sqrt        (d: Double): Double = math.sqrt(d)
   @inline def exp         (d: Double): Double = math.exp(d)
-  @inline def midicps     (d: Double): Double = 440 * math.pow(2, (d - 69) / 12)
-  @inline def cpsmidi     (d: Double): Double = math.log(math.abs(d) / 440) / Log2 * 12 + 69
-  @inline def midiratio   (d: Double): Double = math.pow(2, d / 12)
-  @inline def ratiomidi   (d: Double): Double = 12 * math.log(math.abs(d)) / Log2
-  @inline def dbamp       (d: Double): Double = math.pow(10, d * 0.05)
-  @inline def ampdb       (d: Double): Double = math.log10(d) * 20
-  @inline def octcps      (d: Double): Double = 440 * math.pow(2, d - 4.75)
-  @inline def cpsoct      (d: Double): Double = math.log(math.abs(d) / 440) / Log2 + 4.75
+  @inline def midiCps     (d: Double): Double = 440 * math.pow(2, (d - 69) / 12)
+  @inline def cpsMidi     (d: Double): Double = math.log(math.abs(d) / 440) / Log2 * 12 + 69
+  @inline def midiRatio   (d: Double): Double = math.pow(2, d / 12)
+  @inline def ratioMidi   (d: Double): Double = 12 * math.log(math.abs(d)) / Log2
+  @inline def dbAmp       (d: Double): Double = math.pow(10, d * 0.05)
+  @inline def ampDb       (d: Double): Double = math.log10(d) * 20
+  @inline def octCps      (d: Double): Double = 440 * math.pow(2, d - 4.75)
+  @inline def cpsOct      (d: Double): Double = math.log(math.abs(d) / 440) / Log2 + 4.75
   @inline def log         (d: Double): Double = math.log(d)
   @inline def log2        (d: Double): Double = math.log(d) / Log2
   @inline def log10       (d: Double): Double = math.log10(d)
@@ -77,7 +77,7 @@ object DoubleFunctions {
   @inline def atan2     (a: Double, b: Double): Double = math.atan2(a, b)
   @inline def hypot     (a: Double, b: Double): Double = math.hypot(a, b)
 
-  @inline def hypotx    (a: Double, b: Double): Double = {
+  @inline def hypotApx  (a: Double, b: Double): Double = {
     val aa  = math.abs(a)
     val ba  = math.abs(b)
     val min = math.min(aa, ba)
@@ -91,20 +91,20 @@ object DoubleFunctions {
   // UnsgnRghtShft
   // fill
 
-  @inline def difsqr    (a: Double, b: Double): Double = a * a - b * b
-  @inline def sumsqr    (a: Double, b: Double): Double = a * a + b * b
+  @inline def difSqr    (a: Double, b: Double): Double = a * a - b * b
+  @inline def sumSqr    (a: Double, b: Double): Double = a * a + b * b
 
-  @inline def sqrsum    (a: Double, b: Double): Double = {
+  @inline def sqrSum    (a: Double, b: Double): Double = {
     val z = a + b
     z * z
   }
 
-  @inline def sqrdif    (a: Double, b: Double): Double = {
+  @inline def sqrDif    (a: Double, b: Double): Double = {
     val z = a - b
     z * z
   }
 
-  @inline def absdif    (a: Double, b: Double): Double = math.abs(a - b)
+  @inline def absDif    (a: Double, b: Double): Double = math.abs(a - b)
   @inline def clip2     (a: Double, b: Double): Double = clip(a, -b, b)
   @inline def excess    (a: Double, b: Double): Double = a - math.max(math.min(a, b), -b)
   @inline def fold2     (a: Double, b: Double): Double = fold(a, -b, b)
@@ -162,15 +162,15 @@ object DoubleFunctions {
       }
     } else in
 
-  @inline def linlin(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
+  @inline def linLin(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
     (in - inLow) / (inHigh - inLow) * (outHigh - outLow) + outLow
 
-  @inline def linexp(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
+  @inline def linExp(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
     math.pow(outHigh / outLow, (in - inLow) / (inHigh - inLow)) * outLow
 
-  @inline def explin(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
+  @inline def expLin(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
  		math.log(in / inLow) / math.log(inHigh / inLow) * (outHigh - outLow) + outLow
 
-  @inline def expexp(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
+  @inline def expExp(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
     math.pow(outHigh / outLow, math.log(in / inLow) / math.log(inHigh / inLow)) * outLow
 }

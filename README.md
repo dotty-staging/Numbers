@@ -16,7 +16,7 @@ absolutely no warranties. To contact the author, send an email to `contact at sc
 
     "de.sciss" %% "numbers"  % v
 
-The current version `v` is `"0.1.5"`.
+The current version `v` is `"0.2.0"`.
 
 ## building
 
@@ -29,7 +29,11 @@ To compile `sbt compile`. To test, `sbt test`. For the API docs, `sbt doc`.
 ```scala
 import de.sciss.numbers.Implicits._
 
-2.0.sqrt.ampdb  // 3.01
-0.1.linexp(0, 1, 100, 10000)  // 158.5
+2.0.sqrt.ampDb  // 3.01
+0.1.linExp(0, 1, 100, 10000)  // 158.5
 ```
     
+## changes
+
+As of version 0.2.0, we use more idiomatic Scala names with camel-case for composite operators, e.g.
+`ampDb` instead of `ampdb`, `linLin` instead of `linlin`, `absDif` instead of `absdif`.

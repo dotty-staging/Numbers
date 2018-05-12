@@ -72,11 +72,11 @@ final class RichInt(val toInt: Int)
 
   ////////
 
-  def difsqr    (b: Int): Long  = ri2.difsqr    (i, b)
-  def sumsqr    (b: Int): Long  = ri2.sumsqr    (i, b)
-  def sqrsum    (b: Int): Long  = ri2.sqrsum    (i, b)
-  def sqrdif    (b: Int): Long  = ri2.sqrdif    (i, b)
-  def absdif    (b: Int): Int   = ri2.absdif    (i, b)
+  def difSqr    (b: Int): Long  = ri2.difSqr    (i, b)
+  def sumSqr    (b: Int): Long  = ri2.sumSqr    (i, b)
+  def sqrSum    (b: Int): Long  = ri2.sqrSum    (i, b)
+  def sqrDif    (b: Int): Long  = ri2.sqrDif    (i, b)
+  def absDif    (b: Int): Int   = ri2.absDif    (i, b)
 
   def roundTo   (b: Int): Int   = ri2.roundTo   (i, b)
   def roundUpTo (b: Int): Int   = ri2.roundUpTo (i, b)

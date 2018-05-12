@@ -5,7 +5,7 @@ import org.scalatest.{FlatSpec, Matchers}
 class DoubleSpec extends FlatSpec with Matchers {
   def work: String = "produce the expected output"
 
-  import DoubleFunctions.{signum => sign, roundTo => round, roundUpTo => roundUp, hypotx => hypotApx, _}
+  import DoubleFunctions.{signum => sign, roundTo => round, roundUpTo => roundUp, hypotApx => hypotApx, _}
   import DoubleFunctions2._
 
   final val eps: Double = 1.0e-5
@@ -104,95 +104,95 @@ class DoubleSpec extends FlatSpec with Matchers {
   }
 
   "Double.midicps" should work in {
-    midicps(0.0) shouldBe 8.1757989156437 +- eps
-    midicps(10.0) shouldBe 14.56761754744 +- eps
-    midicps(10.1) shouldBe 14.652006897392 +- eps
-    midicps(10.5) shouldBe 14.994481324147 +- eps
-    midicps(10.9) shouldBe 15.344960711166 +- eps
-    midicps(-10.0) shouldBe 4.5885119987095 +- eps
-    midicps(-10.1) shouldBe 4.5620841142888 +- eps
-    midicps(-10.5) shouldBe 4.4578859691128 +- eps
-    midicps(-10.9) shouldBe 4.3560677128618 +- eps
+    midiCps(0.0) shouldBe 8.1757989156437 +- eps
+    midiCps(10.0) shouldBe 14.56761754744 +- eps
+    midiCps(10.1) shouldBe 14.652006897392 +- eps
+    midiCps(10.5) shouldBe 14.994481324147 +- eps
+    midiCps(10.9) shouldBe 15.344960711166 +- eps
+    midiCps(-10.0) shouldBe 4.5885119987095 +- eps
+    midiCps(-10.1) shouldBe 4.5620841142888 +- eps
+    midiCps(-10.5) shouldBe 4.4578859691128 +- eps
+    midiCps(-10.9) shouldBe 4.3560677128618 +- eps
   }
 
   "Double.cpsmidi" should work in {
-    cpsmidi(0.0) shouldBe -inf +- eps
-    cpsmidi(10.0) shouldBe 3.4868205763524 +- eps
-    cpsmidi(10.1) shouldBe 3.6590840920773 +- eps
-    cpsmidi(10.5) shouldBe 4.3314925110492 +- eps
-    cpsmidi(10.9) shouldBe 4.9787581963788 +- eps
-    cpsmidi(-10.0) shouldBe 3.4868205763524 +- eps
-    cpsmidi(-10.1) shouldBe 3.6590840920773 +- eps
-    cpsmidi(-10.5) shouldBe 4.3314925110492 +- eps
-    cpsmidi(-10.9) shouldBe 4.9787581963788 +- eps
+    cpsMidi(0.0) shouldBe -inf +- eps
+    cpsMidi(10.0) shouldBe 3.4868205763524 +- eps
+    cpsMidi(10.1) shouldBe 3.6590840920773 +- eps
+    cpsMidi(10.5) shouldBe 4.3314925110492 +- eps
+    cpsMidi(10.9) shouldBe 4.9787581963788 +- eps
+    cpsMidi(-10.0) shouldBe 3.4868205763524 +- eps
+    cpsMidi(-10.1) shouldBe 3.6590840920773 +- eps
+    cpsMidi(-10.5) shouldBe 4.3314925110492 +- eps
+    cpsMidi(-10.9) shouldBe 4.9787581963788 +- eps
   }
 
   "Double.midiratio" should work in {
-    midiratio(0.0) shouldBe 1.0 +- eps
-    midiratio(10.0) shouldBe 1.7817974362766 +- eps
-    midiratio(10.1) shouldBe 1.7921192838197 +- eps
-    midiratio(10.5) shouldBe 1.8340080864049 +- eps
-    midiratio(10.9) shouldBe 1.8768759933376 +- eps
-    midiratio(-10.0) shouldBe 0.56123102415598 +- eps
-    midiratio(-10.1) shouldBe 0.55799857131641 +- eps
-    midiratio(-10.5) shouldBe 0.54525386633395 +- eps
-    midiratio(-10.9) shouldBe 0.53280025081558 +- eps
+    midiRatio(0.0) shouldBe 1.0 +- eps
+    midiRatio(10.0) shouldBe 1.7817974362766 +- eps
+    midiRatio(10.1) shouldBe 1.7921192838197 +- eps
+    midiRatio(10.5) shouldBe 1.8340080864049 +- eps
+    midiRatio(10.9) shouldBe 1.8768759933376 +- eps
+    midiRatio(-10.0) shouldBe 0.56123102415598 +- eps
+    midiRatio(-10.1) shouldBe 0.55799857131641 +- eps
+    midiRatio(-10.5) shouldBe 0.54525386633395 +- eps
+    midiRatio(-10.9) shouldBe 0.53280025081558 +- eps
   }
 
   "Double.ratiomidi" should work in {
-    ratiomidi(0.0) shouldBe -inf +- eps
-    ratiomidi(10.0) shouldBe 39.863137138648 +- eps
-    ratiomidi(10.1) shouldBe 40.035400654373 +- eps
-    ratiomidi(10.5) shouldBe 40.707809073345 +- eps
-    ratiomidi(10.9) shouldBe 41.355074758675 +- eps
-    ratiomidi(-10.0) shouldBe 39.863137138648 +- eps
-    ratiomidi(-10.1) shouldBe 40.035400654373 +- eps
-    ratiomidi(-10.5) shouldBe 40.707809073345 +- eps
-    ratiomidi(-10.9) shouldBe 41.355074758675 +- eps
+    ratioMidi(0.0) shouldBe -inf +- eps
+    ratioMidi(10.0) shouldBe 39.863137138648 +- eps
+    ratioMidi(10.1) shouldBe 40.035400654373 +- eps
+    ratioMidi(10.5) shouldBe 40.707809073345 +- eps
+    ratioMidi(10.9) shouldBe 41.355074758675 +- eps
+    ratioMidi(-10.0) shouldBe 39.863137138648 +- eps
+    ratioMidi(-10.1) shouldBe 40.035400654373 +- eps
+    ratioMidi(-10.5) shouldBe 40.707809073345 +- eps
+    ratioMidi(-10.9) shouldBe 41.355074758675 +- eps
   }
 
   "Double.dbamp" should work in {
-    dbamp(0.0) shouldBe 1.0 +- eps
-    dbamp(10.0) shouldBe 3.1622776601684 +- eps
-    dbamp(10.1) shouldBe 3.1988951096914 +- eps
-    dbamp(10.5) shouldBe 3.3496543915783 +- eps
-    dbamp(10.9) shouldBe 3.5075187395257 +- eps
-    dbamp(-10.0) shouldBe 0.31622776601684 +- eps
-    dbamp(-10.1) shouldBe 0.3126079367124 +- eps
-    dbamp(-10.5) shouldBe 0.2985382618918 +- eps
-    dbamp(-10.9) shouldBe 0.28510182675039 +- eps
+    dbAmp(0.0) shouldBe 1.0 +- eps
+    dbAmp(10.0) shouldBe 3.1622776601684 +- eps
+    dbAmp(10.1) shouldBe 3.1988951096914 +- eps
+    dbAmp(10.5) shouldBe 3.3496543915783 +- eps
+    dbAmp(10.9) shouldBe 3.5075187395257 +- eps
+    dbAmp(-10.0) shouldBe 0.31622776601684 +- eps
+    dbAmp(-10.1) shouldBe 0.3126079367124 +- eps
+    dbAmp(-10.5) shouldBe 0.2985382618918 +- eps
+    dbAmp(-10.9) shouldBe 0.28510182675039 +- eps
   }
 
   "Double.ampdb" should work in {
-    ampdb(0.0) shouldBe -inf +- eps
-    ampdb(10.0) shouldBe 20.0 +- eps
-    ampdb(10.1) shouldBe 20.086427475653 +- eps
-    ampdb(10.5) shouldBe 20.423785981399 +- eps
-    ampdb(10.9) shouldBe 20.748529958812 +- eps
+    ampDb(0.0) shouldBe -inf +- eps
+    ampDb(10.0) shouldBe 20.0 +- eps
+    ampDb(10.1) shouldBe 20.086427475653 +- eps
+    ampDb(10.5) shouldBe 20.423785981399 +- eps
+    ampDb(10.9) shouldBe 20.748529958812 +- eps
   }
 
   "Double.octcps" should work in {
-    octcps(0.0) shouldBe 16.351597831287 +- eps
-    octcps(10.0) shouldBe 16744.036179238 +- eps
-    octcps(10.1) shouldBe 17945.813632655 +- eps
-    octcps(10.5) shouldBe 23679.643053545 +- eps
-    octcps(10.9) shouldBe 31245.476333431 +- eps
-    octcps(-10.0) shouldBe 0.015968357257117 +- eps
-    octcps(-10.1) shouldBe 0.014899004141536 +- eps
-    octcps(-10.5) shouldBe 0.011291333700917 +- eps
-    octcps(-10.9) shouldBe 0.0085572307742382 +- eps
+    octCps(0.0) shouldBe 16.351597831287 +- eps
+    octCps(10.0) shouldBe 16744.036179238 +- eps
+    octCps(10.1) shouldBe 17945.813632655 +- eps
+    octCps(10.5) shouldBe 23679.643053545 +- eps
+    octCps(10.9) shouldBe 31245.476333431 +- eps
+    octCps(-10.0) shouldBe 0.015968357257117 +- eps
+    octCps(-10.1) shouldBe 0.014899004141536 +- eps
+    octCps(-10.5) shouldBe 0.011291333700917 +- eps
+    octCps(-10.9) shouldBe 0.0085572307742382 +- eps
   }
 
   "Double.cpsoct" should work in {
-    cpsoct(0.0) shouldBe -inf +- eps
-    cpsoct(10.0) shouldBe -0.70943161865461 +- eps
-    cpsoct(10.1) shouldBe -0.69507632567754 +- eps
-    cpsoct(10.5) shouldBe -0.63904229076321 +- eps
-    cpsoct(10.9) shouldBe -0.58510348365241 +- eps
-    cpsoct(-10.0) shouldBe -0.70943161865461 +- eps
-    cpsoct(-10.1) shouldBe -0.69507632567754 +- eps
-    cpsoct(-10.5) shouldBe -0.63904229076321 +- eps
-    cpsoct(-10.9) shouldBe -0.58510348365241 +- eps
+    cpsOct(0.0) shouldBe -inf +- eps
+    cpsOct(10.0) shouldBe -0.70943161865461 +- eps
+    cpsOct(10.1) shouldBe -0.69507632567754 +- eps
+    cpsOct(10.5) shouldBe -0.63904229076321 +- eps
+    cpsOct(10.9) shouldBe -0.58510348365241 +- eps
+    cpsOct(-10.0) shouldBe -0.70943161865461 +- eps
+    cpsOct(-10.1) shouldBe -0.69507632567754 +- eps
+    cpsOct(-10.5) shouldBe -0.63904229076321 +- eps
+    cpsOct(-10.9) shouldBe -0.58510348365241 +- eps
   }
 
   "Double.log" should work in {
@@ -984,423 +984,423 @@ class DoubleSpec extends FlatSpec with Matchers {
   }
 
   "Double.difsqr" should work in {
-    difsqr(0.0, 0.0) shouldBe 0.0 +- eps
-    difsqr(0.0, 6.0) shouldBe -36.0 +- eps
-    difsqr(0.0, 6.1) shouldBe -37.21 +- eps
-    difsqr(0.0, 6.5) shouldBe -42.25 +- eps
-    difsqr(0.0, 6.9) shouldBe -47.61 +- eps
-    difsqr(0.0, -6.0) shouldBe -36.0 +- eps
-    difsqr(0.0, -6.1) shouldBe -37.21 +- eps
-    difsqr(0.0, -6.5) shouldBe -42.25 +- eps
-    difsqr(0.0, -6.9) shouldBe -47.61 +- eps
-    difsqr(10.0, 0.0) shouldBe 100.0 +- eps
-    difsqr(10.0, 6.0) shouldBe 64.0 +- eps
-    difsqr(10.0, 6.1) shouldBe 62.79 +- eps
-    difsqr(10.0, 6.5) shouldBe 57.75 +- eps
-    difsqr(10.0, 6.9) shouldBe 52.39 +- eps
-    difsqr(10.0, -6.0) shouldBe 64.0 +- eps
-    difsqr(10.0, -6.1) shouldBe 62.79 +- eps
-    difsqr(10.0, -6.5) shouldBe 57.75 +- eps
-    difsqr(10.0, -6.9) shouldBe 52.39 +- eps
-    difsqr(10.1, 0.0) shouldBe 102.01 +- eps
-    difsqr(10.1, 6.0) shouldBe 66.01 +- eps
-    difsqr(10.1, 6.1) shouldBe 64.8 +- eps
-    difsqr(10.1, 6.5) shouldBe 59.76 +- eps
-    difsqr(10.1, 6.9) shouldBe 54.4 +- eps
-    difsqr(10.1, -6.0) shouldBe 66.01 +- eps
-    difsqr(10.1, -6.1) shouldBe 64.8 +- eps
-    difsqr(10.1, -6.5) shouldBe 59.76 +- eps
-    difsqr(10.1, -6.9) shouldBe 54.4 +- eps
-    difsqr(10.5, 0.0) shouldBe 110.25 +- eps
-    difsqr(10.5, 6.0) shouldBe 74.25 +- eps
-    difsqr(10.5, 6.1) shouldBe 73.04 +- eps
-    difsqr(10.5, 6.5) shouldBe 68.0 +- eps
-    difsqr(10.5, 6.9) shouldBe 62.64 +- eps
-    difsqr(10.5, -6.0) shouldBe 74.25 +- eps
-    difsqr(10.5, -6.1) shouldBe 73.04 +- eps
-    difsqr(10.5, -6.5) shouldBe 68.0 +- eps
-    difsqr(10.5, -6.9) shouldBe 62.64 +- eps
-    difsqr(10.9, 0.0) shouldBe 118.81 +- eps
-    difsqr(10.9, 6.0) shouldBe 82.81 +- eps
-    difsqr(10.9, 6.1) shouldBe 81.6 +- eps
-    difsqr(10.9, 6.5) shouldBe 76.56 +- eps
-    difsqr(10.9, 6.9) shouldBe 71.2 +- eps
-    difsqr(10.9, -6.0) shouldBe 82.81 +- eps
-    difsqr(10.9, -6.1) shouldBe 81.6 +- eps
-    difsqr(10.9, -6.5) shouldBe 76.56 +- eps
-    difsqr(10.9, -6.9) shouldBe 71.2 +- eps
-    difsqr(-10.0, 0.0) shouldBe 100.0 +- eps
-    difsqr(-10.0, 6.0) shouldBe 64.0 +- eps
-    difsqr(-10.0, 6.1) shouldBe 62.79 +- eps
-    difsqr(-10.0, 6.5) shouldBe 57.75 +- eps
-    difsqr(-10.0, 6.9) shouldBe 52.39 +- eps
-    difsqr(-10.0, -6.0) shouldBe 64.0 +- eps
-    difsqr(-10.0, -6.1) shouldBe 62.79 +- eps
-    difsqr(-10.0, -6.5) shouldBe 57.75 +- eps
-    difsqr(-10.0, -6.9) shouldBe 52.39 +- eps
-    difsqr(-10.1, 0.0) shouldBe 102.01 +- eps
-    difsqr(-10.1, 6.0) shouldBe 66.01 +- eps
-    difsqr(-10.1, 6.1) shouldBe 64.8 +- eps
-    difsqr(-10.1, 6.5) shouldBe 59.76 +- eps
-    difsqr(-10.1, 6.9) shouldBe 54.4 +- eps
-    difsqr(-10.1, -6.0) shouldBe 66.01 +- eps
-    difsqr(-10.1, -6.1) shouldBe 64.8 +- eps
-    difsqr(-10.1, -6.5) shouldBe 59.76 +- eps
-    difsqr(-10.1, -6.9) shouldBe 54.4 +- eps
-    difsqr(-10.5, 0.0) shouldBe 110.25 +- eps
-    difsqr(-10.5, 6.0) shouldBe 74.25 +- eps
-    difsqr(-10.5, 6.1) shouldBe 73.04 +- eps
-    difsqr(-10.5, 6.5) shouldBe 68.0 +- eps
-    difsqr(-10.5, 6.9) shouldBe 62.64 +- eps
-    difsqr(-10.5, -6.0) shouldBe 74.25 +- eps
-    difsqr(-10.5, -6.1) shouldBe 73.04 +- eps
-    difsqr(-10.5, -6.5) shouldBe 68.0 +- eps
-    difsqr(-10.5, -6.9) shouldBe 62.64 +- eps
-    difsqr(-10.9, 0.0) shouldBe 118.81 +- eps
-    difsqr(-10.9, 6.0) shouldBe 82.81 +- eps
-    difsqr(-10.9, 6.1) shouldBe 81.6 +- eps
-    difsqr(-10.9, 6.5) shouldBe 76.56 +- eps
-    difsqr(-10.9, 6.9) shouldBe 71.2 +- eps
-    difsqr(-10.9, -6.0) shouldBe 82.81 +- eps
-    difsqr(-10.9, -6.1) shouldBe 81.6 +- eps
-    difsqr(-10.9, -6.5) shouldBe 76.56 +- eps
-    difsqr(-10.9, -6.9) shouldBe 71.2 +- eps
+    difSqr(0.0, 0.0) shouldBe 0.0 +- eps
+    difSqr(0.0, 6.0) shouldBe -36.0 +- eps
+    difSqr(0.0, 6.1) shouldBe -37.21 +- eps
+    difSqr(0.0, 6.5) shouldBe -42.25 +- eps
+    difSqr(0.0, 6.9) shouldBe -47.61 +- eps
+    difSqr(0.0, -6.0) shouldBe -36.0 +- eps
+    difSqr(0.0, -6.1) shouldBe -37.21 +- eps
+    difSqr(0.0, -6.5) shouldBe -42.25 +- eps
+    difSqr(0.0, -6.9) shouldBe -47.61 +- eps
+    difSqr(10.0, 0.0) shouldBe 100.0 +- eps
+    difSqr(10.0, 6.0) shouldBe 64.0 +- eps
+    difSqr(10.0, 6.1) shouldBe 62.79 +- eps
+    difSqr(10.0, 6.5) shouldBe 57.75 +- eps
+    difSqr(10.0, 6.9) shouldBe 52.39 +- eps
+    difSqr(10.0, -6.0) shouldBe 64.0 +- eps
+    difSqr(10.0, -6.1) shouldBe 62.79 +- eps
+    difSqr(10.0, -6.5) shouldBe 57.75 +- eps
+    difSqr(10.0, -6.9) shouldBe 52.39 +- eps
+    difSqr(10.1, 0.0) shouldBe 102.01 +- eps
+    difSqr(10.1, 6.0) shouldBe 66.01 +- eps
+    difSqr(10.1, 6.1) shouldBe 64.8 +- eps
+    difSqr(10.1, 6.5) shouldBe 59.76 +- eps
+    difSqr(10.1, 6.9) shouldBe 54.4 +- eps
+    difSqr(10.1, -6.0) shouldBe 66.01 +- eps
+    difSqr(10.1, -6.1) shouldBe 64.8 +- eps
+    difSqr(10.1, -6.5) shouldBe 59.76 +- eps
+    difSqr(10.1, -6.9) shouldBe 54.4 +- eps
+    difSqr(10.5, 0.0) shouldBe 110.25 +- eps
+    difSqr(10.5, 6.0) shouldBe 74.25 +- eps
+    difSqr(10.5, 6.1) shouldBe 73.04 +- eps
+    difSqr(10.5, 6.5) shouldBe 68.0 +- eps
+    difSqr(10.5, 6.9) shouldBe 62.64 +- eps
+    difSqr(10.5, -6.0) shouldBe 74.25 +- eps
+    difSqr(10.5, -6.1) shouldBe 73.04 +- eps
+    difSqr(10.5, -6.5) shouldBe 68.0 +- eps
+    difSqr(10.5, -6.9) shouldBe 62.64 +- eps
+    difSqr(10.9, 0.0) shouldBe 118.81 +- eps
+    difSqr(10.9, 6.0) shouldBe 82.81 +- eps
+    difSqr(10.9, 6.1) shouldBe 81.6 +- eps
+    difSqr(10.9, 6.5) shouldBe 76.56 +- eps
+    difSqr(10.9, 6.9) shouldBe 71.2 +- eps
+    difSqr(10.9, -6.0) shouldBe 82.81 +- eps
+    difSqr(10.9, -6.1) shouldBe 81.6 +- eps
+    difSqr(10.9, -6.5) shouldBe 76.56 +- eps
+    difSqr(10.9, -6.9) shouldBe 71.2 +- eps
+    difSqr(-10.0, 0.0) shouldBe 100.0 +- eps
+    difSqr(-10.0, 6.0) shouldBe 64.0 +- eps
+    difSqr(-10.0, 6.1) shouldBe 62.79 +- eps
+    difSqr(-10.0, 6.5) shouldBe 57.75 +- eps
+    difSqr(-10.0, 6.9) shouldBe 52.39 +- eps
+    difSqr(-10.0, -6.0) shouldBe 64.0 +- eps
+    difSqr(-10.0, -6.1) shouldBe 62.79 +- eps
+    difSqr(-10.0, -6.5) shouldBe 57.75 +- eps
+    difSqr(-10.0, -6.9) shouldBe 52.39 +- eps
+    difSqr(-10.1, 0.0) shouldBe 102.01 +- eps
+    difSqr(-10.1, 6.0) shouldBe 66.01 +- eps
+    difSqr(-10.1, 6.1) shouldBe 64.8 +- eps
+    difSqr(-10.1, 6.5) shouldBe 59.76 +- eps
+    difSqr(-10.1, 6.9) shouldBe 54.4 +- eps
+    difSqr(-10.1, -6.0) shouldBe 66.01 +- eps
+    difSqr(-10.1, -6.1) shouldBe 64.8 +- eps
+    difSqr(-10.1, -6.5) shouldBe 59.76 +- eps
+    difSqr(-10.1, -6.9) shouldBe 54.4 +- eps
+    difSqr(-10.5, 0.0) shouldBe 110.25 +- eps
+    difSqr(-10.5, 6.0) shouldBe 74.25 +- eps
+    difSqr(-10.5, 6.1) shouldBe 73.04 +- eps
+    difSqr(-10.5, 6.5) shouldBe 68.0 +- eps
+    difSqr(-10.5, 6.9) shouldBe 62.64 +- eps
+    difSqr(-10.5, -6.0) shouldBe 74.25 +- eps
+    difSqr(-10.5, -6.1) shouldBe 73.04 +- eps
+    difSqr(-10.5, -6.5) shouldBe 68.0 +- eps
+    difSqr(-10.5, -6.9) shouldBe 62.64 +- eps
+    difSqr(-10.9, 0.0) shouldBe 118.81 +- eps
+    difSqr(-10.9, 6.0) shouldBe 82.81 +- eps
+    difSqr(-10.9, 6.1) shouldBe 81.6 +- eps
+    difSqr(-10.9, 6.5) shouldBe 76.56 +- eps
+    difSqr(-10.9, 6.9) shouldBe 71.2 +- eps
+    difSqr(-10.9, -6.0) shouldBe 82.81 +- eps
+    difSqr(-10.9, -6.1) shouldBe 81.6 +- eps
+    difSqr(-10.9, -6.5) shouldBe 76.56 +- eps
+    difSqr(-10.9, -6.9) shouldBe 71.2 +- eps
   }
 
   "Double.sumsqr" should work in {
-    sumsqr(0.0, 0.0) shouldBe 0.0 +- eps
-    sumsqr(0.0, 6.0) shouldBe 36.0 +- eps
-    sumsqr(0.0, 6.1) shouldBe 37.21 +- eps
-    sumsqr(0.0, 6.5) shouldBe 42.25 +- eps
-    sumsqr(0.0, 6.9) shouldBe 47.61 +- eps
-    sumsqr(0.0, -6.0) shouldBe 36.0 +- eps
-    sumsqr(0.0, -6.1) shouldBe 37.21 +- eps
-    sumsqr(0.0, -6.5) shouldBe 42.25 +- eps
-    sumsqr(0.0, -6.9) shouldBe 47.61 +- eps
-    sumsqr(10.0, 0.0) shouldBe 100.0 +- eps
-    sumsqr(10.0, 6.0) shouldBe 136.0 +- eps
-    sumsqr(10.0, 6.1) shouldBe 137.21 +- eps
-    sumsqr(10.0, 6.5) shouldBe 142.25 +- eps
-    sumsqr(10.0, 6.9) shouldBe 147.61 +- eps
-    sumsqr(10.0, -6.0) shouldBe 136.0 +- eps
-    sumsqr(10.0, -6.1) shouldBe 137.21 +- eps
-    sumsqr(10.0, -6.5) shouldBe 142.25 +- eps
-    sumsqr(10.0, -6.9) shouldBe 147.61 +- eps
-    sumsqr(10.1, 0.0) shouldBe 102.01 +- eps
-    sumsqr(10.1, 6.0) shouldBe 138.01 +- eps
-    sumsqr(10.1, 6.1) shouldBe 139.22 +- eps
-    sumsqr(10.1, 6.5) shouldBe 144.26 +- eps
-    sumsqr(10.1, 6.9) shouldBe 149.62 +- eps
-    sumsqr(10.1, -6.0) shouldBe 138.01 +- eps
-    sumsqr(10.1, -6.1) shouldBe 139.22 +- eps
-    sumsqr(10.1, -6.5) shouldBe 144.26 +- eps
-    sumsqr(10.1, -6.9) shouldBe 149.62 +- eps
-    sumsqr(10.5, 0.0) shouldBe 110.25 +- eps
-    sumsqr(10.5, 6.0) shouldBe 146.25 +- eps
-    sumsqr(10.5, 6.1) shouldBe 147.46 +- eps
-    sumsqr(10.5, 6.5) shouldBe 152.5 +- eps
-    sumsqr(10.5, 6.9) shouldBe 157.86 +- eps
-    sumsqr(10.5, -6.0) shouldBe 146.25 +- eps
-    sumsqr(10.5, -6.1) shouldBe 147.46 +- eps
-    sumsqr(10.5, -6.5) shouldBe 152.5 +- eps
-    sumsqr(10.5, -6.9) shouldBe 157.86 +- eps
-    sumsqr(10.9, 0.0) shouldBe 118.81 +- eps
-    sumsqr(10.9, 6.0) shouldBe 154.81 +- eps
-    sumsqr(10.9, 6.1) shouldBe 156.02 +- eps
-    sumsqr(10.9, 6.5) shouldBe 161.06 +- eps
-    sumsqr(10.9, 6.9) shouldBe 166.42 +- eps
-    sumsqr(10.9, -6.0) shouldBe 154.81 +- eps
-    sumsqr(10.9, -6.1) shouldBe 156.02 +- eps
-    sumsqr(10.9, -6.5) shouldBe 161.06 +- eps
-    sumsqr(10.9, -6.9) shouldBe 166.42 +- eps
-    sumsqr(-10.0, 0.0) shouldBe 100.0 +- eps
-    sumsqr(-10.0, 6.0) shouldBe 136.0 +- eps
-    sumsqr(-10.0, 6.1) shouldBe 137.21 +- eps
-    sumsqr(-10.0, 6.5) shouldBe 142.25 +- eps
-    sumsqr(-10.0, 6.9) shouldBe 147.61 +- eps
-    sumsqr(-10.0, -6.0) shouldBe 136.0 +- eps
-    sumsqr(-10.0, -6.1) shouldBe 137.21 +- eps
-    sumsqr(-10.0, -6.5) shouldBe 142.25 +- eps
-    sumsqr(-10.0, -6.9) shouldBe 147.61 +- eps
-    sumsqr(-10.1, 0.0) shouldBe 102.01 +- eps
-    sumsqr(-10.1, 6.0) shouldBe 138.01 +- eps
-    sumsqr(-10.1, 6.1) shouldBe 139.22 +- eps
-    sumsqr(-10.1, 6.5) shouldBe 144.26 +- eps
-    sumsqr(-10.1, 6.9) shouldBe 149.62 +- eps
-    sumsqr(-10.1, -6.0) shouldBe 138.01 +- eps
-    sumsqr(-10.1, -6.1) shouldBe 139.22 +- eps
-    sumsqr(-10.1, -6.5) shouldBe 144.26 +- eps
-    sumsqr(-10.1, -6.9) shouldBe 149.62 +- eps
-    sumsqr(-10.5, 0.0) shouldBe 110.25 +- eps
-    sumsqr(-10.5, 6.0) shouldBe 146.25 +- eps
-    sumsqr(-10.5, 6.1) shouldBe 147.46 +- eps
-    sumsqr(-10.5, 6.5) shouldBe 152.5 +- eps
-    sumsqr(-10.5, 6.9) shouldBe 157.86 +- eps
-    sumsqr(-10.5, -6.0) shouldBe 146.25 +- eps
-    sumsqr(-10.5, -6.1) shouldBe 147.46 +- eps
-    sumsqr(-10.5, -6.5) shouldBe 152.5 +- eps
-    sumsqr(-10.5, -6.9) shouldBe 157.86 +- eps
-    sumsqr(-10.9, 0.0) shouldBe 118.81 +- eps
-    sumsqr(-10.9, 6.0) shouldBe 154.81 +- eps
-    sumsqr(-10.9, 6.1) shouldBe 156.02 +- eps
-    sumsqr(-10.9, 6.5) shouldBe 161.06 +- eps
-    sumsqr(-10.9, 6.9) shouldBe 166.42 +- eps
-    sumsqr(-10.9, -6.0) shouldBe 154.81 +- eps
-    sumsqr(-10.9, -6.1) shouldBe 156.02 +- eps
-    sumsqr(-10.9, -6.5) shouldBe 161.06 +- eps
-    sumsqr(-10.9, -6.9) shouldBe 166.42 +- eps
+    sumSqr(0.0, 0.0) shouldBe 0.0 +- eps
+    sumSqr(0.0, 6.0) shouldBe 36.0 +- eps
+    sumSqr(0.0, 6.1) shouldBe 37.21 +- eps
+    sumSqr(0.0, 6.5) shouldBe 42.25 +- eps
+    sumSqr(0.0, 6.9) shouldBe 47.61 +- eps
+    sumSqr(0.0, -6.0) shouldBe 36.0 +- eps
+    sumSqr(0.0, -6.1) shouldBe 37.21 +- eps
+    sumSqr(0.0, -6.5) shouldBe 42.25 +- eps
+    sumSqr(0.0, -6.9) shouldBe 47.61 +- eps
+    sumSqr(10.0, 0.0) shouldBe 100.0 +- eps
+    sumSqr(10.0, 6.0) shouldBe 136.0 +- eps
+    sumSqr(10.0, 6.1) shouldBe 137.21 +- eps
+    sumSqr(10.0, 6.5) shouldBe 142.25 +- eps
+    sumSqr(10.0, 6.9) shouldBe 147.61 +- eps
+    sumSqr(10.0, -6.0) shouldBe 136.0 +- eps
+    sumSqr(10.0, -6.1) shouldBe 137.21 +- eps
+    sumSqr(10.0, -6.5) shouldBe 142.25 +- eps
+    sumSqr(10.0, -6.9) shouldBe 147.61 +- eps
+    sumSqr(10.1, 0.0) shouldBe 102.01 +- eps
+    sumSqr(10.1, 6.0) shouldBe 138.01 +- eps
+    sumSqr(10.1, 6.1) shouldBe 139.22 +- eps
+    sumSqr(10.1, 6.5) shouldBe 144.26 +- eps
+    sumSqr(10.1, 6.9) shouldBe 149.62 +- eps
+    sumSqr(10.1, -6.0) shouldBe 138.01 +- eps
+    sumSqr(10.1, -6.1) shouldBe 139.22 +- eps
+    sumSqr(10.1, -6.5) shouldBe 144.26 +- eps
+    sumSqr(10.1, -6.9) shouldBe 149.62 +- eps
+    sumSqr(10.5, 0.0) shouldBe 110.25 +- eps
+    sumSqr(10.5, 6.0) shouldBe 146.25 +- eps
+    sumSqr(10.5, 6.1) shouldBe 147.46 +- eps
+    sumSqr(10.5, 6.5) shouldBe 152.5 +- eps
+    sumSqr(10.5, 6.9) shouldBe 157.86 +- eps
+    sumSqr(10.5, -6.0) shouldBe 146.25 +- eps
+    sumSqr(10.5, -6.1) shouldBe 147.46 +- eps
+    sumSqr(10.5, -6.5) shouldBe 152.5 +- eps
+    sumSqr(10.5, -6.9) shouldBe 157.86 +- eps
+    sumSqr(10.9, 0.0) shouldBe 118.81 +- eps
+    sumSqr(10.9, 6.0) shouldBe 154.81 +- eps
+    sumSqr(10.9, 6.1) shouldBe 156.02 +- eps
+    sumSqr(10.9, 6.5) shouldBe 161.06 +- eps
+    sumSqr(10.9, 6.9) shouldBe 166.42 +- eps
+    sumSqr(10.9, -6.0) shouldBe 154.81 +- eps
+    sumSqr(10.9, -6.1) shouldBe 156.02 +- eps
+    sumSqr(10.9, -6.5) shouldBe 161.06 +- eps
+    sumSqr(10.9, -6.9) shouldBe 166.42 +- eps
+    sumSqr(-10.0, 0.0) shouldBe 100.0 +- eps
+    sumSqr(-10.0, 6.0) shouldBe 136.0 +- eps
+    sumSqr(-10.0, 6.1) shouldBe 137.21 +- eps
+    sumSqr(-10.0, 6.5) shouldBe 142.25 +- eps
+    sumSqr(-10.0, 6.9) shouldBe 147.61 +- eps
+    sumSqr(-10.0, -6.0) shouldBe 136.0 +- eps
+    sumSqr(-10.0, -6.1) shouldBe 137.21 +- eps
+    sumSqr(-10.0, -6.5) shouldBe 142.25 +- eps
+    sumSqr(-10.0, -6.9) shouldBe 147.61 +- eps
+    sumSqr(-10.1, 0.0) shouldBe 102.01 +- eps
+    sumSqr(-10.1, 6.0) shouldBe 138.01 +- eps
+    sumSqr(-10.1, 6.1) shouldBe 139.22 +- eps
+    sumSqr(-10.1, 6.5) shouldBe 144.26 +- eps
+    sumSqr(-10.1, 6.9) shouldBe 149.62 +- eps
+    sumSqr(-10.1, -6.0) shouldBe 138.01 +- eps
+    sumSqr(-10.1, -6.1) shouldBe 139.22 +- eps
+    sumSqr(-10.1, -6.5) shouldBe 144.26 +- eps
+    sumSqr(-10.1, -6.9) shouldBe 149.62 +- eps
+    sumSqr(-10.5, 0.0) shouldBe 110.25 +- eps
+    sumSqr(-10.5, 6.0) shouldBe 146.25 +- eps
+    sumSqr(-10.5, 6.1) shouldBe 147.46 +- eps
+    sumSqr(-10.5, 6.5) shouldBe 152.5 +- eps
+    sumSqr(-10.5, 6.9) shouldBe 157.86 +- eps
+    sumSqr(-10.5, -6.0) shouldBe 146.25 +- eps
+    sumSqr(-10.5, -6.1) shouldBe 147.46 +- eps
+    sumSqr(-10.5, -6.5) shouldBe 152.5 +- eps
+    sumSqr(-10.5, -6.9) shouldBe 157.86 +- eps
+    sumSqr(-10.9, 0.0) shouldBe 118.81 +- eps
+    sumSqr(-10.9, 6.0) shouldBe 154.81 +- eps
+    sumSqr(-10.9, 6.1) shouldBe 156.02 +- eps
+    sumSqr(-10.9, 6.5) shouldBe 161.06 +- eps
+    sumSqr(-10.9, 6.9) shouldBe 166.42 +- eps
+    sumSqr(-10.9, -6.0) shouldBe 154.81 +- eps
+    sumSqr(-10.9, -6.1) shouldBe 156.02 +- eps
+    sumSqr(-10.9, -6.5) shouldBe 161.06 +- eps
+    sumSqr(-10.9, -6.9) shouldBe 166.42 +- eps
   }
 
   "Double.sqrsum" should work in {
-    sqrsum(0.0, 0.0) shouldBe 0.0 +- eps
-    sqrsum(0.0, 6.0) shouldBe 36.0 +- eps
-    sqrsum(0.0, 6.1) shouldBe 37.21 +- eps
-    sqrsum(0.0, 6.5) shouldBe 42.25 +- eps
-    sqrsum(0.0, 6.9) shouldBe 47.61 +- eps
-    sqrsum(0.0, -6.0) shouldBe 36.0 +- eps
-    sqrsum(0.0, -6.1) shouldBe 37.21 +- eps
-    sqrsum(0.0, -6.5) shouldBe 42.25 +- eps
-    sqrsum(0.0, -6.9) shouldBe 47.61 +- eps
-    sqrsum(10.0, 0.0) shouldBe 100.0 +- eps
-    sqrsum(10.0, 6.0) shouldBe 256.0 +- eps
-    sqrsum(10.0, 6.1) shouldBe 259.21 +- eps
-    sqrsum(10.0, 6.5) shouldBe 272.25 +- eps
-    sqrsum(10.0, 6.9) shouldBe 285.61 +- eps
-    sqrsum(10.0, -6.0) shouldBe 16.0 +- eps
-    sqrsum(10.0, -6.1) shouldBe 15.21 +- eps
-    sqrsum(10.0, -6.5) shouldBe 12.25 +- eps
-    sqrsum(10.0, -6.9) shouldBe 9.61 +- eps
-    sqrsum(10.1, 0.0) shouldBe 102.01 +- eps
-    sqrsum(10.1, 6.0) shouldBe 259.21 +- eps
-    sqrsum(10.1, 6.1) shouldBe 262.44 +- eps
-    sqrsum(10.1, 6.5) shouldBe 275.56 +- eps
-    sqrsum(10.1, 6.9) shouldBe 289.0 +- eps
-    sqrsum(10.1, -6.0) shouldBe 16.81 +- eps
-    sqrsum(10.1, -6.1) shouldBe 16.0 +- eps
-    sqrsum(10.1, -6.5) shouldBe 12.96 +- eps
-    sqrsum(10.1, -6.9) shouldBe 10.24 +- eps
-    sqrsum(10.5, 0.0) shouldBe 110.25 +- eps
-    sqrsum(10.5, 6.0) shouldBe 272.25 +- eps
-    sqrsum(10.5, 6.1) shouldBe 275.56 +- eps
-    sqrsum(10.5, 6.5) shouldBe 289.0 +- eps
-    sqrsum(10.5, 6.9) shouldBe 302.76 +- eps
-    sqrsum(10.5, -6.0) shouldBe 20.25 +- eps
-    sqrsum(10.5, -6.1) shouldBe 19.36 +- eps
-    sqrsum(10.5, -6.5) shouldBe 16.0 +- eps
-    sqrsum(10.5, -6.9) shouldBe 12.96 +- eps
-    sqrsum(10.9, 0.0) shouldBe 118.81 +- eps
-    sqrsum(10.9, 6.0) shouldBe 285.61 +- eps
-    sqrsum(10.9, 6.1) shouldBe 289.0 +- eps
-    sqrsum(10.9, 6.5) shouldBe 302.76 +- eps
-    sqrsum(10.9, 6.9) shouldBe 316.84 +- eps
-    sqrsum(10.9, -6.0) shouldBe 24.01 +- eps
-    sqrsum(10.9, -6.1) shouldBe 23.04 +- eps
-    sqrsum(10.9, -6.5) shouldBe 19.36 +- eps
-    sqrsum(10.9, -6.9) shouldBe 16.0 +- eps
-    sqrsum(-10.0, 0.0) shouldBe 100.0 +- eps
-    sqrsum(-10.0, 6.0) shouldBe 16.0 +- eps
-    sqrsum(-10.0, 6.1) shouldBe 15.21 +- eps
-    sqrsum(-10.0, 6.5) shouldBe 12.25 +- eps
-    sqrsum(-10.0, 6.9) shouldBe 9.61 +- eps
-    sqrsum(-10.0, -6.0) shouldBe 256.0 +- eps
-    sqrsum(-10.0, -6.1) shouldBe 259.21 +- eps
-    sqrsum(-10.0, -6.5) shouldBe 272.25 +- eps
-    sqrsum(-10.0, -6.9) shouldBe 285.61 +- eps
-    sqrsum(-10.1, 0.0) shouldBe 102.01 +- eps
-    sqrsum(-10.1, 6.0) shouldBe 16.81 +- eps
-    sqrsum(-10.1, 6.1) shouldBe 16.0 +- eps
-    sqrsum(-10.1, 6.5) shouldBe 12.96 +- eps
-    sqrsum(-10.1, 6.9) shouldBe 10.24 +- eps
-    sqrsum(-10.1, -6.0) shouldBe 259.21 +- eps
-    sqrsum(-10.1, -6.1) shouldBe 262.44 +- eps
-    sqrsum(-10.1, -6.5) shouldBe 275.56 +- eps
-    sqrsum(-10.1, -6.9) shouldBe 289.0 +- eps
-    sqrsum(-10.5, 0.0) shouldBe 110.25 +- eps
-    sqrsum(-10.5, 6.0) shouldBe 20.25 +- eps
-    sqrsum(-10.5, 6.1) shouldBe 19.36 +- eps
-    sqrsum(-10.5, 6.5) shouldBe 16.0 +- eps
-    sqrsum(-10.5, 6.9) shouldBe 12.96 +- eps
-    sqrsum(-10.5, -6.0) shouldBe 272.25 +- eps
-    sqrsum(-10.5, -6.1) shouldBe 275.56 +- eps
-    sqrsum(-10.5, -6.5) shouldBe 289.0 +- eps
-    sqrsum(-10.5, -6.9) shouldBe 302.76 +- eps
-    sqrsum(-10.9, 0.0) shouldBe 118.81 +- eps
-    sqrsum(-10.9, 6.0) shouldBe 24.01 +- eps
-    sqrsum(-10.9, 6.1) shouldBe 23.04 +- eps
-    sqrsum(-10.9, 6.5) shouldBe 19.36 +- eps
-    sqrsum(-10.9, 6.9) shouldBe 16.0 +- eps
-    sqrsum(-10.9, -6.0) shouldBe 285.61 +- eps
-    sqrsum(-10.9, -6.1) shouldBe 289.0 +- eps
-    sqrsum(-10.9, -6.5) shouldBe 302.76 +- eps
-    sqrsum(-10.9, -6.9) shouldBe 316.84 +- eps
+    sqrSum(0.0, 0.0) shouldBe 0.0 +- eps
+    sqrSum(0.0, 6.0) shouldBe 36.0 +- eps
+    sqrSum(0.0, 6.1) shouldBe 37.21 +- eps
+    sqrSum(0.0, 6.5) shouldBe 42.25 +- eps
+    sqrSum(0.0, 6.9) shouldBe 47.61 +- eps
+    sqrSum(0.0, -6.0) shouldBe 36.0 +- eps
+    sqrSum(0.0, -6.1) shouldBe 37.21 +- eps
+    sqrSum(0.0, -6.5) shouldBe 42.25 +- eps
+    sqrSum(0.0, -6.9) shouldBe 47.61 +- eps
+    sqrSum(10.0, 0.0) shouldBe 100.0 +- eps
+    sqrSum(10.0, 6.0) shouldBe 256.0 +- eps
+    sqrSum(10.0, 6.1) shouldBe 259.21 +- eps
+    sqrSum(10.0, 6.5) shouldBe 272.25 +- eps
+    sqrSum(10.0, 6.9) shouldBe 285.61 +- eps
+    sqrSum(10.0, -6.0) shouldBe 16.0 +- eps
+    sqrSum(10.0, -6.1) shouldBe 15.21 +- eps
+    sqrSum(10.0, -6.5) shouldBe 12.25 +- eps
+    sqrSum(10.0, -6.9) shouldBe 9.61 +- eps
+    sqrSum(10.1, 0.0) shouldBe 102.01 +- eps
+    sqrSum(10.1, 6.0) shouldBe 259.21 +- eps
+    sqrSum(10.1, 6.1) shouldBe 262.44 +- eps
+    sqrSum(10.1, 6.5) shouldBe 275.56 +- eps
+    sqrSum(10.1, 6.9) shouldBe 289.0 +- eps
+    sqrSum(10.1, -6.0) shouldBe 16.81 +- eps
+    sqrSum(10.1, -6.1) shouldBe 16.0 +- eps
+    sqrSum(10.1, -6.5) shouldBe 12.96 +- eps
+    sqrSum(10.1, -6.9) shouldBe 10.24 +- eps
+    sqrSum(10.5, 0.0) shouldBe 110.25 +- eps
+    sqrSum(10.5, 6.0) shouldBe 272.25 +- eps
+    sqrSum(10.5, 6.1) shouldBe 275.56 +- eps
+    sqrSum(10.5, 6.5) shouldBe 289.0 +- eps
+    sqrSum(10.5, 6.9) shouldBe 302.76 +- eps
+    sqrSum(10.5, -6.0) shouldBe 20.25 +- eps
+    sqrSum(10.5, -6.1) shouldBe 19.36 +- eps
+    sqrSum(10.5, -6.5) shouldBe 16.0 +- eps
+    sqrSum(10.5, -6.9) shouldBe 12.96 +- eps
+    sqrSum(10.9, 0.0) shouldBe 118.81 +- eps
+    sqrSum(10.9, 6.0) shouldBe 285.61 +- eps
+    sqrSum(10.9, 6.1) shouldBe 289.0 +- eps
+    sqrSum(10.9, 6.5) shouldBe 302.76 +- eps
+    sqrSum(10.9, 6.9) shouldBe 316.84 +- eps
+    sqrSum(10.9, -6.0) shouldBe 24.01 +- eps
+    sqrSum(10.9, -6.1) shouldBe 23.04 +- eps
+    sqrSum(10.9, -6.5) shouldBe 19.36 +- eps
+    sqrSum(10.9, -6.9) shouldBe 16.0 +- eps
+    sqrSum(-10.0, 0.0) shouldBe 100.0 +- eps
+    sqrSum(-10.0, 6.0) shouldBe 16.0 +- eps
+    sqrSum(-10.0, 6.1) shouldBe 15.21 +- eps
+    sqrSum(-10.0, 6.5) shouldBe 12.25 +- eps
+    sqrSum(-10.0, 6.9) shouldBe 9.61 +- eps
+    sqrSum(-10.0, -6.0) shouldBe 256.0 +- eps
+    sqrSum(-10.0, -6.1) shouldBe 259.21 +- eps
+    sqrSum(-10.0, -6.5) shouldBe 272.25 +- eps
+    sqrSum(-10.0, -6.9) shouldBe 285.61 +- eps
+    sqrSum(-10.1, 0.0) shouldBe 102.01 +- eps
+    sqrSum(-10.1, 6.0) shouldBe 16.81 +- eps
+    sqrSum(-10.1, 6.1) shouldBe 16.0 +- eps
+    sqrSum(-10.1, 6.5) shouldBe 12.96 +- eps
+    sqrSum(-10.1, 6.9) shouldBe 10.24 +- eps
+    sqrSum(-10.1, -6.0) shouldBe 259.21 +- eps
+    sqrSum(-10.1, -6.1) shouldBe 262.44 +- eps
+    sqrSum(-10.1, -6.5) shouldBe 275.56 +- eps
+    sqrSum(-10.1, -6.9) shouldBe 289.0 +- eps
+    sqrSum(-10.5, 0.0) shouldBe 110.25 +- eps
+    sqrSum(-10.5, 6.0) shouldBe 20.25 +- eps
+    sqrSum(-10.5, 6.1) shouldBe 19.36 +- eps
+    sqrSum(-10.5, 6.5) shouldBe 16.0 +- eps
+    sqrSum(-10.5, 6.9) shouldBe 12.96 +- eps
+    sqrSum(-10.5, -6.0) shouldBe 272.25 +- eps
+    sqrSum(-10.5, -6.1) shouldBe 275.56 +- eps
+    sqrSum(-10.5, -6.5) shouldBe 289.0 +- eps
+    sqrSum(-10.5, -6.9) shouldBe 302.76 +- eps
+    sqrSum(-10.9, 0.0) shouldBe 118.81 +- eps
+    sqrSum(-10.9, 6.0) shouldBe 24.01 +- eps
+    sqrSum(-10.9, 6.1) shouldBe 23.04 +- eps
+    sqrSum(-10.9, 6.5) shouldBe 19.36 +- eps
+    sqrSum(-10.9, 6.9) shouldBe 16.0 +- eps
+    sqrSum(-10.9, -6.0) shouldBe 285.61 +- eps
+    sqrSum(-10.9, -6.1) shouldBe 289.0 +- eps
+    sqrSum(-10.9, -6.5) shouldBe 302.76 +- eps
+    sqrSum(-10.9, -6.9) shouldBe 316.84 +- eps
   }
 
   "Double.sqrdif" should work in {
-    sqrdif(0.0, 0.0) shouldBe 0.0 +- eps
-    sqrdif(0.0, 6.0) shouldBe 36.0 +- eps
-    sqrdif(0.0, 6.1) shouldBe 37.21 +- eps
-    sqrdif(0.0, 6.5) shouldBe 42.25 +- eps
-    sqrdif(0.0, 6.9) shouldBe 47.61 +- eps
-    sqrdif(0.0, -6.0) shouldBe 36.0 +- eps
-    sqrdif(0.0, -6.1) shouldBe 37.21 +- eps
-    sqrdif(0.0, -6.5) shouldBe 42.25 +- eps
-    sqrdif(0.0, -6.9) shouldBe 47.61 +- eps
-    sqrdif(10.0, 0.0) shouldBe 100.0 +- eps
-    sqrdif(10.0, 6.0) shouldBe 16.0 +- eps
-    sqrdif(10.0, 6.1) shouldBe 15.21 +- eps
-    sqrdif(10.0, 6.5) shouldBe 12.25 +- eps
-    sqrdif(10.0, 6.9) shouldBe 9.61 +- eps
-    sqrdif(10.0, -6.0) shouldBe 256.0 +- eps
-    sqrdif(10.0, -6.1) shouldBe 259.21 +- eps
-    sqrdif(10.0, -6.5) shouldBe 272.25 +- eps
-    sqrdif(10.0, -6.9) shouldBe 285.61 +- eps
-    sqrdif(10.1, 0.0) shouldBe 102.01 +- eps
-    sqrdif(10.1, 6.0) shouldBe 16.81 +- eps
-    sqrdif(10.1, 6.1) shouldBe 16.0 +- eps
-    sqrdif(10.1, 6.5) shouldBe 12.96 +- eps
-    sqrdif(10.1, 6.9) shouldBe 10.24 +- eps
-    sqrdif(10.1, -6.0) shouldBe 259.21 +- eps
-    sqrdif(10.1, -6.1) shouldBe 262.44 +- eps
-    sqrdif(10.1, -6.5) shouldBe 275.56 +- eps
-    sqrdif(10.1, -6.9) shouldBe 289.0 +- eps
-    sqrdif(10.5, 0.0) shouldBe 110.25 +- eps
-    sqrdif(10.5, 6.0) shouldBe 20.25 +- eps
-    sqrdif(10.5, 6.1) shouldBe 19.36 +- eps
-    sqrdif(10.5, 6.5) shouldBe 16.0 +- eps
-    sqrdif(10.5, 6.9) shouldBe 12.96 +- eps
-    sqrdif(10.5, -6.0) shouldBe 272.25 +- eps
-    sqrdif(10.5, -6.1) shouldBe 275.56 +- eps
-    sqrdif(10.5, -6.5) shouldBe 289.0 +- eps
-    sqrdif(10.5, -6.9) shouldBe 302.76 +- eps
-    sqrdif(10.9, 0.0) shouldBe 118.81 +- eps
-    sqrdif(10.9, 6.0) shouldBe 24.01 +- eps
-    sqrdif(10.9, 6.1) shouldBe 23.04 +- eps
-    sqrdif(10.9, 6.5) shouldBe 19.36 +- eps
-    sqrdif(10.9, 6.9) shouldBe 16.0 +- eps
-    sqrdif(10.9, -6.0) shouldBe 285.61 +- eps
-    sqrdif(10.9, -6.1) shouldBe 289.0 +- eps
-    sqrdif(10.9, -6.5) shouldBe 302.76 +- eps
-    sqrdif(10.9, -6.9) shouldBe 316.84 +- eps
-    sqrdif(-10.0, 0.0) shouldBe 100.0 +- eps
-    sqrdif(-10.0, 6.0) shouldBe 256.0 +- eps
-    sqrdif(-10.0, 6.1) shouldBe 259.21 +- eps
-    sqrdif(-10.0, 6.5) shouldBe 272.25 +- eps
-    sqrdif(-10.0, 6.9) shouldBe 285.61 +- eps
-    sqrdif(-10.0, -6.0) shouldBe 16.0 +- eps
-    sqrdif(-10.0, -6.1) shouldBe 15.21 +- eps
-    sqrdif(-10.0, -6.5) shouldBe 12.25 +- eps
-    sqrdif(-10.0, -6.9) shouldBe 9.61 +- eps
-    sqrdif(-10.1, 0.0) shouldBe 102.01 +- eps
-    sqrdif(-10.1, 6.0) shouldBe 259.21 +- eps
-    sqrdif(-10.1, 6.1) shouldBe 262.44 +- eps
-    sqrdif(-10.1, 6.5) shouldBe 275.56 +- eps
-    sqrdif(-10.1, 6.9) shouldBe 289.0 +- eps
-    sqrdif(-10.1, -6.0) shouldBe 16.81 +- eps
-    sqrdif(-10.1, -6.1) shouldBe 16.0 +- eps
-    sqrdif(-10.1, -6.5) shouldBe 12.96 +- eps
-    sqrdif(-10.1, -6.9) shouldBe 10.24 +- eps
-    sqrdif(-10.5, 0.0) shouldBe 110.25 +- eps
-    sqrdif(-10.5, 6.0) shouldBe 272.25 +- eps
-    sqrdif(-10.5, 6.1) shouldBe 275.56 +- eps
-    sqrdif(-10.5, 6.5) shouldBe 289.0 +- eps
-    sqrdif(-10.5, 6.9) shouldBe 302.76 +- eps
-    sqrdif(-10.5, -6.0) shouldBe 20.25 +- eps
-    sqrdif(-10.5, -6.1) shouldBe 19.36 +- eps
-    sqrdif(-10.5, -6.5) shouldBe 16.0 +- eps
-    sqrdif(-10.5, -6.9) shouldBe 12.96 +- eps
-    sqrdif(-10.9, 0.0) shouldBe 118.81 +- eps
-    sqrdif(-10.9, 6.0) shouldBe 285.61 +- eps
-    sqrdif(-10.9, 6.1) shouldBe 289.0 +- eps
-    sqrdif(-10.9, 6.5) shouldBe 302.76 +- eps
-    sqrdif(-10.9, 6.9) shouldBe 316.84 +- eps
-    sqrdif(-10.9, -6.0) shouldBe 24.01 +- eps
-    sqrdif(-10.9, -6.1) shouldBe 23.04 +- eps
-    sqrdif(-10.9, -6.5) shouldBe 19.36 +- eps
-    sqrdif(-10.9, -6.9) shouldBe 16.0 +- eps
+    sqrDif(0.0, 0.0) shouldBe 0.0 +- eps
+    sqrDif(0.0, 6.0) shouldBe 36.0 +- eps
+    sqrDif(0.0, 6.1) shouldBe 37.21 +- eps
+    sqrDif(0.0, 6.5) shouldBe 42.25 +- eps
+    sqrDif(0.0, 6.9) shouldBe 47.61 +- eps
+    sqrDif(0.0, -6.0) shouldBe 36.0 +- eps
+    sqrDif(0.0, -6.1) shouldBe 37.21 +- eps
+    sqrDif(0.0, -6.5) shouldBe 42.25 +- eps
+    sqrDif(0.0, -6.9) shouldBe 47.61 +- eps
+    sqrDif(10.0, 0.0) shouldBe 100.0 +- eps
+    sqrDif(10.0, 6.0) shouldBe 16.0 +- eps
+    sqrDif(10.0, 6.1) shouldBe 15.21 +- eps
+    sqrDif(10.0, 6.5) shouldBe 12.25 +- eps
+    sqrDif(10.0, 6.9) shouldBe 9.61 +- eps
+    sqrDif(10.0, -6.0) shouldBe 256.0 +- eps
+    sqrDif(10.0, -6.1) shouldBe 259.21 +- eps
+    sqrDif(10.0, -6.5) shouldBe 272.25 +- eps
+    sqrDif(10.0, -6.9) shouldBe 285.61 +- eps
+    sqrDif(10.1, 0.0) shouldBe 102.01 +- eps
+    sqrDif(10.1, 6.0) shouldBe 16.81 +- eps
+    sqrDif(10.1, 6.1) shouldBe 16.0 +- eps
+    sqrDif(10.1, 6.5) shouldBe 12.96 +- eps
+    sqrDif(10.1, 6.9) shouldBe 10.24 +- eps
+    sqrDif(10.1, -6.0) shouldBe 259.21 +- eps
+    sqrDif(10.1, -6.1) shouldBe 262.44 +- eps
+    sqrDif(10.1, -6.5) shouldBe 275.56 +- eps
+    sqrDif(10.1, -6.9) shouldBe 289.0 +- eps
+    sqrDif(10.5, 0.0) shouldBe 110.25 +- eps
+    sqrDif(10.5, 6.0) shouldBe 20.25 +- eps
+    sqrDif(10.5, 6.1) shouldBe 19.36 +- eps
+    sqrDif(10.5, 6.5) shouldBe 16.0 +- eps
+    sqrDif(10.5, 6.9) shouldBe 12.96 +- eps
+    sqrDif(10.5, -6.0) shouldBe 272.25 +- eps
+    sqrDif(10.5, -6.1) shouldBe 275.56 +- eps
+    sqrDif(10.5, -6.5) shouldBe 289.0 +- eps
+    sqrDif(10.5, -6.9) shouldBe 302.76 +- eps
+    sqrDif(10.9, 0.0) shouldBe 118.81 +- eps
+    sqrDif(10.9, 6.0) shouldBe 24.01 +- eps
+    sqrDif(10.9, 6.1) shouldBe 23.04 +- eps
+    sqrDif(10.9, 6.5) shouldBe 19.36 +- eps
+    sqrDif(10.9, 6.9) shouldBe 16.0 +- eps
+    sqrDif(10.9, -6.0) shouldBe 285.61 +- eps
+    sqrDif(10.9, -6.1) shouldBe 289.0 +- eps
+    sqrDif(10.9, -6.5) shouldBe 302.76 +- eps
+    sqrDif(10.9, -6.9) shouldBe 316.84 +- eps
+    sqrDif(-10.0, 0.0) shouldBe 100.0 +- eps
+    sqrDif(-10.0, 6.0) shouldBe 256.0 +- eps
+    sqrDif(-10.0, 6.1) shouldBe 259.21 +- eps
+    sqrDif(-10.0, 6.5) shouldBe 272.25 +- eps
+    sqrDif(-10.0, 6.9) shouldBe 285.61 +- eps
+    sqrDif(-10.0, -6.0) shouldBe 16.0 +- eps
+    sqrDif(-10.0, -6.1) shouldBe 15.21 +- eps
+    sqrDif(-10.0, -6.5) shouldBe 12.25 +- eps
+    sqrDif(-10.0, -6.9) shouldBe 9.61 +- eps
+    sqrDif(-10.1, 0.0) shouldBe 102.01 +- eps
+    sqrDif(-10.1, 6.0) shouldBe 259.21 +- eps
+    sqrDif(-10.1, 6.1) shouldBe 262.44 +- eps
+    sqrDif(-10.1, 6.5) shouldBe 275.56 +- eps
+    sqrDif(-10.1, 6.9) shouldBe 289.0 +- eps
+    sqrDif(-10.1, -6.0) shouldBe 16.81 +- eps
+    sqrDif(-10.1, -6.1) shouldBe 16.0 +- eps
+    sqrDif(-10.1, -6.5) shouldBe 12.96 +- eps
+    sqrDif(-10.1, -6.9) shouldBe 10.24 +- eps
+    sqrDif(-10.5, 0.0) shouldBe 110.25 +- eps
+    sqrDif(-10.5, 6.0) shouldBe 272.25 +- eps
+    sqrDif(-10.5, 6.1) shouldBe 275.56 +- eps
+    sqrDif(-10.5, 6.5) shouldBe 289.0 +- eps
+    sqrDif(-10.5, 6.9) shouldBe 302.76 +- eps
+    sqrDif(-10.5, -6.0) shouldBe 20.25 +- eps
+    sqrDif(-10.5, -6.1) shouldBe 19.36 +- eps
+    sqrDif(-10.5, -6.5) shouldBe 16.0 +- eps
+    sqrDif(-10.5, -6.9) shouldBe 12.96 +- eps
+    sqrDif(-10.9, 0.0) shouldBe 118.81 +- eps
+    sqrDif(-10.9, 6.0) shouldBe 285.61 +- eps
+    sqrDif(-10.9, 6.1) shouldBe 289.0 +- eps
+    sqrDif(-10.9, 6.5) shouldBe 302.76 +- eps
+    sqrDif(-10.9, 6.9) shouldBe 316.84 +- eps
+    sqrDif(-10.9, -6.0) shouldBe 24.01 +- eps
+    sqrDif(-10.9, -6.1) shouldBe 23.04 +- eps
+    sqrDif(-10.9, -6.5) shouldBe 19.36 +- eps
+    sqrDif(-10.9, -6.9) shouldBe 16.0 +- eps
   }
 
   "Double.absdif" should work in {
-    absdif(0.0, 0.0) shouldBe 0.0 +- eps
-    absdif(0.0, 6.0) shouldBe 6.0 +- eps
-    absdif(0.0, 6.1) shouldBe 6.1 +- eps
-    absdif(0.0, 6.5) shouldBe 6.5 +- eps
-    absdif(0.0, 6.9) shouldBe 6.9 +- eps
-    absdif(0.0, -6.0) shouldBe 6.0 +- eps
-    absdif(0.0, -6.1) shouldBe 6.1 +- eps
-    absdif(0.0, -6.5) shouldBe 6.5 +- eps
-    absdif(0.0, -6.9) shouldBe 6.9 +- eps
-    absdif(10.0, 0.0) shouldBe 10.0 +- eps
-    absdif(10.0, 6.0) shouldBe 4.0 +- eps
-    absdif(10.0, 6.1) shouldBe 3.9 +- eps
-    absdif(10.0, 6.5) shouldBe 3.5 +- eps
-    absdif(10.0, 6.9) shouldBe 3.1 +- eps
-    absdif(10.0, -6.0) shouldBe 16.0 +- eps
-    absdif(10.0, -6.1) shouldBe 16.1 +- eps
-    absdif(10.0, -6.5) shouldBe 16.5 +- eps
-    absdif(10.0, -6.9) shouldBe 16.9 +- eps
-    absdif(10.1, 0.0) shouldBe 10.1 +- eps
-    absdif(10.1, 6.0) shouldBe 4.1 +- eps
-    absdif(10.1, 6.1) shouldBe 4.0 +- eps
-    absdif(10.1, 6.5) shouldBe 3.6 +- eps
-    absdif(10.1, 6.9) shouldBe 3.2 +- eps
-    absdif(10.1, -6.0) shouldBe 16.1 +- eps
-    absdif(10.1, -6.1) shouldBe 16.2 +- eps
-    absdif(10.1, -6.5) shouldBe 16.6 +- eps
-    absdif(10.1, -6.9) shouldBe 17.0 +- eps
-    absdif(10.5, 0.0) shouldBe 10.5 +- eps
-    absdif(10.5, 6.0) shouldBe 4.5 +- eps
-    absdif(10.5, 6.1) shouldBe 4.4 +- eps
-    absdif(10.5, 6.5) shouldBe 4.0 +- eps
-    absdif(10.5, 6.9) shouldBe 3.6 +- eps
-    absdif(10.5, -6.0) shouldBe 16.5 +- eps
-    absdif(10.5, -6.1) shouldBe 16.6 +- eps
-    absdif(10.5, -6.5) shouldBe 17.0 +- eps
-    absdif(10.5, -6.9) shouldBe 17.4 +- eps
-    absdif(10.9, 0.0) shouldBe 10.9 +- eps
-    absdif(10.9, 6.0) shouldBe 4.9 +- eps
-    absdif(10.9, 6.1) shouldBe 4.8 +- eps
-    absdif(10.9, 6.5) shouldBe 4.4 +- eps
-    absdif(10.9, 6.9) shouldBe 4.0 +- eps
-    absdif(10.9, -6.0) shouldBe 16.9 +- eps
-    absdif(10.9, -6.1) shouldBe 17.0 +- eps
-    absdif(10.9, -6.5) shouldBe 17.4 +- eps
-    absdif(10.9, -6.9) shouldBe 17.8 +- eps
-    absdif(-10.0, 0.0) shouldBe 10.0 +- eps
-    absdif(-10.0, 6.0) shouldBe 16.0 +- eps
-    absdif(-10.0, 6.1) shouldBe 16.1 +- eps
-    absdif(-10.0, 6.5) shouldBe 16.5 +- eps
-    absdif(-10.0, 6.9) shouldBe 16.9 +- eps
-    absdif(-10.0, -6.0) shouldBe 4.0 +- eps
-    absdif(-10.0, -6.1) shouldBe 3.9 +- eps
-    absdif(-10.0, -6.5) shouldBe 3.5 +- eps
-    absdif(-10.0, -6.9) shouldBe 3.1 +- eps
-    absdif(-10.1, 0.0) shouldBe 10.1 +- eps
-    absdif(-10.1, 6.0) shouldBe 16.1 +- eps
-    absdif(-10.1, 6.1) shouldBe 16.2 +- eps
-    absdif(-10.1, 6.5) shouldBe 16.6 +- eps
-    absdif(-10.1, 6.9) shouldBe 17.0 +- eps
-    absdif(-10.1, -6.0) shouldBe 4.1 +- eps
-    absdif(-10.1, -6.1) shouldBe 4.0 +- eps
-    absdif(-10.1, -6.5) shouldBe 3.6 +- eps
-    absdif(-10.1, -6.9) shouldBe 3.2 +- eps
-    absdif(-10.5, 0.0) shouldBe 10.5 +- eps
-    absdif(-10.5, 6.0) shouldBe 16.5 +- eps
-    absdif(-10.5, 6.1) shouldBe 16.6 +- eps
-    absdif(-10.5, 6.5) shouldBe 17.0 +- eps
-    absdif(-10.5, 6.9) shouldBe 17.4 +- eps
-    absdif(-10.5, -6.0) shouldBe 4.5 +- eps
-    absdif(-10.5, -6.1) shouldBe 4.4 +- eps
-    absdif(-10.5, -6.5) shouldBe 4.0 +- eps
-    absdif(-10.5, -6.9) shouldBe 3.6 +- eps
-    absdif(-10.9, 0.0) shouldBe 10.9 +- eps
-    absdif(-10.9, 6.0) shouldBe 16.9 +- eps
-    absdif(-10.9, 6.1) shouldBe 17.0 +- eps
-    absdif(-10.9, 6.5) shouldBe 17.4 +- eps
-    absdif(-10.9, 6.9) shouldBe 17.8 +- eps
-    absdif(-10.9, -6.0) shouldBe 4.9 +- eps
-    absdif(-10.9, -6.1) shouldBe 4.8 +- eps
-    absdif(-10.9, -6.5) shouldBe 4.4 +- eps
-    absdif(-10.9, -6.9) shouldBe 4.0 +- eps
+    absDif(0.0, 0.0) shouldBe 0.0 +- eps
+    absDif(0.0, 6.0) shouldBe 6.0 +- eps
+    absDif(0.0, 6.1) shouldBe 6.1 +- eps
+    absDif(0.0, 6.5) shouldBe 6.5 +- eps
+    absDif(0.0, 6.9) shouldBe 6.9 +- eps
+    absDif(0.0, -6.0) shouldBe 6.0 +- eps
+    absDif(0.0, -6.1) shouldBe 6.1 +- eps
+    absDif(0.0, -6.5) shouldBe 6.5 +- eps
+    absDif(0.0, -6.9) shouldBe 6.9 +- eps
+    absDif(10.0, 0.0) shouldBe 10.0 +- eps
+    absDif(10.0, 6.0) shouldBe 4.0 +- eps
+    absDif(10.0, 6.1) shouldBe 3.9 +- eps
+    absDif(10.0, 6.5) shouldBe 3.5 +- eps
+    absDif(10.0, 6.9) shouldBe 3.1 +- eps
+    absDif(10.0, -6.0) shouldBe 16.0 +- eps
+    absDif(10.0, -6.1) shouldBe 16.1 +- eps
+    absDif(10.0, -6.5) shouldBe 16.5 +- eps
+    absDif(10.0, -6.9) shouldBe 16.9 +- eps
+    absDif(10.1, 0.0) shouldBe 10.1 +- eps
+    absDif(10.1, 6.0) shouldBe 4.1 +- eps
+    absDif(10.1, 6.1) shouldBe 4.0 +- eps
+    absDif(10.1, 6.5) shouldBe 3.6 +- eps
+    absDif(10.1, 6.9) shouldBe 3.2 +- eps
+    absDif(10.1, -6.0) shouldBe 16.1 +- eps
+    absDif(10.1, -6.1) shouldBe 16.2 +- eps
+    absDif(10.1, -6.5) shouldBe 16.6 +- eps
+    absDif(10.1, -6.9) shouldBe 17.0 +- eps
+    absDif(10.5, 0.0) shouldBe 10.5 +- eps
+    absDif(10.5, 6.0) shouldBe 4.5 +- eps
+    absDif(10.5, 6.1) shouldBe 4.4 +- eps
+    absDif(10.5, 6.5) shouldBe 4.0 +- eps
+    absDif(10.5, 6.9) shouldBe 3.6 +- eps
+    absDif(10.5, -6.0) shouldBe 16.5 +- eps
+    absDif(10.5, -6.1) shouldBe 16.6 +- eps
+    absDif(10.5, -6.5) shouldBe 17.0 +- eps
+    absDif(10.5, -6.9) shouldBe 17.4 +- eps
+    absDif(10.9, 0.0) shouldBe 10.9 +- eps
+    absDif(10.9, 6.0) shouldBe 4.9 +- eps
+    absDif(10.9, 6.1) shouldBe 4.8 +- eps
+    absDif(10.9, 6.5) shouldBe 4.4 +- eps
+    absDif(10.9, 6.9) shouldBe 4.0 +- eps
+    absDif(10.9, -6.0) shouldBe 16.9 +- eps
+    absDif(10.9, -6.1) shouldBe 17.0 +- eps
+    absDif(10.9, -6.5) shouldBe 17.4 +- eps
+    absDif(10.9, -6.9) shouldBe 17.8 +- eps
+    absDif(-10.0, 0.0) shouldBe 10.0 +- eps
+    absDif(-10.0, 6.0) shouldBe 16.0 +- eps
+    absDif(-10.0, 6.1) shouldBe 16.1 +- eps
+    absDif(-10.0, 6.5) shouldBe 16.5 +- eps
+    absDif(-10.0, 6.9) shouldBe 16.9 +- eps
+    absDif(-10.0, -6.0) shouldBe 4.0 +- eps
+    absDif(-10.0, -6.1) shouldBe 3.9 +- eps
+    absDif(-10.0, -6.5) shouldBe 3.5 +- eps
+    absDif(-10.0, -6.9) shouldBe 3.1 +- eps
+    absDif(-10.1, 0.0) shouldBe 10.1 +- eps
+    absDif(-10.1, 6.0) shouldBe 16.1 +- eps
+    absDif(-10.1, 6.1) shouldBe 16.2 +- eps
+    absDif(-10.1, 6.5) shouldBe 16.6 +- eps
+    absDif(-10.1, 6.9) shouldBe 17.0 +- eps
+    absDif(-10.1, -6.0) shouldBe 4.1 +- eps
+    absDif(-10.1, -6.1) shouldBe 4.0 +- eps
+    absDif(-10.1, -6.5) shouldBe 3.6 +- eps
+    absDif(-10.1, -6.9) shouldBe 3.2 +- eps
+    absDif(-10.5, 0.0) shouldBe 10.5 +- eps
+    absDif(-10.5, 6.0) shouldBe 16.5 +- eps
+    absDif(-10.5, 6.1) shouldBe 16.6 +- eps
+    absDif(-10.5, 6.5) shouldBe 17.0 +- eps
+    absDif(-10.5, 6.9) shouldBe 17.4 +- eps
+    absDif(-10.5, -6.0) shouldBe 4.5 +- eps
+    absDif(-10.5, -6.1) shouldBe 4.4 +- eps
+    absDif(-10.5, -6.5) shouldBe 4.0 +- eps
+    absDif(-10.5, -6.9) shouldBe 3.6 +- eps
+    absDif(-10.9, 0.0) shouldBe 10.9 +- eps
+    absDif(-10.9, 6.0) shouldBe 16.9 +- eps
+    absDif(-10.9, 6.1) shouldBe 17.0 +- eps
+    absDif(-10.9, 6.5) shouldBe 17.4 +- eps
+    absDif(-10.9, 6.9) shouldBe 17.8 +- eps
+    absDif(-10.9, -6.0) shouldBe 4.9 +- eps
+    absDif(-10.9, -6.1) shouldBe 4.8 +- eps
+    absDif(-10.9, -6.5) shouldBe 4.4 +- eps
+    absDif(-10.9, -6.9) shouldBe 4.0 +- eps
   }
 
   "Double.clip2" should work in {
@@ -2244,170 +2244,170 @@ class DoubleSpec extends FlatSpec with Matchers {
   }
 
   "Double.amclip" should work in {
-    amclip(0.0, 0.0) shouldBe 0.0 +- eps
-    amclip(0.0, 6.0) shouldBe 0.0 +- eps
-    amclip(0.0, 6.1) shouldBe 0.0 +- eps
-    amclip(0.0, 6.5) shouldBe 0.0 +- eps
-    amclip(0.0, 6.9) shouldBe 0.0 +- eps
-    amclip(0.0, -6.0) shouldBe 0.0 +- eps
-    amclip(0.0, -6.1) shouldBe 0.0 +- eps
-    amclip(0.0, -6.5) shouldBe 0.0 +- eps
-    amclip(0.0, -6.9) shouldBe 0.0 +- eps
-    amclip(10.0, 0.0) shouldBe 0.0 +- eps
-    amclip(10.0, 6.0) shouldBe 60.0 +- eps
-    amclip(10.0, 6.1) shouldBe 61.0 +- eps
-    amclip(10.0, 6.5) shouldBe 65.0 +- eps
-    amclip(10.0, 6.9) shouldBe 69.0 +- eps
-    amclip(10.0, -6.0) shouldBe 0.0 +- eps
-    amclip(10.0, -6.1) shouldBe 0.0 +- eps
-    amclip(10.0, -6.5) shouldBe 0.0 +- eps
-    amclip(10.0, -6.9) shouldBe 0.0 +- eps
-    amclip(10.1, 0.0) shouldBe 0.0 +- eps
-    amclip(10.1, 6.0) shouldBe 60.6 +- eps
-    amclip(10.1, 6.1) shouldBe 61.61 +- eps
-    amclip(10.1, 6.5) shouldBe 65.65 +- eps
-    amclip(10.1, 6.9) shouldBe 69.69 +- eps
-    amclip(10.1, -6.0) shouldBe 0.0 +- eps
-    amclip(10.1, -6.1) shouldBe 0.0 +- eps
-    amclip(10.1, -6.5) shouldBe 0.0 +- eps
-    amclip(10.1, -6.9) shouldBe 0.0 +- eps
-    amclip(10.5, 0.0) shouldBe 0.0 +- eps
-    amclip(10.5, 6.0) shouldBe 63.0 +- eps
-    amclip(10.5, 6.1) shouldBe 64.05 +- eps
-    amclip(10.5, 6.5) shouldBe 68.25 +- eps
-    amclip(10.5, 6.9) shouldBe 72.45 +- eps
-    amclip(10.5, -6.0) shouldBe 0.0 +- eps
-    amclip(10.5, -6.1) shouldBe 0.0 +- eps
-    amclip(10.5, -6.5) shouldBe 0.0 +- eps
-    amclip(10.5, -6.9) shouldBe 0.0 +- eps
-    amclip(10.9, 0.0) shouldBe 0.0 +- eps
-    amclip(10.9, 6.0) shouldBe 65.4 +- eps
-    amclip(10.9, 6.1) shouldBe 66.49 +- eps
-    amclip(10.9, 6.5) shouldBe 70.85 +- eps
-    amclip(10.9, 6.9) shouldBe 75.21 +- eps
-    amclip(10.9, -6.0) shouldBe 0.0 +- eps
-    amclip(10.9, -6.1) shouldBe 0.0 +- eps
-    amclip(10.9, -6.5) shouldBe 0.0 +- eps
-    amclip(10.9, -6.9) shouldBe 0.0 +- eps
-    amclip(-10.0, 0.0) shouldBe -0.0 +- eps
-    amclip(-10.0, 6.0) shouldBe -60.0 +- eps
-    amclip(-10.0, 6.1) shouldBe -61.0 +- eps
-    amclip(-10.0, 6.5) shouldBe -65.0 +- eps
-    amclip(-10.0, 6.9) shouldBe -69.0 +- eps
-    amclip(-10.0, -6.0) shouldBe -0.0 +- eps
-    amclip(-10.0, -6.1) shouldBe -0.0 +- eps
-    amclip(-10.0, -6.5) shouldBe -0.0 +- eps
-    amclip(-10.0, -6.9) shouldBe -0.0 +- eps
-    amclip(-10.1, 0.0) shouldBe -0.0 +- eps
-    amclip(-10.1, 6.0) shouldBe -60.6 +- eps
-    amclip(-10.1, 6.1) shouldBe -61.61 +- eps
-    amclip(-10.1, 6.5) shouldBe -65.65 +- eps
-    amclip(-10.1, 6.9) shouldBe -69.69 +- eps
-    amclip(-10.1, -6.0) shouldBe -0.0 +- eps
-    amclip(-10.1, -6.1) shouldBe -0.0 +- eps
-    amclip(-10.1, -6.5) shouldBe -0.0 +- eps
-    amclip(-10.1, -6.9) shouldBe -0.0 +- eps
-    amclip(-10.5, 0.0) shouldBe -0.0 +- eps
-    amclip(-10.5, 6.0) shouldBe -63.0 +- eps
-    amclip(-10.5, 6.1) shouldBe -64.05 +- eps
-    amclip(-10.5, 6.5) shouldBe -68.25 +- eps
-    amclip(-10.5, 6.9) shouldBe -72.45 +- eps
-    amclip(-10.5, -6.0) shouldBe -0.0 +- eps
-    amclip(-10.5, -6.1) shouldBe -0.0 +- eps
-    amclip(-10.5, -6.5) shouldBe -0.0 +- eps
-    amclip(-10.5, -6.9) shouldBe -0.0 +- eps
-    amclip(-10.9, 0.0) shouldBe -0.0 +- eps
-    amclip(-10.9, 6.0) shouldBe -65.4 +- eps
-    amclip(-10.9, 6.1) shouldBe -66.49 +- eps
-    amclip(-10.9, 6.5) shouldBe -70.85 +- eps
-    amclip(-10.9, 6.9) shouldBe -75.21 +- eps
-    amclip(-10.9, -6.0) shouldBe -0.0 +- eps
-    amclip(-10.9, -6.1) shouldBe -0.0 +- eps
-    amclip(-10.9, -6.5) shouldBe -0.0 +- eps
-    amclip(-10.9, -6.9) shouldBe -0.0 +- eps
+    amClip(0.0, 0.0) shouldBe 0.0 +- eps
+    amClip(0.0, 6.0) shouldBe 0.0 +- eps
+    amClip(0.0, 6.1) shouldBe 0.0 +- eps
+    amClip(0.0, 6.5) shouldBe 0.0 +- eps
+    amClip(0.0, 6.9) shouldBe 0.0 +- eps
+    amClip(0.0, -6.0) shouldBe 0.0 +- eps
+    amClip(0.0, -6.1) shouldBe 0.0 +- eps
+    amClip(0.0, -6.5) shouldBe 0.0 +- eps
+    amClip(0.0, -6.9) shouldBe 0.0 +- eps
+    amClip(10.0, 0.0) shouldBe 0.0 +- eps
+    amClip(10.0, 6.0) shouldBe 60.0 +- eps
+    amClip(10.0, 6.1) shouldBe 61.0 +- eps
+    amClip(10.0, 6.5) shouldBe 65.0 +- eps
+    amClip(10.0, 6.9) shouldBe 69.0 +- eps
+    amClip(10.0, -6.0) shouldBe 0.0 +- eps
+    amClip(10.0, -6.1) shouldBe 0.0 +- eps
+    amClip(10.0, -6.5) shouldBe 0.0 +- eps
+    amClip(10.0, -6.9) shouldBe 0.0 +- eps
+    amClip(10.1, 0.0) shouldBe 0.0 +- eps
+    amClip(10.1, 6.0) shouldBe 60.6 +- eps
+    amClip(10.1, 6.1) shouldBe 61.61 +- eps
+    amClip(10.1, 6.5) shouldBe 65.65 +- eps
+    amClip(10.1, 6.9) shouldBe 69.69 +- eps
+    amClip(10.1, -6.0) shouldBe 0.0 +- eps
+    amClip(10.1, -6.1) shouldBe 0.0 +- eps
+    amClip(10.1, -6.5) shouldBe 0.0 +- eps
+    amClip(10.1, -6.9) shouldBe 0.0 +- eps
+    amClip(10.5, 0.0) shouldBe 0.0 +- eps
+    amClip(10.5, 6.0) shouldBe 63.0 +- eps
+    amClip(10.5, 6.1) shouldBe 64.05 +- eps
+    amClip(10.5, 6.5) shouldBe 68.25 +- eps
+    amClip(10.5, 6.9) shouldBe 72.45 +- eps
+    amClip(10.5, -6.0) shouldBe 0.0 +- eps
+    amClip(10.5, -6.1) shouldBe 0.0 +- eps
+    amClip(10.5, -6.5) shouldBe 0.0 +- eps
+    amClip(10.5, -6.9) shouldBe 0.0 +- eps
+    amClip(10.9, 0.0) shouldBe 0.0 +- eps
+    amClip(10.9, 6.0) shouldBe 65.4 +- eps
+    amClip(10.9, 6.1) shouldBe 66.49 +- eps
+    amClip(10.9, 6.5) shouldBe 70.85 +- eps
+    amClip(10.9, 6.9) shouldBe 75.21 +- eps
+    amClip(10.9, -6.0) shouldBe 0.0 +- eps
+    amClip(10.9, -6.1) shouldBe 0.0 +- eps
+    amClip(10.9, -6.5) shouldBe 0.0 +- eps
+    amClip(10.9, -6.9) shouldBe 0.0 +- eps
+    amClip(-10.0, 0.0) shouldBe -0.0 +- eps
+    amClip(-10.0, 6.0) shouldBe -60.0 +- eps
+    amClip(-10.0, 6.1) shouldBe -61.0 +- eps
+    amClip(-10.0, 6.5) shouldBe -65.0 +- eps
+    amClip(-10.0, 6.9) shouldBe -69.0 +- eps
+    amClip(-10.0, -6.0) shouldBe -0.0 +- eps
+    amClip(-10.0, -6.1) shouldBe -0.0 +- eps
+    amClip(-10.0, -6.5) shouldBe -0.0 +- eps
+    amClip(-10.0, -6.9) shouldBe -0.0 +- eps
+    amClip(-10.1, 0.0) shouldBe -0.0 +- eps
+    amClip(-10.1, 6.0) shouldBe -60.6 +- eps
+    amClip(-10.1, 6.1) shouldBe -61.61 +- eps
+    amClip(-10.1, 6.5) shouldBe -65.65 +- eps
+    amClip(-10.1, 6.9) shouldBe -69.69 +- eps
+    amClip(-10.1, -6.0) shouldBe -0.0 +- eps
+    amClip(-10.1, -6.1) shouldBe -0.0 +- eps
+    amClip(-10.1, -6.5) shouldBe -0.0 +- eps
+    amClip(-10.1, -6.9) shouldBe -0.0 +- eps
+    amClip(-10.5, 0.0) shouldBe -0.0 +- eps
+    amClip(-10.5, 6.0) shouldBe -63.0 +- eps
+    amClip(-10.5, 6.1) shouldBe -64.05 +- eps
+    amClip(-10.5, 6.5) shouldBe -68.25 +- eps
+    amClip(-10.5, 6.9) shouldBe -72.45 +- eps
+    amClip(-10.5, -6.0) shouldBe -0.0 +- eps
+    amClip(-10.5, -6.1) shouldBe -0.0 +- eps
+    amClip(-10.5, -6.5) shouldBe -0.0 +- eps
+    amClip(-10.5, -6.9) shouldBe -0.0 +- eps
+    amClip(-10.9, 0.0) shouldBe -0.0 +- eps
+    amClip(-10.9, 6.0) shouldBe -65.4 +- eps
+    amClip(-10.9, 6.1) shouldBe -66.49 +- eps
+    amClip(-10.9, 6.5) shouldBe -70.85 +- eps
+    amClip(-10.9, 6.9) shouldBe -75.21 +- eps
+    amClip(-10.9, -6.0) shouldBe -0.0 +- eps
+    amClip(-10.9, -6.1) shouldBe -0.0 +- eps
+    amClip(-10.9, -6.5) shouldBe -0.0 +- eps
+    amClip(-10.9, -6.9) shouldBe -0.0 +- eps
   }
 
   "Double.scaleneg" should work in {
-    scaleneg(0.0, 0.0) shouldBe 0.0 +- eps
-    scaleneg(0.0, 6.0) shouldBe 0.0 +- eps
-    scaleneg(0.0, 6.1) shouldBe 0.0 +- eps
-    scaleneg(0.0, 6.5) shouldBe 0.0 +- eps
-    scaleneg(0.0, 6.9) shouldBe 0.0 +- eps
-    scaleneg(0.0, -6.0) shouldBe 0.0 +- eps
-    scaleneg(0.0, -6.1) shouldBe 0.0 +- eps
-    scaleneg(0.0, -6.5) shouldBe 0.0 +- eps
-    scaleneg(0.0, -6.9) shouldBe 0.0 +- eps
-    scaleneg(10.0, 0.0) shouldBe 10.0 +- eps
-    scaleneg(10.0, 6.0) shouldBe 10.0 +- eps
-    scaleneg(10.0, 6.1) shouldBe 10.0 +- eps
-    scaleneg(10.0, 6.5) shouldBe 10.0 +- eps
-    scaleneg(10.0, 6.9) shouldBe 10.0 +- eps
-    scaleneg(10.0, -6.0) shouldBe 10.0 +- eps
-    scaleneg(10.0, -6.1) shouldBe 10.0 +- eps
-    scaleneg(10.0, -6.5) shouldBe 10.0 +- eps
-    scaleneg(10.0, -6.9) shouldBe 10.0 +- eps
-    scaleneg(10.1, 0.0) shouldBe 10.1 +- eps
-    scaleneg(10.1, 6.0) shouldBe 10.1 +- eps
-    scaleneg(10.1, 6.1) shouldBe 10.1 +- eps
-    scaleneg(10.1, 6.5) shouldBe 10.1 +- eps
-    scaleneg(10.1, 6.9) shouldBe 10.1 +- eps
-    scaleneg(10.1, -6.0) shouldBe 10.1 +- eps
-    scaleneg(10.1, -6.1) shouldBe 10.1 +- eps
-    scaleneg(10.1, -6.5) shouldBe 10.1 +- eps
-    scaleneg(10.1, -6.9) shouldBe 10.1 +- eps
-    scaleneg(10.5, 0.0) shouldBe 10.5 +- eps
-    scaleneg(10.5, 6.0) shouldBe 10.5 +- eps
-    scaleneg(10.5, 6.1) shouldBe 10.5 +- eps
-    scaleneg(10.5, 6.5) shouldBe 10.5 +- eps
-    scaleneg(10.5, 6.9) shouldBe 10.5 +- eps
-    scaleneg(10.5, -6.0) shouldBe 10.5 +- eps
-    scaleneg(10.5, -6.1) shouldBe 10.5 +- eps
-    scaleneg(10.5, -6.5) shouldBe 10.5 +- eps
-    scaleneg(10.5, -6.9) shouldBe 10.5 +- eps
-    scaleneg(10.9, 0.0) shouldBe 10.9 +- eps
-    scaleneg(10.9, 6.0) shouldBe 10.9 +- eps
-    scaleneg(10.9, 6.1) shouldBe 10.9 +- eps
-    scaleneg(10.9, 6.5) shouldBe 10.9 +- eps
-    scaleneg(10.9, 6.9) shouldBe 10.9 +- eps
-    scaleneg(10.9, -6.0) shouldBe 10.9 +- eps
-    scaleneg(10.9, -6.1) shouldBe 10.9 +- eps
-    scaleneg(10.9, -6.5) shouldBe 10.9 +- eps
-    scaleneg(10.9, -6.9) shouldBe 10.9 +- eps
-    scaleneg(-10.0, 0.0) shouldBe 0.0 +- eps
-    scaleneg(-10.0, 6.0) shouldBe 60.0 +- eps
-    scaleneg(-10.0, 6.1) shouldBe 61.0 +- eps
-    scaleneg(-10.0, 6.5) shouldBe 65.0 +- eps
-    scaleneg(-10.0, 6.9) shouldBe 69.0 +- eps
-    scaleneg(-10.0, -6.0) shouldBe -60.0 +- eps
-    scaleneg(-10.0, -6.1) shouldBe -61.0 +- eps
-    scaleneg(-10.0, -6.5) shouldBe -65.0 +- eps
-    scaleneg(-10.0, -6.9) shouldBe -69.0 +- eps
-    scaleneg(-10.1, 0.0) shouldBe 0.0 +- eps
-    scaleneg(-10.1, 6.0) shouldBe 60.6 +- eps
-    scaleneg(-10.1, 6.1) shouldBe 61.61 +- eps
-    scaleneg(-10.1, 6.5) shouldBe 65.65 +- eps
-    scaleneg(-10.1, 6.9) shouldBe 69.69 +- eps
-    scaleneg(-10.1, -6.0) shouldBe -60.6 +- eps
-    scaleneg(-10.1, -6.1) shouldBe -61.61 +- eps
-    scaleneg(-10.1, -6.5) shouldBe -65.65 +- eps
-    scaleneg(-10.1, -6.9) shouldBe -69.69 +- eps
-    scaleneg(-10.5, 0.0) shouldBe 0.0 +- eps
-    scaleneg(-10.5, 6.0) shouldBe 63.0 +- eps
-    scaleneg(-10.5, 6.1) shouldBe 64.05 +- eps
-    scaleneg(-10.5, 6.5) shouldBe 68.25 +- eps
-    scaleneg(-10.5, 6.9) shouldBe 72.45 +- eps
-    scaleneg(-10.5, -6.0) shouldBe -63.0 +- eps
-    scaleneg(-10.5, -6.1) shouldBe -64.05 +- eps
-    scaleneg(-10.5, -6.5) shouldBe -68.25 +- eps
-    scaleneg(-10.5, -6.9) shouldBe -72.45 +- eps
-    scaleneg(-10.9, 0.0) shouldBe 0.0 +- eps
-    scaleneg(-10.9, 6.0) shouldBe 65.4 +- eps
-    scaleneg(-10.9, 6.1) shouldBe 66.49 +- eps
-    scaleneg(-10.9, 6.5) shouldBe 70.85 +- eps
-    scaleneg(-10.9, 6.9) shouldBe 75.21 +- eps
-    scaleneg(-10.9, -6.0) shouldBe -65.4 +- eps
-    scaleneg(-10.9, -6.1) shouldBe -66.49 +- eps
-    scaleneg(-10.9, -6.5) shouldBe -70.85 +- eps
-    scaleneg(-10.9, -6.9) shouldBe -75.21 +- eps
+    scaleNeg(0.0, 0.0) shouldBe 0.0 +- eps
+    scaleNeg(0.0, 6.0) shouldBe 0.0 +- eps
+    scaleNeg(0.0, 6.1) shouldBe 0.0 +- eps
+    scaleNeg(0.0, 6.5) shouldBe 0.0 +- eps
+    scaleNeg(0.0, 6.9) shouldBe 0.0 +- eps
+    scaleNeg(0.0, -6.0) shouldBe 0.0 +- eps
+    scaleNeg(0.0, -6.1) shouldBe 0.0 +- eps
+    scaleNeg(0.0, -6.5) shouldBe 0.0 +- eps
+    scaleNeg(0.0, -6.9) shouldBe 0.0 +- eps
+    scaleNeg(10.0, 0.0) shouldBe 10.0 +- eps
+    scaleNeg(10.0, 6.0) shouldBe 10.0 +- eps
+    scaleNeg(10.0, 6.1) shouldBe 10.0 +- eps
+    scaleNeg(10.0, 6.5) shouldBe 10.0 +- eps
+    scaleNeg(10.0, 6.9) shouldBe 10.0 +- eps
+    scaleNeg(10.0, -6.0) shouldBe 10.0 +- eps
+    scaleNeg(10.0, -6.1) shouldBe 10.0 +- eps
+    scaleNeg(10.0, -6.5) shouldBe 10.0 +- eps
+    scaleNeg(10.0, -6.9) shouldBe 10.0 +- eps
+    scaleNeg(10.1, 0.0) shouldBe 10.1 +- eps
+    scaleNeg(10.1, 6.0) shouldBe 10.1 +- eps
+    scaleNeg(10.1, 6.1) shouldBe 10.1 +- eps
+    scaleNeg(10.1, 6.5) shouldBe 10.1 +- eps
+    scaleNeg(10.1, 6.9) shouldBe 10.1 +- eps
+    scaleNeg(10.1, -6.0) shouldBe 10.1 +- eps
+    scaleNeg(10.1, -6.1) shouldBe 10.1 +- eps
+    scaleNeg(10.1, -6.5) shouldBe 10.1 +- eps
+    scaleNeg(10.1, -6.9) shouldBe 10.1 +- eps
+    scaleNeg(10.5, 0.0) shouldBe 10.5 +- eps
+    scaleNeg(10.5, 6.0) shouldBe 10.5 +- eps
+    scaleNeg(10.5, 6.1) shouldBe 10.5 +- eps
+    scaleNeg(10.5, 6.5) shouldBe 10.5 +- eps
+    scaleNeg(10.5, 6.9) shouldBe 10.5 +- eps
+    scaleNeg(10.5, -6.0) shouldBe 10.5 +- eps
+    scaleNeg(10.5, -6.1) shouldBe 10.5 +- eps
+    scaleNeg(10.5, -6.5) shouldBe 10.5 +- eps
+    scaleNeg(10.5, -6.9) shouldBe 10.5 +- eps
+    scaleNeg(10.9, 0.0) shouldBe 10.9 +- eps
+    scaleNeg(10.9, 6.0) shouldBe 10.9 +- eps
+    scaleNeg(10.9, 6.1) shouldBe 10.9 +- eps
+    scaleNeg(10.9, 6.5) shouldBe 10.9 +- eps
+    scaleNeg(10.9, 6.9) shouldBe 10.9 +- eps
+    scaleNeg(10.9, -6.0) shouldBe 10.9 +- eps
+    scaleNeg(10.9, -6.1) shouldBe 10.9 +- eps
+    scaleNeg(10.9, -6.5) shouldBe 10.9 +- eps
+    scaleNeg(10.9, -6.9) shouldBe 10.9 +- eps
+    scaleNeg(-10.0, 0.0) shouldBe 0.0 +- eps
+    scaleNeg(-10.0, 6.0) shouldBe 60.0 +- eps
+    scaleNeg(-10.0, 6.1) shouldBe 61.0 +- eps
+    scaleNeg(-10.0, 6.5) shouldBe 65.0 +- eps
+    scaleNeg(-10.0, 6.9) shouldBe 69.0 +- eps
+    scaleNeg(-10.0, -6.0) shouldBe -60.0 +- eps
+    scaleNeg(-10.0, -6.1) shouldBe -61.0 +- eps
+    scaleNeg(-10.0, -6.5) shouldBe -65.0 +- eps
+    scaleNeg(-10.0, -6.9) shouldBe -69.0 +- eps
+    scaleNeg(-10.1, 0.0) shouldBe 0.0 +- eps
+    scaleNeg(-10.1, 6.0) shouldBe 60.6 +- eps
+    scaleNeg(-10.1, 6.1) shouldBe 61.61 +- eps
+    scaleNeg(-10.1, 6.5) shouldBe 65.65 +- eps
+    scaleNeg(-10.1, 6.9) shouldBe 69.69 +- eps
+    scaleNeg(-10.1, -6.0) shouldBe -60.6 +- eps
+    scaleNeg(-10.1, -6.1) shouldBe -61.61 +- eps
+    scaleNeg(-10.1, -6.5) shouldBe -65.65 +- eps
+    scaleNeg(-10.1, -6.9) shouldBe -69.69 +- eps
+    scaleNeg(-10.5, 0.0) shouldBe 0.0 +- eps
+    scaleNeg(-10.5, 6.0) shouldBe 63.0 +- eps
+    scaleNeg(-10.5, 6.1) shouldBe 64.05 +- eps
+    scaleNeg(-10.5, 6.5) shouldBe 68.25 +- eps
+    scaleNeg(-10.5, 6.9) shouldBe 72.45 +- eps
+    scaleNeg(-10.5, -6.0) shouldBe -63.0 +- eps
+    scaleNeg(-10.5, -6.1) shouldBe -64.05 +- eps
+    scaleNeg(-10.5, -6.5) shouldBe -68.25 +- eps
+    scaleNeg(-10.5, -6.9) shouldBe -72.45 +- eps
+    scaleNeg(-10.9, 0.0) shouldBe 0.0 +- eps
+    scaleNeg(-10.9, 6.0) shouldBe 65.4 +- eps
+    scaleNeg(-10.9, 6.1) shouldBe 66.49 +- eps
+    scaleNeg(-10.9, 6.5) shouldBe 70.85 +- eps
+    scaleNeg(-10.9, 6.9) shouldBe 75.21 +- eps
+    scaleNeg(-10.9, -6.0) shouldBe -65.4 +- eps
+    scaleNeg(-10.9, -6.1) shouldBe -66.49 +- eps
+    scaleNeg(-10.9, -6.5) shouldBe -70.85 +- eps
+    scaleNeg(-10.9, -6.9) shouldBe -75.21 +- eps
   }
 }
