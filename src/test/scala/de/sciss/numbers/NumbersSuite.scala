@@ -106,7 +106,8 @@ class NumbersSuite extends FunSpec {
 
       // XXX TODO: n-ary ops (linlin, linexp, ...)
 
-      val fRange  = -12f to 18f by 1.5f
+      // val fRange  = -12f to 18f by 1.5f  // no longer possible in Scala 2.13
+      val fRange  = Vector.tabulate(21)(i => i * 1.5f - 12f)
       val fClip   = fRange map (_ clip (-3, 7))
       val fFold   = fRange map (_ fold (-3, 7))
       val fWrap   = fRange map (_ wrap (-3, 7))
@@ -124,7 +125,8 @@ class NumbersSuite extends FunSpec {
 
   describe("Rich double operators") {
     it("should do what the pope said") {
-      val dRange  = -12.0 to 18.0 by 1.5
+      // val dRange  = -12.0 to 18.0 by 1.5  // no longer possible in Scala 2.13
+      val dRange  = Vector.tabulate(21)(i => i * 1.5 - 12.0)
       val dClip   = dRange map (_ clip (-3, 7))
       val dFold   = dRange map (_ fold (-3, 7))
       val dWrap   = dRange map (_ wrap (-3, 7))
