@@ -8,7 +8,7 @@
 Numbers is a library for the Scala programming language which provides various useful numeric functions and type 
 enrichment operators. Many of the unary and binary operators are adapted from the SuperCollider language, and 
 Numbers is included in the [ScalaCollider](http://github.com/Sciss/ScalaCollider/) project. This library is 
-(C)opyright 2013&ndash;2018 by Hanns Holger Rutz. All rights reserved. It is released under the
+(C)opyright 2013&ndash;2019 by Hanns Holger Rutz. All rights reserved. It is released under the
 [GNU Lesser General Public License](http://github.com/Sciss/Numbers/blob/master/LICENSE) and comes with 
 absolutely no warranties. To contact the author, send an email to `contact at sciss.de`
 
@@ -20,7 +20,7 @@ The current version `v` is `"0.2.0"`.
 
 ## building
 
-The project builds with [sbt](http://www.scala-sbt.org/) against Scala 2.12, 2.11.
+The project builds with [sbt](http://www.scala-sbt.org/) against Scala 2.13, 2.12, 2.11.
 
 To compile `sbt compile`. To test, `sbt test`. For the API docs, `sbt doc`.
 
