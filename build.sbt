@@ -1,48 +1,47 @@
-lazy val mimaVersion = "0.2.0"
+lazy val projectVersion = "0.2.1-SNAPSHOT"
+lazy val mimaVersion    = "0.2.0"
 
-name               := "Numbers"
-version            := "0.2.0"
-organization       := "de.sciss"
-scalaVersion       := "2.12.8"
-crossScalaVersions := Seq("2.12.8", "2.11.12", "2.13.0")
-description        := "A collection of numeric functions and type enrichments"
-homepage           := Some(url(s"https://github.com/Sciss/${name.value}"))
-licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt"))
-
-mimaPreviousArtifacts := Set("de.sciss" %% "numbers" % mimaVersion)
-
-initialCommands in console := """import de.sciss.numbers.Implicits._"""
-
-libraryDependencies += {
-  val v = "3.0.8-RC5"
-  if (scalaVersion.value == "2.13.0") {
-    "org.scalatest" % "scalatest_2.13.0-RC3" % v % Test
-  } else {
-    "org.scalatest" %% "scalatest" % v % Test
+lazy val deps = new {
+  val test = new {
+    val scalaTest = "3.2.0"
   }
 }
 
-scalacOptions ++= Seq("-Xlint", "-deprecation", "-unchecked", "-feature", "-encoding", "utf8", "-Xsource:2.13")
+lazy val commonSettings = Seq(
+  name               := "Numbers",
+  version            := projectVersion,
+  organization       := "de.sciss",
+  scalaVersion       := "2.13.3",
+  crossScalaVersions := Seq("0.24.0-RC1", "2.13.3", "2.12.12"),
+  description        := "A collection of numeric functions and type enrichments",
+  homepage           := Some(url(s"https://git.iem.at/sciss/${name.value}")),
+  licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt")),
+) ++ publishSettings
 
-// ---- publishing ----
-
-publishMavenStyle := true
-
-publishTo :=
-  Some(if (isSnapshot.value)
-    "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
-  else
-    "Sonatype Releases"  at "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+lazy val root = project.in(file("."))
+  .settings(commonSettings)
+  .settings(
+    mimaPreviousArtifacts := Set("de.sciss" %% "numbers" % mimaVersion),
+    initialCommands in console := """import de.sciss.numbers.Implicits._""",
+    libraryDependencies += "org.scalatest" %% "scalatest" % deps.test.scalaTest % Test,
+    scalacOptions ++= Seq("-Xlint", "-deprecation", "-unchecked", "-feature", "-encoding", "utf8", "-Xsource:2.13"),
   )
 
-publishArtifact in Test := false
-
-pomIncludeRepository := { _ => false }
-
-pomExtra := { val n = name.value
+lazy val publishSettings = Seq(
+  publishMavenStyle := true,
+  publishTo := {
+    Some(if (isSnapshot.value)
+      "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+    else
+      "Sonatype Releases"  at "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+    )
+  },
+  publishArtifact in Test := false,
+  pomIncludeRepository := { _ => false },
+  pomExtra := { val n = name.value
 <scm>
-  <url>git@github.com:Sciss/{n}.git</url>
-  <connection>scm:git:git@github.com:Sciss/{n}.git</connection>
+  <url>git@git.iem.at:sciss/{n}.git</url>
+  <connection>scm:git:git@git.iem.at:sciss/{n}.git</connection>
 </scm>
 <developers>
   <developer>
@@ -51,4 +50,6 @@ pomExtra := { val n = name.value
     <url>http://www.sciss.de</url>
   </developer>
 </developers>
-}
+  }
+)
+

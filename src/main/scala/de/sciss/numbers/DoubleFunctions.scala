@@ -2,7 +2,7 @@
  *  DoubleFunctions.scala
  *  (Numbers)
  *
- *  Copyright (c) 2013-2018 Hanns Holger Rutz. All rights reserved.
+ *  Copyright (c) 2013-2020 Hanns Holger Rutz. All rights reserved.
  *
  *	This software is published under the GNU Lesser General Public License v2.1+
  *
@@ -169,7 +169,7 @@ object DoubleFunctions {
     math.pow(outHigh / outLow, (in - inLow) / (inHigh - inLow)) * outLow
 
   @inline def expLin(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
- 		math.log(in / inLow) / math.log(inHigh / inLow) * (outHigh - outLow) + outLow
+    math.log(in / inLow) / math.log(inHigh / inLow) * (outHigh - outLow) + outLow
 
   @inline def expExp(in: Double, inLow: Double, inHigh: Double, outLow: Double, outHigh: Double): Double =
     math.pow(outHigh / outLow, math.log(in / inLow) / math.log(inHigh / inLow)) * outLow

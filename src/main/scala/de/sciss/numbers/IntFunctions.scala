@@ -2,7 +2,7 @@
  *  IntFunctions.scala
  *  (Numbers)
  *
- *  Copyright (c) 2013-2018 Hanns Holger Rutz. All rights reserved.
+ *  Copyright (c) 2013-2020 Hanns Holger Rutz. All rights reserved.
  *
  *	This software is published under the GNU Lesser General Public License v2.1+
  *
@@ -25,10 +25,10 @@ object IntFunctions {
 
   @inline def nextPowerOfTwo(a: Int): Int = {
     if (a > 0x40000000) throw new ArithmeticException(s"Integer overflow: nextPowerOfTwo($a)")
- 		var j = 1
+    var j = 1
     while (j < a) j <<= 1   // in theory would be faster to do zig-zag search
- 		j
- 	}
+    j
+  }
 
   @inline def isEven(i: Int): Boolean = i % 2 == 0
   @inline def isOdd (i: Int): Boolean = i % 2 == 1
@@ -83,10 +83,10 @@ object IntFunctions {
 
   @inline def fold(in: Int, low: Int, high: Int): Int = {
     val b   = high - low
-   	val b2  = b + b
-   	val c0  = mod(in - low, b2)
-   	val c   = if (c0 > b) b2 - c0 else c0
-   	c + low
+    val b2  = b + b
+    val c0  = mod(in - low, b2)
+    val c   = if (c0 > b) b2 - c0 else c0
+    c + low
   }
 
   // handles negative numbers differently than a % b

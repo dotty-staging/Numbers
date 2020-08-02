@@ -1,726 +1,732 @@
 package de.sciss.numbers
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.flatspec.AnyFlatSpec
 
-class IntSpec extends FlatSpec with Matchers {
-  def work: String = "produce the expected output"
+import scala.language.implicitConversions
 
+class IntSpec extends AnyFlatSpec {
   import IntFunctions.{signum => sign, _}
   import IntFunctions2.{roundTo => round, roundUpTo => roundUp, _}
 
-  "Int.abs" should work in {
-    abs(0) shouldBe 0
-    abs(1) shouldBe 1
-    abs(-1) shouldBe 1
-    abs(10) shouldBe 10
-    abs(-10) shouldBe 10
+  def is(res: Int, exp: Int): Unit =
+    assert (res == exp)
+
+  def isL(res: Long, exp: Long): Unit =
+    assert (res == exp)
+
+  "Int.abs" should "work" in {
+    is(abs(0), 0)
+    is(abs(1), 1)
+    is(abs(-1), 1)
+    is(abs(10), 10)
+    is(abs(-10), 10)
   }
 
-  "Int.sign" should work in {
-    sign(0) shouldBe 0
-    sign(1) shouldBe 1
-    sign(-1) shouldBe -1
-    sign(10) shouldBe 1
-    sign(-10) shouldBe -1
+  "Int.sign" should "work" in {
+    is(sign(0), 0)
+    is(sign(1), 1)
+    is(sign(-1), -1)
+    is(sign(10), 1)
+    is(sign(-10), -1)
   }
 
-  "Int.squared" should work in {
-    squared(0) shouldBe 0
-    squared(1) shouldBe 1
-    squared(-1) shouldBe 1
-    squared(10) shouldBe 100
-    squared(-10) shouldBe 100
+  "Int.squared" should "work" in {
+    isL(squared(0), 0)
+    isL(squared(1), 1)
+    isL(squared(-1), 1)
+    isL(squared(10), 100)
+    isL(squared(-10), 100)
   }
 
-  "Int.cubed" should work in {
-    cubed(0) shouldBe 0
-    cubed(1) shouldBe 1
-    cubed(-1) shouldBe -1
-    cubed(10) shouldBe 1000
-    cubed(-10) shouldBe -1000
+  "Int.cubed" should "work" in {
+    isL(cubed(0), 0)
+    isL(cubed(1), 1)
+    isL(cubed(-1), -1)
+    isL(cubed(10), 1000)
+    isL(cubed(-10), -1000)
   }
 
-  "Int.min" should work in {
-    min(0, 0) shouldBe 0
-    min(0, 1) shouldBe 0
-    min(0, -1) shouldBe -1
-    min(0, 6) shouldBe 0
-    min(0, -6) shouldBe -6
-    min(0, 11) shouldBe 0
-    min(0, -11) shouldBe -11
-    min(1, 0) shouldBe 0
-    min(1, 1) shouldBe 1
-    min(1, -1) shouldBe -1
-    min(1, 6) shouldBe 1
-    min(1, -6) shouldBe -6
-    min(1, 11) shouldBe 1
-    min(1, -11) shouldBe -11
-    min(-1, 0) shouldBe -1
-    min(-1, 1) shouldBe -1
-    min(-1, -1) shouldBe -1
-    min(-1, 6) shouldBe -1
-    min(-1, -6) shouldBe -6
-    min(-1, 11) shouldBe -1
-    min(-1, -11) shouldBe -11
-    min(10, 0) shouldBe 0
-    min(10, 1) shouldBe 1
-    min(10, -1) shouldBe -1
-    min(10, 6) shouldBe 6
-    min(10, -6) shouldBe -6
-    min(10, 11) shouldBe 10
-    min(10, -11) shouldBe -11
-    min(-10, 0) shouldBe -10
-    min(-10, 1) shouldBe -10
-    min(-10, -1) shouldBe -10
-    min(-10, 6) shouldBe -10
-    min(-10, -6) shouldBe -10
-    min(-10, 11) shouldBe -10
-    min(-10, -11) shouldBe -11
+  "Int.min" should "work" in {
+    is(min(0, 0), 0)
+    is(min(0, 1), 0)
+    is(min(0, -1), -1)
+    is(min(0, 6), 0)
+    is(min(0, -6), -6)
+    is(min(0, 11), 0)
+    is(min(0, -11), -11)
+    is(min(1, 0), 0)
+    is(min(1, 1), 1)
+    is(min(1, -1), -1)
+    is(min(1, 6), 1)
+    is(min(1, -6), -6)
+    is(min(1, 11), 1)
+    is(min(1, -11), -11)
+    is(min(-1, 0), -1)
+    is(min(-1, 1), -1)
+    is(min(-1, -1), -1)
+    is(min(-1, 6), -1)
+    is(min(-1, -6), -6)
+    is(min(-1, 11), -1)
+    is(min(-1, -11), -11)
+    is(min(10, 0), 0)
+    is(min(10, 1), 1)
+    is(min(10, -1), -1)
+    is(min(10, 6), 6)
+    is(min(10, -6), -6)
+    is(min(10, 11), 10)
+    is(min(10, -11), -11)
+    is(min(-10, 0), -10)
+    is(min(-10, 1), -10)
+    is(min(-10, -1), -10)
+    is(min(-10, 6), -10)
+    is(min(-10, -6), -10)
+    is(min(-10, 11), -10)
+    is(min(-10, -11), -11)
   }
 
-  "Int.max" should work in {
-    max(0, 0) shouldBe 0
-    max(0, 1) shouldBe 1
-    max(0, -1) shouldBe 0
-    max(0, 6) shouldBe 6
-    max(0, -6) shouldBe 0
-    max(0, 11) shouldBe 11
-    max(0, -11) shouldBe 0
-    max(1, 0) shouldBe 1
-    max(1, 1) shouldBe 1
-    max(1, -1) shouldBe 1
-    max(1, 6) shouldBe 6
-    max(1, -6) shouldBe 1
-    max(1, 11) shouldBe 11
-    max(1, -11) shouldBe 1
-    max(-1, 0) shouldBe 0
-    max(-1, 1) shouldBe 1
-    max(-1, -1) shouldBe -1
-    max(-1, 6) shouldBe 6
-    max(-1, -6) shouldBe -1
-    max(-1, 11) shouldBe 11
-    max(-1, -11) shouldBe -1
-    max(10, 0) shouldBe 10
-    max(10, 1) shouldBe 10
-    max(10, -1) shouldBe 10
-    max(10, 6) shouldBe 10
-    max(10, -6) shouldBe 10
-    max(10, 11) shouldBe 11
-    max(10, -11) shouldBe 10
-    max(-10, 0) shouldBe 0
-    max(-10, 1) shouldBe 1
-    max(-10, -1) shouldBe -1
-    max(-10, 6) shouldBe 6
-    max(-10, -6) shouldBe -6
-    max(-10, 11) shouldBe 11
-    max(-10, -11) shouldBe -10
+  "Int.max" should "work" in {
+    is(max(0, 0), 0)
+    is(max(0, 1), 1)
+    is(max(0, -1), 0)
+    is(max(0, 6), 6)
+    is(max(0, -6), 0)
+    is(max(0, 11), 11)
+    is(max(0, -11), 0)
+    is(max(1, 0), 1)
+    is(max(1, 1), 1)
+    is(max(1, -1), 1)
+    is(max(1, 6), 6)
+    is(max(1, -6), 1)
+    is(max(1, 11), 11)
+    is(max(1, -11), 1)
+    is(max(-1, 0), 0)
+    is(max(-1, 1), 1)
+    is(max(-1, -1), -1)
+    is(max(-1, 6), 6)
+    is(max(-1, -6), -1)
+    is(max(-1, 11), 11)
+    is(max(-1, -11), -1)
+    is(max(10, 0), 10)
+    is(max(10, 1), 10)
+    is(max(10, -1), 10)
+    is(max(10, 6), 10)
+    is(max(10, -6), 10)
+    is(max(10, 11), 11)
+    is(max(10, -11), 10)
+    is(max(-10, 0), 0)
+    is(max(-10, 1), 1)
+    is(max(-10, -1), -1)
+    is(max(-10, 6), 6)
+    is(max(-10, -6), -6)
+    is(max(-10, 11), 11)
+    is(max(-10, -11), -10)
   }
 
-  "Int.div" should work in {
-    div(0, 0) shouldBe 0
-    div(0, 1) shouldBe 0
-    div(0, -1) shouldBe 0
-    div(0, 6) shouldBe 0
-    div(0, -6) shouldBe 0
-    div(0, 11) shouldBe 0
-    div(0, -11) shouldBe 0
-    div(1, 0) shouldBe 1
-    div(1, 1) shouldBe 1
-    div(1, -1) shouldBe -1
-    div(1, 6) shouldBe 0
-    div(1, -6) shouldBe 0
-    div(1, 11) shouldBe 0
-    div(1, -11) shouldBe 0
-    div(-1, 0) shouldBe -1
-    div(-1, 1) shouldBe -1
-    div(-1, -1) shouldBe -1
-    div(-1, 6) shouldBe -1
-    div(-1, -6) shouldBe -1
-    div(-1, 11) shouldBe -1
-    div(-1, -11) shouldBe -1
-    div(10, 0) shouldBe 10
-    div(10, 1) shouldBe 10
-    div(10, -1) shouldBe -10
-    div(10, 6) shouldBe 1
-    div(10, -6) shouldBe -1
-    div(10, 11) shouldBe 0
-    div(10, -11) shouldBe 0
-    div(-10, 0) shouldBe -10
-    div(-10, 1) shouldBe -10
-    div(-10, -1) shouldBe 8
-    div(-10, 6) shouldBe -2
-    div(-10, -6) shouldBe 0
-    div(-10, 11) shouldBe -1
-    div(-10, -11) shouldBe -1
+  "Int.div" should "work" in {
+    is(div(0, 0), 0)
+    is(div(0, 1), 0)
+    is(div(0, -1), 0)
+    is(div(0, 6), 0)
+    is(div(0, -6), 0)
+    is(div(0, 11), 0)
+    is(div(0, -11), 0)
+    is(div(1, 0), 1)
+    is(div(1, 1), 1)
+    is(div(1, -1), -1)
+    is(div(1, 6), 0)
+    is(div(1, -6), 0)
+    is(div(1, 11), 0)
+    is(div(1, -11), 0)
+    is(div(-1, 0), -1)
+    is(div(-1, 1), -1)
+    is(div(-1, -1), -1)
+    is(div(-1, 6), -1)
+    is(div(-1, -6), -1)
+    is(div(-1, 11), -1)
+    is(div(-1, -11), -1)
+    is(div(10, 0), 10)
+    is(div(10, 1), 10)
+    is(div(10, -1), -10)
+    is(div(10, 6), 1)
+    is(div(10, -6), -1)
+    is(div(10, 11), 0)
+    is(div(10, -11), 0)
+    is(div(-10, 0), -10)
+    is(div(-10, 1), -10)
+    is(div(-10, -1), 8)
+    is(div(-10, 6), -2)
+    is(div(-10, -6), 0)
+    is(div(-10, 11), -1)
+    is(div(-10, -11), -1)
   }
 
-  "Int.gcd" should work in {
-    gcd(0, 0) shouldBe 0
-    gcd(0, 1) shouldBe 1
-    gcd(0, -1) shouldBe -1
-    gcd(0, 6) shouldBe 6
-    gcd(0, -6) shouldBe -6
-    gcd(0, 11) shouldBe 11
-    gcd(0, -11) shouldBe -11
-    gcd(1, 0) shouldBe 1
-    gcd(1, 1) shouldBe 1
-    gcd(1, -1) shouldBe 1
-    gcd(1, 6) shouldBe 1
-    gcd(1, -6) shouldBe 1
-    gcd(1, 11) shouldBe 1
-    gcd(1, -11) shouldBe 1
-    gcd(-1, 0) shouldBe -1
-    gcd(-1, 1) shouldBe 1
-    gcd(-1, -1) shouldBe -1
-    gcd(-1, 6) shouldBe 1
-    gcd(-1, -6) shouldBe -1
-    gcd(-1, 11) shouldBe 1
-    gcd(-1, -11) shouldBe -1
-    gcd(10, 0) shouldBe 10
-    gcd(10, 1) shouldBe 1
-    gcd(10, -1) shouldBe 1
-    gcd(10, 6) shouldBe 2
-    gcd(10, -6) shouldBe 2
-    gcd(10, 11) shouldBe 1
-    gcd(10, -11) shouldBe 1
-    gcd(-10, 0) shouldBe -10
-    gcd(-10, 1) shouldBe 1
-    gcd(-10, -1) shouldBe -1
-    gcd(-10, 6) shouldBe 2
-    gcd(-10, -6) shouldBe -2
-    gcd(-10, 11) shouldBe 1
-    gcd(-10, -11) shouldBe -1
+  "Int.gcd" should "work" in {
+    is(gcd(0, 0), 0)
+    is(gcd(0, 1), 1)
+    is(gcd(0, -1), -1)
+    is(gcd(0, 6), 6)
+    is(gcd(0, -6), -6)
+    is(gcd(0, 11), 11)
+    is(gcd(0, -11), -11)
+    is(gcd(1, 0), 1)
+    is(gcd(1, 1), 1)
+    is(gcd(1, -1), 1)
+    is(gcd(1, 6), 1)
+    is(gcd(1, -6), 1)
+    is(gcd(1, 11), 1)
+    is(gcd(1, -11), 1)
+    is(gcd(-1, 0), -1)
+    is(gcd(-1, 1), 1)
+    is(gcd(-1, -1), -1)
+    is(gcd(-1, 6), 1)
+    is(gcd(-1, -6), -1)
+    is(gcd(-1, 11), 1)
+    is(gcd(-1, -11), -1)
+    is(gcd(10, 0), 10)
+    is(gcd(10, 1), 1)
+    is(gcd(10, -1), 1)
+    is(gcd(10, 6), 2)
+    is(gcd(10, -6), 2)
+    is(gcd(10, 11), 1)
+    is(gcd(10, -11), 1)
+    is(gcd(-10, 0), -10)
+    is(gcd(-10, 1), 1)
+    is(gcd(-10, -1), -1)
+    is(gcd(-10, 6), 2)
+    is(gcd(-10, -6), -2)
+    is(gcd(-10, 11), 1)
+    is(gcd(-10, -11), -1)
   }
 
-  "Int.lcm" should work in {
-    lcm(0, 0) shouldBe 0
-    lcm(0, 1) shouldBe 0
-    lcm(0, -1) shouldBe 0
-    lcm(0, 6) shouldBe 0
-    lcm(0, -6) shouldBe 0
-    lcm(0, 11) shouldBe 0
-    lcm(0, -11) shouldBe 0
-    lcm(1, 0) shouldBe 0
-    lcm(1, 1) shouldBe 1
-    lcm(1, -1) shouldBe -1
-    lcm(1, 6) shouldBe 6
-    lcm(1, -6) shouldBe -6
-    lcm(1, 11) shouldBe 11
-    lcm(1, -11) shouldBe -11
-    lcm(-1, 0) shouldBe 0
-    lcm(-1, 1) shouldBe -1
-    lcm(-1, -1) shouldBe -1
-    lcm(-1, 6) shouldBe -6
-    lcm(-1, -6) shouldBe -6
-    lcm(-1, 11) shouldBe -11
-    lcm(-1, -11) shouldBe -11
-    lcm(10, 0) shouldBe 0
-    lcm(10, 1) shouldBe 10
-    lcm(10, -1) shouldBe -10
-    lcm(10, 6) shouldBe 30
-    lcm(10, -6) shouldBe -30
-    lcm(10, 11) shouldBe 110
-    lcm(10, -11) shouldBe -110
-    lcm(-10, 0) shouldBe 0
-    lcm(-10, 1) shouldBe -10
-    lcm(-10, -1) shouldBe -10
-    lcm(-10, 6) shouldBe -30
-    lcm(-10, -6) shouldBe -30
-    lcm(-10, 11) shouldBe -110
-    lcm(-10, -11) shouldBe -110
+  "Int.lcm" should "work" in {
+    is(lcm(0, 0), 0)
+    is(lcm(0, 1), 0)
+    is(lcm(0, -1), 0)
+    is(lcm(0, 6), 0)
+    is(lcm(0, -6), 0)
+    is(lcm(0, 11), 0)
+    is(lcm(0, -11), 0)
+    is(lcm(1, 0), 0)
+    is(lcm(1, 1), 1)
+    is(lcm(1, -1), -1)
+    is(lcm(1, 6), 6)
+    is(lcm(1, -6), -6)
+    is(lcm(1, 11), 11)
+    is(lcm(1, -11), -11)
+    is(lcm(-1, 0), 0)
+    is(lcm(-1, 1), -1)
+    is(lcm(-1, -1), -1)
+    is(lcm(-1, 6), -6)
+    is(lcm(-1, -6), -6)
+    is(lcm(-1, 11), -11)
+    is(lcm(-1, -11), -11)
+    is(lcm(10, 0), 0)
+    is(lcm(10, 1), 10)
+    is(lcm(10, -1), -10)
+    is(lcm(10, 6), 30)
+    is(lcm(10, -6), -30)
+    is(lcm(10, 11), 110)
+    is(lcm(10, -11), -110)
+    is(lcm(-10, 0), 0)
+    is(lcm(-10, 1), -10)
+    is(lcm(-10, -1), -10)
+    is(lcm(-10, 6), -30)
+    is(lcm(-10, -6), -30)
+    is(lcm(-10, 11), -110)
+    is(lcm(-10, -11), -110)
   }
 
-  "Int.clip2" should work in {
-    clip2(0, 0) shouldBe 0
-    clip2(0, 1) shouldBe 0
-    clip2(0, -1) shouldBe 1
-    clip2(0, 6) shouldBe 0
-    clip2(0, -6) shouldBe 6
-    clip2(0, 11) shouldBe 0
-    clip2(0, -11) shouldBe 11
-    clip2(1, 0) shouldBe 0
-    clip2(1, 1) shouldBe 1
-    clip2(1, -1) shouldBe 1
-    clip2(1, 6) shouldBe 1
-    clip2(1, -6) shouldBe 6
-    clip2(1, 11) shouldBe 1
-    clip2(1, -11) shouldBe 11
-    clip2(-1, 0) shouldBe 0
-    clip2(-1, 1) shouldBe -1
-    clip2(-1, -1) shouldBe 1
-    clip2(-1, 6) shouldBe -1
-    clip2(-1, -6) shouldBe 6
-    clip2(-1, 11) shouldBe -1
-    clip2(-1, -11) shouldBe 11
-    clip2(10, 0) shouldBe 0
-    clip2(10, 1) shouldBe 1
-    clip2(10, -1) shouldBe 1
-    clip2(10, 6) shouldBe 6
-    clip2(10, -6) shouldBe 6
-    clip2(10, 11) shouldBe 10
-    clip2(10, -11) shouldBe 11
-    clip2(-10, 0) shouldBe 0
-    clip2(-10, 1) shouldBe -1
-    clip2(-10, -1) shouldBe 1
-    clip2(-10, 6) shouldBe -6
-    clip2(-10, -6) shouldBe 6
-    clip2(-10, 11) shouldBe -10
-    clip2(-10, -11) shouldBe 11
+  "Int.clip2" should "work" in {
+    is(clip2(0, 0), 0)
+    is(clip2(0, 1), 0)
+    is(clip2(0, -1), 1)
+    is(clip2(0, 6), 0)
+    is(clip2(0, -6), 6)
+    is(clip2(0, 11), 0)
+    is(clip2(0, -11), 11)
+    is(clip2(1, 0), 0)
+    is(clip2(1, 1), 1)
+    is(clip2(1, -1), 1)
+    is(clip2(1, 6), 1)
+    is(clip2(1, -6), 6)
+    is(clip2(1, 11), 1)
+    is(clip2(1, -11), 11)
+    is(clip2(-1, 0), 0)
+    is(clip2(-1, 1), -1)
+    is(clip2(-1, -1), 1)
+    is(clip2(-1, 6), -1)
+    is(clip2(-1, -6), 6)
+    is(clip2(-1, 11), -1)
+    is(clip2(-1, -11), 11)
+    is(clip2(10, 0), 0)
+    is(clip2(10, 1), 1)
+    is(clip2(10, -1), 1)
+    is(clip2(10, 6), 6)
+    is(clip2(10, -6), 6)
+    is(clip2(10, 11), 10)
+    is(clip2(10, -11), 11)
+    is(clip2(-10, 0), 0)
+    is(clip2(-10, 1), -1)
+    is(clip2(-10, -1), 1)
+    is(clip2(-10, 6), -6)
+    is(clip2(-10, -6), 6)
+    is(clip2(-10, 11), -10)
+    is(clip2(-10, -11), 11)
   }
 
-  "Int.excess" should work in {
-    excess(0, 0) shouldBe 0
-    excess(0, 1) shouldBe 0
-    excess(0, -1) shouldBe -1
-    excess(0, 6) shouldBe 0
-    excess(0, -6) shouldBe -6
-    excess(0, 11) shouldBe 0
-    excess(0, -11) shouldBe -11
-    excess(1, 0) shouldBe 1
-    excess(1, 1) shouldBe 0
-    excess(1, -1) shouldBe 0
-    excess(1, 6) shouldBe 0
-    excess(1, -6) shouldBe -5
-    excess(1, 11) shouldBe 0
-    excess(1, -11) shouldBe -10
-    excess(-1, 0) shouldBe -1
-    excess(-1, 1) shouldBe 0
-    excess(-1, -1) shouldBe -2
-    excess(-1, 6) shouldBe 0
-    excess(-1, -6) shouldBe -7
-    excess(-1, 11) shouldBe 0
-    excess(-1, -11) shouldBe -12
-    excess(10, 0) shouldBe 10
-    excess(10, 1) shouldBe 9
-    excess(10, -1) shouldBe 9
-    excess(10, 6) shouldBe 4
-    excess(10, -6) shouldBe 4
-    excess(10, 11) shouldBe 0
-    excess(10, -11) shouldBe -1
-    excess(-10, 0) shouldBe -10
-    excess(-10, 1) shouldBe -9
-    excess(-10, -1) shouldBe -11
-    excess(-10, 6) shouldBe -4
-    excess(-10, -6) shouldBe -16
-    excess(-10, 11) shouldBe 0
-    excess(-10, -11) shouldBe -21
+  "Int.excess" should "work" in {
+    is(excess(0, 0), 0)
+    is(excess(0, 1), 0)
+    is(excess(0, -1), -1)
+    is(excess(0, 6), 0)
+    is(excess(0, -6), -6)
+    is(excess(0, 11), 0)
+    is(excess(0, -11), -11)
+    is(excess(1, 0), 1)
+    is(excess(1, 1), 0)
+    is(excess(1, -1), 0)
+    is(excess(1, 6), 0)
+    is(excess(1, -6), -5)
+    is(excess(1, 11), 0)
+    is(excess(1, -11), -10)
+    is(excess(-1, 0), -1)
+    is(excess(-1, 1), 0)
+    is(excess(-1, -1), -2)
+    is(excess(-1, 6), 0)
+    is(excess(-1, -6), -7)
+    is(excess(-1, 11), 0)
+    is(excess(-1, -11), -12)
+    is(excess(10, 0), 10)
+    is(excess(10, 1), 9)
+    is(excess(10, -1), 9)
+    is(excess(10, 6), 4)
+    is(excess(10, -6), 4)
+    is(excess(10, 11), 0)
+    is(excess(10, -11), -1)
+    is(excess(-10, 0), -10)
+    is(excess(-10, 1), -9)
+    is(excess(-10, -1), -11)
+    is(excess(-10, 6), -4)
+    is(excess(-10, -6), -16)
+    is(excess(-10, 11), 0)
+    is(excess(-10, -11), -21)
   }
 
-  "Int.fold2" should work in {
-    fold2(0, 0) shouldBe 0
-    fold2(0, 1) shouldBe 0
-    fold2(0, -1) shouldBe -6
-    fold2(0, 6) shouldBe 0
-    fold2(0, -6) shouldBe -36
-    fold2(0, 11) shouldBe 0
-    fold2(0, -11) shouldBe -66
-    fold2(1, 0) shouldBe 0
-    fold2(1, 1) shouldBe 1
-    fold2(1, -1) shouldBe -3
-    fold2(1, 6) shouldBe 1
-    fold2(1, -6) shouldBe -37
-    fold2(1, 11) shouldBe 1
-    fold2(1, -11) shouldBe -67
-    fold2(-1, 0) shouldBe 0
-    fold2(-1, 1) shouldBe -1
-    fold2(-1, -1) shouldBe -5
-    fold2(-1, 6) shouldBe -1
-    fold2(-1, -6) shouldBe -35
-    fold2(-1, 11) shouldBe -1
-    fold2(-1, -11) shouldBe -65
-    fold2(10, 0) shouldBe 0
-    fold2(10, 1) shouldBe 0
-    fold2(10, -1) shouldBe -4
-    fold2(10, 6) shouldBe 2
-    fold2(10, -6) shouldBe -22
-    fold2(10, 11) shouldBe 10
-    fold2(10, -11) shouldBe -76
-    fold2(-10, 0) shouldBe 0
-    fold2(-10, 1) shouldBe 0
-    fold2(-10, -1) shouldBe -6
-    fold2(-10, 6) shouldBe -2
-    fold2(-10, -6) shouldBe -26
-    fold2(-10, 11) shouldBe -10
-    fold2(-10, -11) shouldBe -56
+  "Int.fold2" should "work" in {
+    is(fold2(0, 0), 0)
+    is(fold2(0, 1), 0)
+    is(fold2(0, -1), -6)
+    is(fold2(0, 6), 0)
+    is(fold2(0, -6), -36)
+    is(fold2(0, 11), 0)
+    is(fold2(0, -11), -66)
+    is(fold2(1, 0), 0)
+    is(fold2(1, 1), 1)
+    is(fold2(1, -1), -3)
+    is(fold2(1, 6), 1)
+    is(fold2(1, -6), -37)
+    is(fold2(1, 11), 1)
+    is(fold2(1, -11), -67)
+    is(fold2(-1, 0), 0)
+    is(fold2(-1, 1), -1)
+    is(fold2(-1, -1), -5)
+    is(fold2(-1, 6), -1)
+    is(fold2(-1, -6), -35)
+    is(fold2(-1, 11), -1)
+    is(fold2(-1, -11), -65)
+    is(fold2(10, 0), 0)
+    is(fold2(10, 1), 0)
+    is(fold2(10, -1), -4)
+    is(fold2(10, 6), 2)
+    is(fold2(10, -6), -22)
+    is(fold2(10, 11), 10)
+    is(fold2(10, -11), -76)
+    is(fold2(-10, 0), 0)
+    is(fold2(-10, 1), 0)
+    is(fold2(-10, -1), -6)
+    is(fold2(-10, 6), -2)
+    is(fold2(-10, -6), -26)
+    is(fold2(-10, 11), -10)
+    is(fold2(-10, -11), -56)
   }
 
-  "Int.wrap2" should work in {
-    wrap2(0, 0) shouldBe 0
-    wrap2(0, 1) shouldBe 0
-    wrap2(0, -1) shouldBe 1
-    wrap2(0, 6) shouldBe 0
-    wrap2(0, -6) shouldBe 11
-    wrap2(0, 11) shouldBe 0
-    wrap2(0, -11) shouldBe 21
-    wrap2(1, 0) shouldBe 0
-    wrap2(1, 1) shouldBe 1
-    wrap2(1, -1) shouldBe 1
-    wrap2(1, 6) shouldBe 1
-    wrap2(1, -6) shouldBe 12
-    wrap2(1, 11) shouldBe 1
-    wrap2(1, -11) shouldBe 22
-    wrap2(-1, 0) shouldBe 0
-    wrap2(-1, 1) shouldBe -1
-    wrap2(-1, -1) shouldBe 1
-    wrap2(-1, 6) shouldBe -1
-    wrap2(-1, -6) shouldBe 10
-    wrap2(-1, 11) shouldBe -1
-    wrap2(-1, -11) shouldBe 20
-    wrap2(10, 0) shouldBe 0
-    wrap2(10, 1) shouldBe 1
-    wrap2(10, -1) shouldBe 1
-    wrap2(10, 6) shouldBe -3
-    wrap2(10, -6) shouldBe 10
-    wrap2(10, 11) shouldBe 10
-    wrap2(10, -11) shouldBe 31
-    wrap2(-10, 0) shouldBe 0
-    wrap2(-10, 1) shouldBe -1
-    wrap2(-10, -1) shouldBe 1
-    wrap2(-10, 6) shouldBe 3
-    wrap2(-10, -6) shouldBe -10
-    wrap2(-10, 11) shouldBe -10
-    wrap2(-10, -11) shouldBe 11
+  "Int.wrap2" should "work" in {
+    is(wrap2(0, 0), 0)
+    is(wrap2(0, 1), 0)
+    is(wrap2(0, -1), 1)
+    is(wrap2(0, 6), 0)
+    is(wrap2(0, -6), 11)
+    is(wrap2(0, 11), 0)
+    is(wrap2(0, -11), 21)
+    is(wrap2(1, 0), 0)
+    is(wrap2(1, 1), 1)
+    is(wrap2(1, -1), 1)
+    is(wrap2(1, 6), 1)
+    is(wrap2(1, -6), 12)
+    is(wrap2(1, 11), 1)
+    is(wrap2(1, -11), 22)
+    is(wrap2(-1, 0), 0)
+    is(wrap2(-1, 1), -1)
+    is(wrap2(-1, -1), 1)
+    is(wrap2(-1, 6), -1)
+    is(wrap2(-1, -6), 10)
+    is(wrap2(-1, 11), -1)
+    is(wrap2(-1, -11), 20)
+    is(wrap2(10, 0), 0)
+    is(wrap2(10, 1), 1)
+    is(wrap2(10, -1), 1)
+    is(wrap2(10, 6), -3)
+    is(wrap2(10, -6), 10)
+    is(wrap2(10, 11), 10)
+    is(wrap2(10, -11), 31)
+    is(wrap2(-10, 0), 0)
+    is(wrap2(-10, 1), -1)
+    is(wrap2(-10, -1), 1)
+    is(wrap2(-10, 6), 3)
+    is(wrap2(-10, -6), -10)
+    is(wrap2(-10, 11), -10)
+    is(wrap2(-10, -11), 11)
   }
 
-  "Int.mod" should work in {
-    mod(0, 0) shouldBe 0
-    mod(0, 1) shouldBe 0
-    mod(0, -1) shouldBe 0
-    mod(0, 6) shouldBe 0
-    mod(0, -6) shouldBe 0
-    mod(0, 11) shouldBe 0
-    mod(0, -11) shouldBe 0
-    mod(1, 0) shouldBe 0
-    mod(1, 1) shouldBe 0
-    mod(1, -1) shouldBe 0
-    mod(1, 6) shouldBe 1
-    mod(1, -6) shouldBe 1
-    mod(1, 11) shouldBe 1
-    mod(1, -11) shouldBe 1
-    mod(-1, 0) shouldBe 0
-    mod(-1, 1) shouldBe 0
-    mod(-1, -1) shouldBe 0
-    mod(-1, 6) shouldBe 5
-    mod(-1, -6) shouldBe 5
-    mod(-1, 11) shouldBe 10
-    mod(-1, -11) shouldBe 10
-    mod(10, 0) shouldBe 0
-    mod(10, 1) shouldBe 0
-    mod(10, -1) shouldBe 0
-    mod(10, 6) shouldBe 4
-    mod(10, -6) shouldBe 4
-    mod(10, 11) shouldBe 10
-    mod(10, -11) shouldBe 10
-    mod(-10, 0) shouldBe 0
-    mod(-10, 1) shouldBe 0
-    mod(-10, -1) shouldBe 0
-    mod(-10, 6) shouldBe 2
-    mod(-10, -6) shouldBe -10
-    mod(-10, 11) shouldBe 1
-    mod(-10, -11) shouldBe 1
+  "Int.mod" should "work" in {
+    is(mod(0, 0), 0)
+    is(mod(0, 1), 0)
+    is(mod(0, -1), 0)
+    is(mod(0, 6), 0)
+    is(mod(0, -6), 0)
+    is(mod(0, 11), 0)
+    is(mod(0, -11), 0)
+    is(mod(1, 0), 0)
+    is(mod(1, 1), 0)
+    is(mod(1, -1), 0)
+    is(mod(1, 6), 1)
+    is(mod(1, -6), 1)
+    is(mod(1, 11), 1)
+    is(mod(1, -11), 1)
+    is(mod(-1, 0), 0)
+    is(mod(-1, 1), 0)
+    is(mod(-1, -1), 0)
+    is(mod(-1, 6), 5)
+    is(mod(-1, -6), 5)
+    is(mod(-1, 11), 10)
+    is(mod(-1, -11), 10)
+    is(mod(10, 0), 0)
+    is(mod(10, 1), 0)
+    is(mod(10, -1), 0)
+    is(mod(10, 6), 4)
+    is(mod(10, -6), 4)
+    is(mod(10, 11), 10)
+    is(mod(10, -11), 10)
+    is(mod(-10, 0), 0)
+    is(mod(-10, 1), 0)
+    is(mod(-10, -1), 0)
+    is(mod(-10, 6), 2)
+    is(mod(-10, -6), -10)
+    is(mod(-10, 11), 1)
+    is(mod(-10, -11), 1)
   }
 
-  "Int.difsqr" should work in {
-    difSqr(0, 0) shouldBe 0
-    difSqr(0, 1) shouldBe -1
-    difSqr(0, -1) shouldBe -1
-    difSqr(0, 6) shouldBe -36
-    difSqr(0, -6) shouldBe -36
-    difSqr(0, 11) shouldBe -121
-    difSqr(0, -11) shouldBe -121
-    difSqr(1, 0) shouldBe 1
-    difSqr(1, 1) shouldBe 0
-    difSqr(1, -1) shouldBe 0
-    difSqr(1, 6) shouldBe -35
-    difSqr(1, -6) shouldBe -35
-    difSqr(1, 11) shouldBe -120
-    difSqr(1, -11) shouldBe -120
-    difSqr(-1, 0) shouldBe 1
-    difSqr(-1, 1) shouldBe 0
-    difSqr(-1, -1) shouldBe 0
-    difSqr(-1, 6) shouldBe -35
-    difSqr(-1, -6) shouldBe -35
-    difSqr(-1, 11) shouldBe -120
-    difSqr(-1, -11) shouldBe -120
-    difSqr(10, 0) shouldBe 100
-    difSqr(10, 1) shouldBe 99
-    difSqr(10, -1) shouldBe 99
-    difSqr(10, 6) shouldBe 64
-    difSqr(10, -6) shouldBe 64
-    difSqr(10, 11) shouldBe -21
-    difSqr(10, -11) shouldBe -21
-    difSqr(-10, 0) shouldBe 100
-    difSqr(-10, 1) shouldBe 99
-    difSqr(-10, -1) shouldBe 99
-    difSqr(-10, 6) shouldBe 64
-    difSqr(-10, -6) shouldBe 64
-    difSqr(-10, 11) shouldBe -21
-    difSqr(-10, -11) shouldBe -21
+  "Int.difsqr" should "work" in {
+    isL(difSqr(0, 0), 0)
+    isL(difSqr(0, 1), -1)
+    isL(difSqr(0, -1), -1)
+    isL(difSqr(0, 6), -36)
+    isL(difSqr(0, -6), -36)
+    isL(difSqr(0, 11), -121)
+    isL(difSqr(0, -11), -121)
+    isL(difSqr(1, 0), 1)
+    isL(difSqr(1, 1), 0)
+    isL(difSqr(1, -1), 0)
+    isL(difSqr(1, 6), -35)
+    isL(difSqr(1, -6), -35)
+    isL(difSqr(1, 11), -120)
+    isL(difSqr(1, -11), -120)
+    isL(difSqr(-1, 0), 1)
+    isL(difSqr(-1, 1), 0)
+    isL(difSqr(-1, -1), 0)
+    isL(difSqr(-1, 6), -35)
+    isL(difSqr(-1, -6), -35)
+    isL(difSqr(-1, 11), -120)
+    isL(difSqr(-1, -11), -120)
+    isL(difSqr(10, 0), 100)
+    isL(difSqr(10, 1), 99)
+    isL(difSqr(10, -1), 99)
+    isL(difSqr(10, 6), 64)
+    isL(difSqr(10, -6), 64)
+    isL(difSqr(10, 11), -21)
+    isL(difSqr(10, -11), -21)
+    isL(difSqr(-10, 0), 100)
+    isL(difSqr(-10, 1), 99)
+    isL(difSqr(-10, -1), 99)
+    isL(difSqr(-10, 6), 64)
+    isL(difSqr(-10, -6), 64)
+    isL(difSqr(-10, 11), -21)
+    isL(difSqr(-10, -11), -21)
   }
 
-  "Int.sumsqr" should work in {
-    sumSqr(0, 0) shouldBe 0
-    sumSqr(0, 1) shouldBe 1
-    sumSqr(0, -1) shouldBe 1
-    sumSqr(0, 6) shouldBe 36
-    sumSqr(0, -6) shouldBe 36
-    sumSqr(0, 11) shouldBe 121
-    sumSqr(0, -11) shouldBe 121
-    sumSqr(1, 0) shouldBe 1
-    sumSqr(1, 1) shouldBe 2
-    sumSqr(1, -1) shouldBe 2
-    sumSqr(1, 6) shouldBe 37
-    sumSqr(1, -6) shouldBe 37
-    sumSqr(1, 11) shouldBe 122
-    sumSqr(1, -11) shouldBe 122
-    sumSqr(-1, 0) shouldBe 1
-    sumSqr(-1, 1) shouldBe 2
-    sumSqr(-1, -1) shouldBe 2
-    sumSqr(-1, 6) shouldBe 37
-    sumSqr(-1, -6) shouldBe 37
-    sumSqr(-1, 11) shouldBe 122
-    sumSqr(-1, -11) shouldBe 122
-    sumSqr(10, 0) shouldBe 100
-    sumSqr(10, 1) shouldBe 101
-    sumSqr(10, -1) shouldBe 101
-    sumSqr(10, 6) shouldBe 136
-    sumSqr(10, -6) shouldBe 136
-    sumSqr(10, 11) shouldBe 221
-    sumSqr(10, -11) shouldBe 221
-    sumSqr(-10, 0) shouldBe 100
-    sumSqr(-10, 1) shouldBe 101
-    sumSqr(-10, -1) shouldBe 101
-    sumSqr(-10, 6) shouldBe 136
-    sumSqr(-10, -6) shouldBe 136
-    sumSqr(-10, 11) shouldBe 221
-    sumSqr(-10, -11) shouldBe 221
+  "Int.sumsqr" should "work" in {
+    isL(sumSqr(0, 0), 0)
+    isL(sumSqr(0, 1), 1)
+    isL(sumSqr(0, -1), 1)
+    isL(sumSqr(0, 6), 36)
+    isL(sumSqr(0, -6), 36)
+    isL(sumSqr(0, 11), 121)
+    isL(sumSqr(0, -11), 121)
+    isL(sumSqr(1, 0), 1)
+    isL(sumSqr(1, 1), 2)
+    isL(sumSqr(1, -1), 2)
+    isL(sumSqr(1, 6), 37)
+    isL(sumSqr(1, -6), 37)
+    isL(sumSqr(1, 11), 122)
+    isL(sumSqr(1, -11), 122)
+    isL(sumSqr(-1, 0), 1)
+    isL(sumSqr(-1, 1), 2)
+    isL(sumSqr(-1, -1), 2)
+    isL(sumSqr(-1, 6), 37)
+    isL(sumSqr(-1, -6), 37)
+    isL(sumSqr(-1, 11), 122)
+    isL(sumSqr(-1, -11), 122)
+    isL(sumSqr(10, 0), 100)
+    isL(sumSqr(10, 1), 101)
+    isL(sumSqr(10, -1), 101)
+    isL(sumSqr(10, 6), 136)
+    isL(sumSqr(10, -6), 136)
+    isL(sumSqr(10, 11), 221)
+    isL(sumSqr(10, -11), 221)
+    isL(sumSqr(-10, 0), 100)
+    isL(sumSqr(-10, 1), 101)
+    isL(sumSqr(-10, -1), 101)
+    isL(sumSqr(-10, 6), 136)
+    isL(sumSqr(-10, -6), 136)
+    isL(sumSqr(-10, 11), 221)
+    isL(sumSqr(-10, -11), 221)
   }
 
-  "Int.sqrsum" should work in {
-    sqrSum(0, 0) shouldBe 0
-    sqrSum(0, 1) shouldBe 1
-    sqrSum(0, -1) shouldBe 1
-    sqrSum(0, 6) shouldBe 36
-    sqrSum(0, -6) shouldBe 36
-    sqrSum(0, 11) shouldBe 121
-    sqrSum(0, -11) shouldBe 121
-    sqrSum(1, 0) shouldBe 1
-    sqrSum(1, 1) shouldBe 4
-    sqrSum(1, -1) shouldBe 0
-    sqrSum(1, 6) shouldBe 49
-    sqrSum(1, -6) shouldBe 25
-    sqrSum(1, 11) shouldBe 144
-    sqrSum(1, -11) shouldBe 100
-    sqrSum(-1, 0) shouldBe 1
-    sqrSum(-1, 1) shouldBe 0
-    sqrSum(-1, -1) shouldBe 4
-    sqrSum(-1, 6) shouldBe 25
-    sqrSum(-1, -6) shouldBe 49
-    sqrSum(-1, 11) shouldBe 100
-    sqrSum(-1, -11) shouldBe 144
-    sqrSum(10, 0) shouldBe 100
-    sqrSum(10, 1) shouldBe 121
-    sqrSum(10, -1) shouldBe 81
-    sqrSum(10, 6) shouldBe 256
-    sqrSum(10, -6) shouldBe 16
-    sqrSum(10, 11) shouldBe 441
-    sqrSum(10, -11) shouldBe 1
-    sqrSum(-10, 0) shouldBe 100
-    sqrSum(-10, 1) shouldBe 81
-    sqrSum(-10, -1) shouldBe 121
-    sqrSum(-10, 6) shouldBe 16
-    sqrSum(-10, -6) shouldBe 256
-    sqrSum(-10, 11) shouldBe 1
-    sqrSum(-10, -11) shouldBe 441
+  "Int.sqrsum" should "work" in {
+    isL(sqrSum(0, 0), 0)
+    isL(sqrSum(0, 1), 1)
+    isL(sqrSum(0, -1), 1)
+    isL(sqrSum(0, 6), 36)
+    isL(sqrSum(0, -6), 36)
+    isL(sqrSum(0, 11), 121)
+    isL(sqrSum(0, -11), 121)
+    isL(sqrSum(1, 0), 1)
+    isL(sqrSum(1, 1), 4)
+    isL(sqrSum(1, -1), 0)
+    isL(sqrSum(1, 6), 49)
+    isL(sqrSum(1, -6), 25)
+    isL(sqrSum(1, 11), 144)
+    isL(sqrSum(1, -11), 100)
+    isL(sqrSum(-1, 0), 1)
+    isL(sqrSum(-1, 1), 0)
+    isL(sqrSum(-1, -1), 4)
+    isL(sqrSum(-1, 6), 25)
+    isL(sqrSum(-1, -6), 49)
+    isL(sqrSum(-1, 11), 100)
+    isL(sqrSum(-1, -11), 144)
+    isL(sqrSum(10, 0), 100)
+    isL(sqrSum(10, 1), 121)
+    isL(sqrSum(10, -1), 81)
+    isL(sqrSum(10, 6), 256)
+    isL(sqrSum(10, -6), 16)
+    isL(sqrSum(10, 11), 441)
+    isL(sqrSum(10, -11), 1)
+    isL(sqrSum(-10, 0), 100)
+    isL(sqrSum(-10, 1), 81)
+    isL(sqrSum(-10, -1), 121)
+    isL(sqrSum(-10, 6), 16)
+    isL(sqrSum(-10, -6), 256)
+    isL(sqrSum(-10, 11), 1)
+    isL(sqrSum(-10, -11), 441)
   }
 
-  "Int.sqrdif" should work in {
-    sqrDif(0, 0) shouldBe 0
-    sqrDif(0, 1) shouldBe 1
-    sqrDif(0, -1) shouldBe 1
-    sqrDif(0, 6) shouldBe 36
-    sqrDif(0, -6) shouldBe 36
-    sqrDif(0, 11) shouldBe 121
-    sqrDif(0, -11) shouldBe 121
-    sqrDif(1, 0) shouldBe 1
-    sqrDif(1, 1) shouldBe 0
-    sqrDif(1, -1) shouldBe 4
-    sqrDif(1, 6) shouldBe 25
-    sqrDif(1, -6) shouldBe 49
-    sqrDif(1, 11) shouldBe 100
-    sqrDif(1, -11) shouldBe 144
-    sqrDif(-1, 0) shouldBe 1
-    sqrDif(-1, 1) shouldBe 4
-    sqrDif(-1, -1) shouldBe 0
-    sqrDif(-1, 6) shouldBe 49
-    sqrDif(-1, -6) shouldBe 25
-    sqrDif(-1, 11) shouldBe 144
-    sqrDif(-1, -11) shouldBe 100
-    sqrDif(10, 0) shouldBe 100
-    sqrDif(10, 1) shouldBe 81
-    sqrDif(10, -1) shouldBe 121
-    sqrDif(10, 6) shouldBe 16
-    sqrDif(10, -6) shouldBe 256
-    sqrDif(10, 11) shouldBe 1
-    sqrDif(10, -11) shouldBe 441
-    sqrDif(-10, 0) shouldBe 100
-    sqrDif(-10, 1) shouldBe 121
-    sqrDif(-10, -1) shouldBe 81
-    sqrDif(-10, 6) shouldBe 256
-    sqrDif(-10, -6) shouldBe 16
-    sqrDif(-10, 11) shouldBe 441
-    sqrDif(-10, -11) shouldBe 1
+  "Int.sqrdif" should "work" in {
+    isL(sqrDif(0, 0), 0)
+    isL(sqrDif(0, 1), 1)
+    isL(sqrDif(0, -1), 1)
+    isL(sqrDif(0, 6), 36)
+    isL(sqrDif(0, -6), 36)
+    isL(sqrDif(0, 11), 121)
+    isL(sqrDif(0, -11), 121)
+    isL(sqrDif(1, 0), 1)
+    isL(sqrDif(1, 1), 0)
+    isL(sqrDif(1, -1), 4)
+    isL(sqrDif(1, 6), 25)
+    isL(sqrDif(1, -6), 49)
+    isL(sqrDif(1, 11), 100)
+    isL(sqrDif(1, -11), 144)
+    isL(sqrDif(-1, 0), 1)
+    isL(sqrDif(-1, 1), 4)
+    isL(sqrDif(-1, -1), 0)
+    isL(sqrDif(-1, 6), 49)
+    isL(sqrDif(-1, -6), 25)
+    isL(sqrDif(-1, 11), 144)
+    isL(sqrDif(-1, -11), 100)
+    isL(sqrDif(10, 0), 100)
+    isL(sqrDif(10, 1), 81)
+    isL(sqrDif(10, -1), 121)
+    isL(sqrDif(10, 6), 16)
+    isL(sqrDif(10, -6), 256)
+    isL(sqrDif(10, 11), 1)
+    isL(sqrDif(10, -11), 441)
+    isL(sqrDif(-10, 0), 100)
+    isL(sqrDif(-10, 1), 121)
+    isL(sqrDif(-10, -1), 81)
+    isL(sqrDif(-10, 6), 256)
+    isL(sqrDif(-10, -6), 16)
+    isL(sqrDif(-10, 11), 441)
+    isL(sqrDif(-10, -11), 1)
   }
 
-  "Int.absdif" should work in {
-    absDif(0, 0) shouldBe 0
-    absDif(0, 1) shouldBe 1
-    absDif(0, -1) shouldBe 1
-    absDif(0, 6) shouldBe 6
-    absDif(0, -6) shouldBe 6
-    absDif(0, 11) shouldBe 11
-    absDif(0, -11) shouldBe 11
-    absDif(1, 0) shouldBe 1
-    absDif(1, 1) shouldBe 0
-    absDif(1, -1) shouldBe 2
-    absDif(1, 6) shouldBe 5
-    absDif(1, -6) shouldBe 7
-    absDif(1, 11) shouldBe 10
-    absDif(1, -11) shouldBe 12
-    absDif(-1, 0) shouldBe 1
-    absDif(-1, 1) shouldBe 2
-    absDif(-1, -1) shouldBe 0
-    absDif(-1, 6) shouldBe 7
-    absDif(-1, -6) shouldBe 5
-    absDif(-1, 11) shouldBe 12
-    absDif(-1, -11) shouldBe 10
-    absDif(10, 0) shouldBe 10
-    absDif(10, 1) shouldBe 9
-    absDif(10, -1) shouldBe 11
-    absDif(10, 6) shouldBe 4
-    absDif(10, -6) shouldBe 16
-    absDif(10, 11) shouldBe 1
-    absDif(10, -11) shouldBe 21
-    absDif(-10, 0) shouldBe 10
-    absDif(-10, 1) shouldBe 11
-    absDif(-10, -1) shouldBe 9
-    absDif(-10, 6) shouldBe 16
-    absDif(-10, -6) shouldBe 4
-    absDif(-10, 11) shouldBe 21
-    absDif(-10, -11) shouldBe 1
+  "Int.absdif" should "work" in {
+    is(absDif(0, 0), 0)
+    is(absDif(0, 1), 1)
+    is(absDif(0, -1), 1)
+    is(absDif(0, 6), 6)
+    is(absDif(0, -6), 6)
+    is(absDif(0, 11), 11)
+    is(absDif(0, -11), 11)
+    is(absDif(1, 0), 1)
+    is(absDif(1, 1), 0)
+    is(absDif(1, -1), 2)
+    is(absDif(1, 6), 5)
+    is(absDif(1, -6), 7)
+    is(absDif(1, 11), 10)
+    is(absDif(1, -11), 12)
+    is(absDif(-1, 0), 1)
+    is(absDif(-1, 1), 2)
+    is(absDif(-1, -1), 0)
+    is(absDif(-1, 6), 7)
+    is(absDif(-1, -6), 5)
+    is(absDif(-1, 11), 12)
+    is(absDif(-1, -11), 10)
+    is(absDif(10, 0), 10)
+    is(absDif(10, 1), 9)
+    is(absDif(10, -1), 11)
+    is(absDif(10, 6), 4)
+    is(absDif(10, -6), 16)
+    is(absDif(10, 11), 1)
+    is(absDif(10, -11), 21)
+    is(absDif(-10, 0), 10)
+    is(absDif(-10, 1), 11)
+    is(absDif(-10, -1), 9)
+    is(absDif(-10, 6), 16)
+    is(absDif(-10, -6), 4)
+    is(absDif(-10, 11), 21)
+    is(absDif(-10, -11), 1)
   }
 
-  "Int.round" should work in {
-    round(0, 0) shouldBe 0
-    round(0, 1) shouldBe 0
-    round(0, -1) shouldBe 0
-    round(0, 6) shouldBe 0
-    round(0, -6) shouldBe 6
-    round(0, 11) shouldBe 0
-    round(0, -11) shouldBe 11
-    round(1, 0) shouldBe 1
-    round(1, 1) shouldBe 1
-    round(1, -1) shouldBe 1
-    round(1, 6) shouldBe 0
-    round(1, -6) shouldBe 6
-    round(1, 11) shouldBe 0
-    round(1, -11) shouldBe 11
-    round(-1, 0) shouldBe -1
-    round(-1, 1) shouldBe -1
-    round(-1, -1) shouldBe 1
-    round(-1, 6) shouldBe 0
-    round(-1, -6) shouldBe 6
-    round(-1, 11) shouldBe 0
-    round(-1, -11) shouldBe 11
-    round(10, 0) shouldBe 10
-    round(10, 1) shouldBe 10
-    round(10, -1) shouldBe 10
-    round(10, 6) shouldBe 12
-    round(10, -6) shouldBe 6
-    round(10, 11) shouldBe 11
-    round(10, -11) shouldBe 0
-    round(-10, 0) shouldBe -10
-    round(-10, 1) shouldBe -10
-    round(-10, -1) shouldBe -8
-    round(-10, 6) shouldBe -12
-    round(-10, -6) shouldBe -6
-    round(-10, 11) shouldBe -11
-    round(-10, -11) shouldBe 0
+  "Int.round" should "work" in {
+    is(round(0, 0), 0)
+    is(round(0, 1), 0)
+    is(round(0, -1), 0)
+    is(round(0, 6), 0)
+    is(round(0, -6), 6)
+    is(round(0, 11), 0)
+    is(round(0, -11), 11)
+    is(round(1, 0), 1)
+    is(round(1, 1), 1)
+    is(round(1, -1), 1)
+    is(round(1, 6), 0)
+    is(round(1, -6), 6)
+    is(round(1, 11), 0)
+    is(round(1, -11), 11)
+    is(round(-1, 0), -1)
+    is(round(-1, 1), -1)
+    is(round(-1, -1), 1)
+    is(round(-1, 6), 0)
+    is(round(-1, -6), 6)
+    is(round(-1, 11), 0)
+    is(round(-1, -11), 11)
+    is(round(10, 0), 10)
+    is(round(10, 1), 10)
+    is(round(10, -1), 10)
+    is(round(10, 6), 12)
+    is(round(10, -6), 6)
+    is(round(10, 11), 11)
+    is(round(10, -11), 0)
+    is(round(-10, 0), -10)
+    is(round(-10, 1), -10)
+    is(round(-10, -1), -8)
+    is(round(-10, 6), -12)
+    is(round(-10, -6), -6)
+    is(round(-10, 11), -11)
+    is(round(-10, -11), 0)
   }
 
-  "Int.roundUp" should work in {
-    roundUp(0, 0) shouldBe 0
-    roundUp(0, 1) shouldBe 0
-    roundUp(0, -1) shouldBe 0
-    roundUp(0, 6) shouldBe 0
-    roundUp(0, -6) shouldBe 0
-    roundUp(0, 11) shouldBe 0
-    roundUp(0, -11) shouldBe 0
-    roundUp(1, 0) shouldBe 1
-    roundUp(1, 1) shouldBe 1
-    roundUp(1, -1) shouldBe 1
-    roundUp(1, 6) shouldBe 6
-    roundUp(1, -6) shouldBe 6
-    roundUp(1, 11) shouldBe 11
-    roundUp(1, -11) shouldBe 11
-    roundUp(-1, 0) shouldBe -1
-    roundUp(-1, 1) shouldBe -1
-    roundUp(-1, -1) shouldBe -1
-    roundUp(-1, 6) shouldBe 0
-    roundUp(-1, -6) shouldBe 0
-    roundUp(-1, 11) shouldBe 0
-    roundUp(-1, -11) shouldBe 0
-    roundUp(10, 0) shouldBe 10
-    roundUp(10, 1) shouldBe 10
-    roundUp(10, -1) shouldBe 8
-    roundUp(10, 6) shouldBe 12
-    roundUp(10, -6) shouldBe 0
-    roundUp(10, 11) shouldBe 11
-    roundUp(10, -11) shouldBe 11
-    roundUp(-10, 0) shouldBe -10
-    roundUp(-10, 1) shouldBe -10
-    roundUp(-10, -1) shouldBe -10
-    roundUp(-10, 6) shouldBe -6
-    roundUp(-10, -6) shouldBe -6
-    roundUp(-10, 11) shouldBe 0
-    roundUp(-10, -11) shouldBe 0
+  "Int.roundUp" should "work" in {
+    is(roundUp(0, 0), 0)
+    is(roundUp(0, 1), 0)
+    is(roundUp(0, -1), 0)
+    is(roundUp(0, 6), 0)
+    is(roundUp(0, -6), 0)
+    is(roundUp(0, 11), 0)
+    is(roundUp(0, -11), 0)
+    is(roundUp(1, 0), 1)
+    is(roundUp(1, 1), 1)
+    is(roundUp(1, -1), 1)
+    is(roundUp(1, 6), 6)
+    is(roundUp(1, -6), 6)
+    is(roundUp(1, 11), 11)
+    is(roundUp(1, -11), 11)
+    is(roundUp(-1, 0), -1)
+    is(roundUp(-1, 1), -1)
+    is(roundUp(-1, -1), -1)
+    is(roundUp(-1, 6), 0)
+    is(roundUp(-1, -6), 0)
+    is(roundUp(-1, 11), 0)
+    is(roundUp(-1, -11), 0)
+    is(roundUp(10, 0), 10)
+    is(roundUp(10, 1), 10)
+    is(roundUp(10, -1), 8)
+    is(roundUp(10, 6), 12)
+    is(roundUp(10, -6), 0)
+    is(roundUp(10, 11), 11)
+    is(roundUp(10, -11), 11)
+    is(roundUp(-10, 0), -10)
+    is(roundUp(-10, 1), -10)
+    is(roundUp(-10, -1), -10)
+    is(roundUp(-10, 6), -6)
+    is(roundUp(-10, -6), -6)
+    is(roundUp(-10, 11), 0)
+    is(roundUp(-10, -11), 0)
   }
 
-  "Int.trunc" should work in {
-    trunc(0, 0) shouldBe 0
-    trunc(0, 1) shouldBe 0
-    trunc(0, -1) shouldBe 0
-    trunc(0, 6) shouldBe 0
-    trunc(0, -6) shouldBe 0
-    trunc(0, 11) shouldBe 0
-    trunc(0, -11) shouldBe 0
-    trunc(1, 0) shouldBe 1
-    trunc(1, 1) shouldBe 1
-    trunc(1, -1) shouldBe 1
-    trunc(1, 6) shouldBe 0
-    trunc(1, -6) shouldBe 0
-    trunc(1, 11) shouldBe 0
-    trunc(1, -11) shouldBe 0
-    trunc(-1, 0) shouldBe -1
-    trunc(-1, 1) shouldBe -1
-    trunc(-1, -1) shouldBe 1
-    trunc(-1, 6) shouldBe -6
-    trunc(-1, -6) shouldBe 6
-    trunc(-1, 11) shouldBe -11
-    trunc(-1, -11) shouldBe 11
-    trunc(10, 0) shouldBe 10
-    trunc(10, 1) shouldBe 10
-    trunc(10, -1) shouldBe 10
-    trunc(10, 6) shouldBe 6
-    trunc(10, -6) shouldBe 6
-    trunc(10, 11) shouldBe 0
-    trunc(10, -11) shouldBe 0
-    trunc(-10, 0) shouldBe -10
-    trunc(-10, 1) shouldBe -10
-    trunc(-10, -1) shouldBe -8
-    trunc(-10, 6) shouldBe -12
-    trunc(-10, -6) shouldBe 0
-    trunc(-10, 11) shouldBe -11
-    trunc(-10, -11) shouldBe 11
+  "Int.trunc" should "work" in {
+    is(trunc(0, 0), 0)
+    is(trunc(0, 1), 0)
+    is(trunc(0, -1), 0)
+    is(trunc(0, 6), 0)
+    is(trunc(0, -6), 0)
+    is(trunc(0, 11), 0)
+    is(trunc(0, -11), 0)
+    is(trunc(1, 0), 1)
+    is(trunc(1, 1), 1)
+    is(trunc(1, -1), 1)
+    is(trunc(1, 6), 0)
+    is(trunc(1, -6), 0)
+    is(trunc(1, 11), 0)
+    is(trunc(1, -11), 0)
+    is(trunc(-1, 0), -1)
+    is(trunc(-1, 1), -1)
+    is(trunc(-1, -1), 1)
+    is(trunc(-1, 6), -6)
+    is(trunc(-1, -6), 6)
+    is(trunc(-1, 11), -11)
+    is(trunc(-1, -11), 11)
+    is(trunc(10, 0), 10)
+    is(trunc(10, 1), 10)
+    is(trunc(10, -1), 10)
+    is(trunc(10, 6), 6)
+    is(trunc(10, -6), 6)
+    is(trunc(10, 11), 0)
+    is(trunc(10, -11), 0)
+    is(trunc(-10, 0), -10)
+    is(trunc(-10, 1), -10)
+    is(trunc(-10, -1), -8)
+    is(trunc(-10, 6), -12)
+    is(trunc(-10, -6), 0)
+    is(trunc(-10, 11), -11)
+    is(trunc(-10, -11), 11)
   }
 }
