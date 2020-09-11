@@ -3,7 +3,7 @@ lazy val mimaVersion    = "0.2.0"
 
 lazy val deps = new {
   val test = new {
-    val scalaTest = "3.2.0"
+    val scalaTest = "3.2.2"
   }
 }
 
@@ -12,7 +12,7 @@ lazy val commonSettings = Seq(
   version            := projectVersion,
   organization       := "de.sciss",
   scalaVersion       := "2.13.3",
-  crossScalaVersions := Seq("0.24.0-RC1", "2.13.3", "2.12.12"),
+  crossScalaVersions := Seq("0.27.0-RC1", "2.13.3", "2.12.12"),
   description        := "A collection of numeric functions and type enrichments",
   homepage           := Some(url(s"https://git.iem.at/sciss/${name.value}")),
   licenses           := Seq("LGPL v2.1+" -> url("http://www.gnu.org/licenses/lgpl-2.1.txt")),
