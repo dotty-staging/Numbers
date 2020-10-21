@@ -10,7 +10,7 @@ enrichment operators. Many of the unary and binary operators are adapted from th
 Numbers is included in the [ScalaCollider](http://github.com/Sciss/ScalaCollider/) project. This library is 
 (C)opyright 2013&ndash;2020 by Hanns Holger Rutz. All rights reserved. It is released under the
 [GNU Lesser General Public License](http://github.com/Sciss/Numbers/blob/main/LICENSE) and comes with 
-absolutely no warranties. To contact the author, send an e-mail to `contact at sciss.de`
+absolutely no warranties. To contact the author, send an e-mail to `contact at sciss.de`.
 
 ## linking
 
@@ -20,7 +20,8 @@ The current version `v` is `"0.2.1"`.
 
 ## building
 
-The project builds with [sbt](http://www.scala-sbt.org/) against Scala 2.13, 2.12. The last version to suppor Scala 2.11 was v0.2.0.
+The project builds with [sbt](http://www.scala-sbt.org/) against Scala 2.13, 2.12, Dotty (JVM) and Scala 2.13 (JS).
+The last version to support Scala 2.11 was v0.2.0.
 
 To compile `sbt compile`. To test, `sbt test`. For the API docs, `sbt doc`.
 
